@@ -40,3 +40,8 @@ if &t_Co > 2 || has("gui_running")
 endif
 
 set mouse=a
+
+let g:git_diff_spawn_mode = 2
+let g:netrw_list_hide = "\.pyc,\.swp,\.bak,\.git"
+let g:netrw_special_syntax = 1
+let g:netrw_liststyle = 1
