@@ -37,13 +37,19 @@ set expandtab
 set cinkeys=0{,0},:,0#,!,!^F
 
 if &t_Co >= 256 || has("gui_running")
-   colorscheme kolor
+    syntax enable
+    set background=dark
+    "let g:solarized_termcolors=256
+    "let g:solarized_visibility = "high"
+    "let g:solarized_contrast = "high"
+    "colorscheme solarized
+    colorscheme badwolf 
 endif
 
-if &t_Co > 2 || has("gui_running")
+"if &t_Co > 2 || has("gui_running")
    " switch syntax highlighting on, when the terminal has colors
-   syntax on
-endif
+"   syntax on
+"endif
 
 set mouse=a
 
