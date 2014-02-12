@@ -26,7 +26,7 @@ set laststatus=2
 set t_Co=256
 set cursorline
 set paste 
-
+set colorcolumn=80
 set cindent
 set smartindent
 set tabstop=4
