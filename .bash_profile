@@ -16,9 +16,10 @@ alias ctrlf=ctrlf_sublimetext
 
 
 # daily logger
+# usage: doing "stuff ..."
 function insert_daily_log_entry() {
     # some vars
-    doing_message=$@
+    doing_message="$@"
     doing_dir=~/daily_logger/
     doing_file="log_$(date '+%d-%m-%y').txt"
     doing_output=$doing_dir$doing_file
@@ -30,7 +31,7 @@ function insert_daily_log_entry() {
     fi
 
     # append message to the end of file
-    echo "[$(date +%T)] $@" >>$doing_output
+    echo "[$(date +%T)] $doing_message" >>$doing_output
 }
 alias doing=insert_daily_log_entry
 
