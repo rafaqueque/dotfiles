@@ -12,6 +12,12 @@ function parse_git_branch() {
     fi
 }
 
+# sublime text-like search
+function ctrlf_sublimetext() {
+    grep --color=always -Iirn3 "$@" | less -R
+}
+alias ctrlf=ctrlf_sublimetext
+
 export PS1="\[$(tput bold;tput setaf 6)\]\u@\H\[$(tput sgr0;tput bold;tput setaf 7)\]:\w \[$(tput smso)\] $(parse_git_branch) \[$(tput rmso)\] \n\[$(tput bold;tput setaf 7)\]\$ \[$(tput sgr0)\]"
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
 
