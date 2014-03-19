@@ -37,7 +37,7 @@ alias doing=insert_daily_log_entry
 
 
 # custom prompt
-export PS1='\[$(tput bold;tput setaf 4)\]\u@\H\[$(tput sgr0;tput setaf 6)\]:\w \[$(tput smso)\]$(parse_git_branch)\[$(tput sgr0)\] \[$(tput bold;tput setaf 4)\]\$\[$(tput sgr0)\] '
+export PS1='\[$(tput bold;tput setaf 4)\]\u@\H\[$(tput sgr0;tput setaf 6)\]:\w\[$(tput smso)\]$(parse_git_branch)\[$(tput sgr0)\] \[$(tput bold;tput setaf 4)\]\$\[$(tput sgr0)\] '
 
 # env vars
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
