@@ -44,6 +44,10 @@ if &t_Co >= 256 || has("gui_running")
     "let g:solarized_contrast = "high"
     "colorscheme solarized
     colorscheme badwolf 
+    hi TabLineFill ctermfg=LightGreen ctermbg=DarkGrey guifg=LightGreen guibg=DarkGrey
+    hi TabLine ctermfg=Gray ctermbg=DarkGray guifg=Gray guibg=DarkGray
+    hi TabLineSel ctermfg=White ctermbg=DarkBlue guifg=White guibg=DarkBlue
+    "hi Title ctermfg=LightBlue ctermbg=Magenta guifg=LightBlue guibg=Magenta
 endif
 
 "if &t_Co > 2 || has("gui_running")
