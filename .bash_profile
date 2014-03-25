@@ -4,7 +4,7 @@ function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo ' *' 
 }
 function parse_git_branch {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[branch: \1$(parse_git_dirty)]/"
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ branch: $(tput bold)\1$(parse_git_dirty) /"
 }
 
 # sublime text-like search
@@ -36,7 +36,7 @@ alias doing=insert_daily_log_entry
 
 
 # custom prompt
-export PS1='\[$(tput bold;tput setaf 7)\]\u@\H\[$(tput sgr0)\]:\w \[$(tput setaf 3;tput smso)\]$([ \j -gt 0 ] && echo [jobs: \j])\[$(tput sgr0)\] \[$(tput setaf 3;tput smso)\]$(parse_git_branch)\[$(tput sgr0)\] \n\[$(tput bold;tput setaf 1)\]\$\[$(tput sgr0)\] '
+export PS1='\[$(tput bold;tput setaf 7)\]\u@\H\[$(tput sgr0)\]:\w \[$(tput setaf 3;tput smso)\]$([ \j -gt 0 ] && echo " jobs: $(tput bold)\j ")\[$(tput sgr0)\] \[$(tput setaf 3;tput smso)\]$(parse_git_branch)\[$(tput sgr0)\] \n\[$(tput bold;tput setaf 1)\]\$\[$(tput sgr0)\] '
 
 # env vars
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
