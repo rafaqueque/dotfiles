@@ -1,8 +1,22 @@
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+"" Plugins and bundles
+Plugin 'gmarik/vundle'
+Bundle 'bling/vim-airline'
+Bundle 'flazz/vim-colorschemes'
+
+"" vim-airline settings
+let g:airline#extensions#tabline#enabled = 1
+
+"" custom settings
 filetype plugin indent on
+syntax on
 
-set nocompatible
 set hidden
 set nowrap        " don't wrap lines
 set backspace=indent,eol,start
@@ -35,32 +49,17 @@ set shiftwidth=4
 set smarttab
 set expandtab
 set cinkeys=0{,0},:,0#,!,!^F
-
-if &t_Co >= 256 || has("gui_running")
-    syntax enable
-    set background=dark
-    "let g:solarized_termcolors=256
-    "let g:solarized_visibility = "high"
-    "let g:solarized_contrast = "high"
-    "colorscheme solarized
-    colorscheme badwolf 
-    hi TabLineFill ctermfg=LightGreen ctermbg=DarkGrey guifg=LightGreen guibg=DarkGrey
-    hi TabLine ctermfg=Gray ctermbg=DarkGray guifg=Gray guibg=DarkGray
-    hi TabLineSel ctermfg=White ctermbg=DarkBlue guifg=White guibg=DarkBlue
-    "hi Title ctermfg=LightBlue ctermbg=Magenta guifg=LightBlue guibg=Magenta
-endif
-
-"if &t_Co > 2 || has("gui_running")
-   " switch syntax highlighting on, when the terminal has colors
-"   syntax on
-"endif
-
 set mouse=a
 
-let g:git_diff_spawn_mode = 2
-let g:netrw_list_hide = "\.pyc,\.swp,\.bak,\.git"
-let g:netrw_special_syntax = 1
-let g:netrw_liststyle = 1
+if &t_Co >= 256 || has("gui_running")
+    set background=dark
+    "let g:solarized_termcolors=256
+    "let g:solarized_visibility='high'
+    "let g:solarized_bold=1
+    "let g:solarized_contrast='high'
+    colorscheme badwolf 
+endif
+
 
 " Toggle Vexplore with Ctrl-E
 function! ToggleVExplorer()
@@ -83,10 +82,10 @@ function! ToggleVExplorer()
 endfunction
 map <silent> <C-E> :call ToggleVExplorer()<CR>
 
-" Hit enter in the file browser to open the selected
-" file with :vsplit to the right of the browser.
+" Sidebar explorer configs
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-
-" Default to tree mode
 let g:netrw_liststyle=3
+let g:netrw_list_hide = "\.pyc,\.swp,\.bak,\.git"
+let g:netrw_special_syntax = 1
+let g:netrw_liststyle = 1
