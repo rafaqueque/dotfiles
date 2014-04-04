@@ -7,11 +7,17 @@ call vundle#rc()
 
 "" Plugins and bundles
 Plugin 'gmarik/vundle'
+"Bundle 'bling/vim-airline'
+Bundle 'kien/ctrlp.vim'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'godlygeek/csapprox'
+Bundle 'endel/vim-github-colorscheme'
 Bundle 'bling/vim-airline'
-Bundle 'flazz/vim-colorschemes'
+Bundle 'tpope/vim-fugitive'
 
 "" vim-airline settings
-let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='powerlineish'
+let g:airline#extensions#tabline#enabled=1
 
 "" custom settings
 filetype plugin indent on
@@ -50,14 +56,11 @@ set smarttab
 set expandtab
 set cinkeys=0{,0},:,0#,!,!^F
 set mouse=a
+set encoding=utf-8
 
 if &t_Co >= 256 || has("gui_running")
-    set background=dark
-    "let g:solarized_termcolors=256
-    "let g:solarized_visibility='high'
-    "let g:solarized_bold=1
-    "let g:solarized_contrast='high'
-    colorscheme badwolf 
+    colorscheme github 
+    hi CursorLine term=None cterm=None 
 endif
 
 
