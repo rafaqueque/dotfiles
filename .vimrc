@@ -9,10 +9,12 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 Bundle 'bling/vim-airline'
 Bundle 'godlygeek/csapprox'
-Bundle 'endel/vim-github-colorscheme'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'pangloss/vim-javascript'
+Bundle 'hynek/vim-python-pep8-indent'
 
 "" vim-airline settings
-let g:airline_theme='powerlineish'
+let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled=1
 
 "" custom settings
@@ -55,7 +57,11 @@ set mouse=a
 set encoding=utf-8
 
 if &t_Co >= 256 || has("gui_running")
-    colorscheme github 
+    set background=dark
+    let g:solarized_termcolors=256
+    let g:solarized_visibility='high'
+    let g:solarized_contrast='high'
+    colorscheme solarized 
     hi CursorLine term=None cterm=None 
 endif
 
