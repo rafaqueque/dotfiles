@@ -1,3 +1,12 @@
+# get current branch in git repo
+# found here: http://thepugautomatic.com/2008/12/git-dirty-prompt/
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo ' *' 
+}
+function parse_git_branch {
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ \1$(parse_git_dirty)/"
+}
+
 # daily logger
 # usage: doing "stuff ..."
 function insert_daily_log_entry() {
@@ -20,7 +29,7 @@ alias doing=insert_daily_log_entry
 
 
 # custom prompt
-export PS1='[\[$(tput sgr0;tput bold)\]\u@\H:\[$(tput sgr0)\]\w] \[$(tput bold;tput setaf 1)\]\$\[$(tput sgr0)\] '
+export PS1='\[$(tput sgr0;tput bold;tput setaf 6)\]\u@\H:\[$(tput sgr0;tput setaf 6)\]\w\[$(tput sgr0;tput setaf 3)\]$([ \j -gt 0 ] && echo " j:\j")\[$(tput sgr0)\]\[$(tput setaf 2)\]$(parse_git_branch)\[$(tput sgr0)\] \[$(tput bold;tput setaf 1)\]\$\[$(tput sgr0)\] '
 
 # env vars
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
