@@ -4,7 +4,7 @@ function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo ' *' 
 }
 function parse_git_branch {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\\$(tput sgr0)[\1$(parse_git_dirty)]/"
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\\$(tput setaf 5)[\1$(parse_git_dirty)]/"
 }
 
 # daily logger
@@ -29,7 +29,7 @@ alias doing=insert_daily_log_entry
 
 
 # custom prompt
-export PS1='\[$(tput bold;tput setaf 1)\]\u\[$(tput sgr0;tput setaf 1)\]:\j \w$(parse_git_branch)\[$(tput sgr0)\]\$ '
+export PS1='\[$(tput bold;tput setaf 4)\]\u\[$(tput sgr0;tput setaf 6)\]:\w$(parse_git_branch)\[$(tput sgr0)\] \$ '
 
 # env vars
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
