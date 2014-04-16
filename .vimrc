@@ -12,10 +12,17 @@ Bundle 'godlygeek/csapprox'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'Lokaltog/vim-distinguished'
+Bundle 'tpope/vim-fugitive'
 
 "" vim-airline settings
-let g:airline_theme='solarized'
-let g:airline#extensions#tabline#enabled=1
+let g:airline_theme='light'
+let g:airline#extensions#tabline#enabled=0
+let g:airline#extensions#branch#enabled=1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+  let g:airline_symbols.branch='⎇'
+endif
 
 "" custom settings
 filetype plugin indent on
@@ -58,10 +65,10 @@ set encoding=utf-8
 
 if &t_Co >= 256 || has("gui_running")
     set background=dark
-    let g:solarized_termcolors=256
-    let g:solarized_visibility='high'
-    let g:solarized_contrast='high'
-    colorscheme solarized 
+    "let g:solarized_termcolors=256
+    "let g:solarized_visibility='high'
+    "let g:solarized_contrast='high'
+    colorscheme distinguished
     hi CursorLine term=None cterm=None 
 endif
 
