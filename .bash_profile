@@ -1,7 +1,10 @@
 # get current branch in git repo
 # found here: http://thepugautomatic.com/2008/12/git-dirty-prompt/
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
+}
 function parse_git_branch {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\[\1]/"
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[$(tput bold)\1$(tput sgr0)$(parse_git_dirty)]/"
 }
 
 # daily logger
@@ -59,7 +62,7 @@ bakpur='\e[45m'   # Purple
 bakcyn='\e[46m'   # Cyan
 bakwht='\e[47m'   # White
 txtrst='\e[0m'    # Text Reset
-export PS1="$bldgrn\u@\h $bldred\j $txtcyn\w$bldcyn$(parse_git_branch)$txtrst \$ "
+export PS1="\[$(tput bold)\]\u@\h\[$(tput sgr0)\]:\w\[\$(parse_git_branch)\] \$ "
 
 # env var\]s
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
