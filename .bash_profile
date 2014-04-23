@@ -1,10 +1,7 @@
-# get current branch in git repo
-# found here: http://thepugautomatic.com/2008/12/git-dirty-prompt/
-function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
-}
-function parse_git_branch {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+# git branch
+function git_branch {
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
+    echo "$color2[$bold"${ref#refs/heads/}"$reset$color2]$reset";
 }
 
 # daily logger
@@ -32,8 +29,8 @@ alias doing=insert_daily_log_entry
 bold=$(tput bold)
 reset=$(tput sgr0)
 color1=$(tput setaf 2)
-color2=$(tput setaf 1)
-export PS1="\[$bold\]\\u@\\h\[$reset\]:\\w \[$color1$bold\]\\$\[$reset\] "
+color2=$(tput setaf 3)
+export PS1="\[$bold\]\\u@\\h\[$reset\]:\\w\$(git_branch) \[$color1$bold\]\\$\[$reset\] "
 
 # env var\]s
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
