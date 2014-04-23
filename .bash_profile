@@ -31,8 +31,9 @@ alias doing=insert_daily_log_entry
 # custom prompt
 bold=$(tput bold)
 reset=$(tput sgr0)
-green=$(tput setaf 2)
-export PS1="\[$green$bold\]\u\[$reset$green\]:\j \w\[$green$bold\]\$\[$reset\] "
+color1=$(tput setaf 6)
+color2=$(tput setaf 1)
+export PS1="\[$color1$bold\]\\u@\\h\[$reset$color1\]:\\w \[$color2$bold\]\\j\[$reset\] \[$color1$bold\]\\$\[$reset\] "
 
 # env var\]s
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
