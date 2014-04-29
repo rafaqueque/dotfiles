@@ -1,9 +1,3 @@
-# git branch
-function git_branch {
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "$color2[$bold"${ref#refs/heads/}"$reset$color2]$reset";
-}
-
 # daily logger
 # usage: doing "stuff ..."
 function insert_daily_log_entry() {
@@ -24,15 +18,48 @@ function insert_daily_log_entry() {
 }
 alias doing=insert_daily_log_entry
 
+# git branch in prompt
+function git_branch {
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
+    echo "$c_yellow[${ref#refs/heads/}]$c_reset";
+}
 
-# custom prompt
-bold=$(tput bold)
-reset=$(tput sgr0)
-color1=$(tput setaf 2)
-color2=$(tput setaf 3)
-export PS1="\[$bold\]\\u@\\h\[$reset\]:\\w\$(git_branch) \[$color1$bold\]\\$\[$reset\] "
+# truncate working dir
+function truncate_working_dir() {
+    #   How many characters of the $PWD should be kept
+    local pwdmaxlen=25
+    #   Indicator that there has been directory truncation:
+    #trunc_symbol="<"
+    local trunc_symbol="<"
+    if [ ${#PWD} -gt $pwdmaxlen ]
+    then
+        local pwdoffset=$(( ${#PWD} - $pwdmaxlen ))
+        newPWD="${trunc_symbol}${PWD:$pwdoffset:$pwdmaxlen}"
+    else
+        newPWD=${PWD}
+    fi
+}
 
-# env var\]s
+# colors
+c_reset="\[\e[0m\]"
+c_green="\[\033[0;32m\]"
+c_green_l="\[\033[1;32m\]"
+c_yellow="\[\033[0;33m\]"
+c_red="\[\033[0;31m\]"
+c_red_l="\[\033[1;31m\]"
+c_gray="\[\033[1;30m\]"
+c_gray_l="\[\033[0;37m\]"
+c_blue="\[\033[0;34m\]"
+c_blue_l="\[\033[1;34m\]"
+
+# prompt init command
+function load_prompt() {
+    truncate_working_dir
+
+    # prompt
+    PS1="$c_gray\u@\h$c_gray_l:\$newPWD$(git_branch) $c_gray\$$c_reset "
+}
+PROMPT_COMMAND=load_prompt
+
+# env vars
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
-export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
