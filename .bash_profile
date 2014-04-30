@@ -19,9 +19,12 @@ function insert_daily_log_entry() {
 alias doing=insert_daily_log_entry
 
 # git branch in prompt
+function git_branch_status {
+    [[ -n "$(git status -s 2> /dev/null)" ]] && echo "*"
+}
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "$c_yellow[${ref#refs/heads/}]$c_reset";
+    echo "$c_green_l[${ref#refs/heads/}\$(git_branch_status)]$c_reset";
 }
 
 # truncate working dir
@@ -51,13 +54,17 @@ c_gray="\[\033[1;30m\]"
 c_gray_l="\[\033[0;37m\]"
 c_blue="\[\033[0;34m\]"
 c_blue_l="\[\033[1;34m\]"
+c_cyan="\[\033[0;36m\]"
+c_cyan_l="\[\033[1;36m\]"
+c_purple="\[\033[0;35m\]"
+c_purple_l="\[\033[1;35m\]"
 
 # prompt init command
 function load_prompt() {
     truncate_working_dir
 
     # prompt
-    PS1="$c_gray\u@\h$c_gray_l:\$newPWD$(git_branch) $c_gray\$$c_reset "
+    PS1="$c_cyan_l\u@\h:$c_cyan\$newPWD$(git_branch) \$ "
 }
 PROMPT_COMMAND=load_prompt
 
