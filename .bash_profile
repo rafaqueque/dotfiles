@@ -64,7 +64,7 @@ function load_prompt() {
     truncate_working_dir
 
     # prompt
-    PS1="$c_cyan_l\u@\h:$c_cyan\$newPWD$(git_branch) \$ "
+    PS1="$c_cyan_l\u@\h:$c_cyan\$newPWD$(git_branch) $c_reset\$ "
 }
 PROMPT_COMMAND=load_prompt
 
