@@ -58,13 +58,15 @@ c_cyan="\[\033[0;36m\]"
 c_cyan_l="\[\033[1;36m\]"
 c_purple="\[\033[0;35m\]"
 c_purple_l="\[\033[1;35m\]"
+c_bold="\[\$(tput bold)\]";
+c_reset_t="\[\$(tput sgr0)\]";
 
 # prompt init command
 function load_prompt() {
     truncate_working_dir
 
     # prompt
-    PS1="$c_cyan_l\u@\h:$c_cyan\$newPWD$(git_branch) $c_reset\\$ "
+    PS1="$c_bold\u@\h:$c_reset_t\$newPWD$(git_branch) $c_bold\\$ $c_reset_t"
 }
 PROMPT_COMMAND=load_prompt
 
