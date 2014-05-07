@@ -24,7 +24,7 @@ function git_branch_status {
 }
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "$c_green_l[${ref#refs/heads/}\$(git_branch_status)]$c_reset";
+    echo "$c_yellow_l${ref#refs/heads/}\$(git_branch_status)$c_reset:";
 }
 
 # truncate working dir
@@ -48,6 +48,7 @@ c_reset="\[\e[0m\]"
 c_green="\[\033[0;32m\]"
 c_green_l="\[\033[1;32m\]"
 c_yellow="\[\033[0;33m\]"
+c_yellow_l="\[\033[1;33m\]"
 c_red="\[\033[0;31m\]"
 c_red_l="\[\033[1;31m\]"
 c_gray="\[\033[1;30m\]"
@@ -66,7 +67,7 @@ function load_prompt() {
     truncate_working_dir
 
     # prompt
-    PS1="$c_bold\u@\h:$c_reset_t\$newPWD$(git_branch) $c_bold\\$ $c_reset_t"
+    PS1="${c_green_l}\u@\h${c_reset}:\$newPWD $(git_branch)${c_yellow}\j${c_reset} ${c_red_l}\\$ ${c_reset}"
 }
 PROMPT_COMMAND=load_prompt
 

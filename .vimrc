@@ -17,7 +17,7 @@ Bundle 'tpope/vim-fugitive'
 
 "" vim-airline settings
 let g:airline_theme='light'
-let g:airline#extensions#tabline#enabled=0
+let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
