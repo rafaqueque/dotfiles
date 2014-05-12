@@ -11,13 +11,12 @@ Bundle 'bling/vim-airline'
 Bundle 'godlygeek/csapprox'
 Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'Lokaltog/vim-distinguished'
-Bundle 'sjl/badwolf'
 Bundle 'tpope/vim-fugitive'
+Bundle 'altercation/vim-colors-solarized'
 
 "" vim-airline settings
-let g:airline_theme='light'
-let g:airline#extensions#tabline#enabled=0
+let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -62,7 +61,11 @@ set encoding=utf-8
 
 if &t_Co >= 256 || has("gui_running")
     set background=dark
-    colorscheme distinguished 
+    let g:solarized_termcolors=256
+    let g:solarized_degrade=1
+    let g:solarized_bold=1
+    let g:solarized_visibility="high"
+    colorscheme solarized 
     hi CursorLine term=None cterm=None 
 endif
 
