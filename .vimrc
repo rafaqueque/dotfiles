@@ -13,11 +13,14 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'tpope/vim-fugitive'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'vim-scripts/wombat256.vim'
 
 "" vim-airline settings
-let g:airline_theme='solarized'
+let g:airline_theme='luna'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#tabline#show_buffers=0
+
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
   let g:airline_symbols.branch='⎇'
@@ -61,12 +64,11 @@ set encoding=utf-8
 
 if &t_Co >= 256 || has("gui_running")
     set background=dark
-    let g:solarized_termcolors=256
-    let g:solarized_degrade=1
-    let g:solarized_bold=1
-    let g:solarized_visibility="high"
-    colorscheme solarized 
+    "let g:solarized_termcolors=256
+    "let g:solarized_visibility="high"
+    colorscheme wombat256mod 
     hi CursorLine term=None cterm=None 
+    hi ColorColumn ctermbg=Black 
 endif
 
 
