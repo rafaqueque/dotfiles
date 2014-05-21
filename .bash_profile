@@ -67,9 +67,13 @@ function load_prompt() {
     truncate_working_dir
 
     # prompt
-    PS1="${c_cyan_l}\u${c_cyan}:\j ${c_green_l}\$newPWD$(git_branch)${c_reset} ${c_bold}\\$ ${c_reset_t}"
+    PS1="\u:${c_bold}\$newPWD${c_reset}$(git_branch) ${c_red_l}\\$ ${c_reset_t}"
 }
 PROMPT_COMMAND=load_prompt
 
 # env vars
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
+export CLICOLOR=1
+export LSCOLORS=Exfxcxdxbxegedabagacad
+export LS_COLORS=LSCOLORS # linux
+export GREP_OPTIONS='--color=auto'
