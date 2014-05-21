@@ -13,7 +13,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'tpope/vim-fugitive'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'vim-scripts/wombat256.vim'
+Bundle 'chriskempson/base16-vim'
 
 "" vim-airline settings
 let g:airline_theme='luna'
@@ -66,9 +66,9 @@ if &t_Co >= 256 || has("gui_running")
     set background=dark
     "let g:solarized_termcolors=256
     "let g:solarized_visibility="high"
-    colorscheme wombat256mod 
-    hi CursorLine term=None cterm=None 
-    hi ColorColumn ctermbg=Black 
+    colorscheme base16-default
+    "hi CursorLine term=None cterm=None 
+    "hi ColorColumn ctermbg=Black 
 endif
 
 
