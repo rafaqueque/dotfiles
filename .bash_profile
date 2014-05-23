@@ -24,13 +24,13 @@ function git_branch_status {
 }
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "$c_gray[${ref#refs/heads/}\$(git_branch_status)]$c_reset_t";
+    echo "${c_yellow}[${ref#refs/heads/}\$(git_branch_status)]${c_reset_t}";
 }
 
 # truncate working dir
 function truncate_working_dir() {
     #   How many characters of the $PWD should be kept
-    local pwdmaxlen=20
+    local pwdmaxlen=25
     #   Indicator that there has been directory truncation:
     #trunc_symbol="<"
     local trunc_symbol="<"
@@ -67,7 +67,7 @@ function load_prompt() {
     truncate_working_dir
 
     # prompt
-    PS1="${c_bold}\u${c_reset_t}:\j \$newPWD${c_reset_t}$(git_branch) ${c_green_l}\\$ ${c_reset_t}"
+    PS1="${c_cyan}\u@\h:${c_reset_t}${c_green}\$newPWD${c_reset_t}$(git_branch) ${c_bold}\\$ ${c_reset_t}"
 }
 PROMPT_COMMAND=load_prompt
 
