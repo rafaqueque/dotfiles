@@ -24,23 +24,7 @@ function git_branch_status {
 }
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "${c_yellow}[${ref#refs/heads/}\$(git_branch_status)]${c_reset_t}";
-}
-
-# truncate working dir
-function truncate_working_dir() {
-    #   How many characters of the $PWD should be kept
-    local pwdmaxlen=25
-    #   Indicator that there has been directory truncation:
-    #trunc_symbol="<"
-    local trunc_symbol="<"
-    if [ ${#PWD} -gt $pwdmaxlen ]
-    then
-        local pwdoffset=$(( ${#PWD} - $pwdmaxlen ))
-        newPWD="${trunc_symbol}${PWD:$pwdoffset:$pwdmaxlen}"
-    else
-        newPWD=${PWD}
-    fi
+    echo "${c_green}[${ref#refs/heads/}\$(git_branch_status)]${c_reset_t}";
 }
 
 # colors
@@ -64,10 +48,8 @@ c_reset_t="\[\$(tput sgr0)\]";
 
 # prompt init command
 function load_prompt() {
-    truncate_working_dir
-
     # prompt
-    PS1="${c_cyan}\u@\h:${c_reset_t}${c_green}\$newPWD${c_reset_t}$(git_branch) ${c_bold}\\$ ${c_reset_t}"
+    PS1="${c_cyan}\u@\h${c_reset_t}:${c_cyan_l}\j${c_reset_t} ${c_green_l}\w${c_reset_t}$(git_branch)\\$ "
 }
 PROMPT_COMMAND=load_prompt
 
