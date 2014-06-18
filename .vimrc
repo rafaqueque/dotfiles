@@ -14,6 +14,7 @@ Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'tpope/vim-fugitive'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/base16-vim'
+Bundle 'vim-scripts/DeleteTrailingWhitespace'
 
 "" vim-airline settings
 let g:airline_theme='luna'
@@ -52,7 +53,7 @@ set noswapfile
 set laststatus=2
 set t_Co=256
 set cursorline
-set colorcolumn=80
+set colorcolumn=100
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -67,8 +68,8 @@ if &t_Co >= 256 || has("gui_running")
     "let g:solarized_termcolors=256
     "let g:solarized_visibility="high"
     colorscheme base16-default
-    "hi CursorLine term=None cterm=None 
-    "hi ColorColumn ctermbg=Black 
+    "hi CursorLine term=None cterm=None
+    "hi ColorColumn ctermbg=Black
 endif
 
 
