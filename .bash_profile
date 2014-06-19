@@ -24,7 +24,7 @@ function git_branch_status {
 }
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "${c_green}[${ref#refs/heads/}\$(git_branch_status)]${c_reset_t}";
+    echo "${c_yellow}[${ref#refs/heads/}\$(git_branch_status)]${c_reset_t}";
 }
 
 # colors
@@ -45,11 +45,13 @@ c_purple="\[\033[0;35m\]"
 c_purple_l="\[\033[1;35m\]"
 c_bold="\[\$(tput bold)\]";
 c_reset_t="\[\$(tput sgr0)\]";
+c_highlight="\[\$(tput smso)\]";
+c_highlight_off="\[\$(tput rmso)\]";
 
 # prompt init command
 function load_prompt() {
     # prompt
-    PS1="${c_cyan}\u@\h${c_reset_t}:${c_cyan_l}\j${c_reset_t} ${c_green_l}\w${c_reset_t}$(git_branch)\\$ "
+    PS1="${c_bold}\u${c_reset_t}:${c_green_l}\j${c_reset_t}:${c_yellow_l}\w${c_reset_t}$(git_branch)\\$ "
 }
 PROMPT_COMMAND=load_prompt
 
