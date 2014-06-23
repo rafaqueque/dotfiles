@@ -12,12 +12,11 @@ Bundle 'godlygeek/csapprox'
 Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'tpope/vim-fugitive'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/base16-vim'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
 
 "" vim-airline settings
-let g:airline_theme='luna'
+let g:airline_theme='light'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#tabline#show_buffers=0
@@ -62,6 +61,7 @@ set expandtab
 set cinkeys=0{,0},:,0#,!,!^F
 set mouse=a
 set encoding=utf-8
+set nopaste
 
 if &t_Co >= 256 || has("gui_running")
     set background=dark
