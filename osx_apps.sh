@@ -8,6 +8,8 @@ brew install unrar
 brew install vim
 brew install cowsay
 brew install irssi
+brew install httpie
+brew install archey
  
 echo Install brew-cask
 brew tap phinze/cask
