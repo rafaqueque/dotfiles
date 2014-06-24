@@ -1,18 +1,18 @@
 servers = (
   {
-    address = "irc.ptnet.org";
+    address = "uc.ptnet.org";
     chatnet = "PTnet";
     port = "6667";
-    use_ssl = "no";
+    use_ssl = "yes";
     ssl_verify = "no";
     autoconnect = "no";
   },
   {
     address = "irc.freenode.net";
     chatnet = "Freenode";
-    port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "yes";
     autoconnect = "no";
   }
 );
@@ -23,12 +23,12 @@ chatnets = {
 };
 
 channels = (
-  { name = "#django"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#startups"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#python"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#linux"; chatnet = "Freenode"; autojoin = "Yes"; },
-  { name = "#nba"; chatnet = "PTnet"; autojoin = "yes"; },
-  { name = "#linuxhelp"; chatnet = "PTnet"; autojoin = "yes"; }
+  { name = "#django"; chatnet = "Freenode"; autojoin = "no"; },
+  { name = "#startups"; chatnet = "Freenode"; autojoin = "no"; },
+  { name = "#python"; chatnet = "Freenode"; autojoin = "no"; },
+  { name = "#linux"; chatnet = "Freenode"; autojoin = "no"; },
+  { name = "#nba"; chatnet = "PTnet"; autojoin = "no"; },
+  { name = "#linuxhelp"; chatnet = "PTnet"; autojoin = "no"; }
 );
 
 aliases = {
