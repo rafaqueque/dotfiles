@@ -12,7 +12,6 @@ Bundle 'godlygeek/csapprox'
 Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'tpope/vim-fugitive'
-Bundle 'chriskempson/base16-vim'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
 
 "" vim-airline settings
@@ -65,11 +64,7 @@ set nopaste
 
 if &t_Co >= 256 || has("gui_running")
     set background=dark
-    "let g:solarized_termcolors=256
-    "let g:solarized_visibility="high"
-    colorscheme base16-default
-    "hi CursorLine term=None cterm=None
-    "hi ColorColumn ctermbg=Black
+    colorscheme blackboard
 endif
 
 
