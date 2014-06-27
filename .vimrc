@@ -13,9 +13,10 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
+Bundle 'sjl/badwolf'
 
 "" vim-airline settings
-let g:airline_theme='light'
+let g:airline_theme='luna'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#tabline#show_buffers=0
@@ -64,7 +65,10 @@ set nopaste
 
 if &t_Co >= 256 || has("gui_running")
     set background=dark
-    colorscheme blackboard
+    let g:badwolf_darkgutter = 1
+    let g:badwolf_html_link_underline = 0
+    let g:badwolf_css_props_highlight = 3
+    colorscheme badwolf 
 endif
 
 
