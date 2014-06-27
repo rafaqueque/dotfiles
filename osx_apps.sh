@@ -10,6 +10,9 @@ brew install cowsay
 brew install irssi
 brew install httpie
 brew install archey
+
+echo Install pip and other pip-based packages
+sudo easy_install pip
  
 echo Install brew-cask
 brew tap phinze/cask
