@@ -25,7 +25,6 @@ brew cask install chromecast
 brew cask install coconutbattery
 brew cask install firefox
 brew cask install google-chrome
-brew cask install google-drive
 brew cask install iterm2
 brew cask install onyx
 brew cask install spotify
