@@ -24,7 +24,7 @@ brew cask install caffeine
 brew cask install chromecast
 brew cask install coconutbattery
 brew cask install firefox
-brew cask install chromium 
+brew cask install google-chrome 
 brew cask install iterm2
 brew cask install onyx
 brew cask install spotify
