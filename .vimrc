@@ -12,9 +12,7 @@ Bundle 'godlygeek/csapprox'
 Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
-Bundle 'sjl/badwolf'
 
 "" vim-airline settings
 let g:airline_theme='luna'
@@ -66,9 +64,6 @@ set nopaste
 
 if &t_Co >= 256 || has("gui_running")
     set background=dark
-    let g:badwolf_darkgutter = 1
-    let g:badwolf_html_link_underline = 0
-    let g:badwolf_css_props_highlight = 3
     colorscheme distinguished 
 endif
 
@@ -107,6 +102,13 @@ function! ToggleMouse()
     echo "Mouse usage enabled"
   endif
 endfunction
+
+" Show the stack of syntax hilighting classes affecting whatever is under the
+" cursor.
+function! SynStack()
+    echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
+endfunc
+nnoremap <F8> :call SynStack()<CR>
 
 " Sidebar explorer configs
 let g:netrw_browse_split = 4
