@@ -12,6 +12,7 @@ Bundle 'godlygeek/csapprox'
 Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-markdown'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
 Bundle 'sjl/badwolf'
 
@@ -93,6 +94,20 @@ function! ToggleVExplorer()
 endfunction
 map <silent> <C-E> :call ToggleVExplorer()<CR>
 
+" Toggle mouse and numbers
+nnoremap <F5> :call ToggleMouse()<CR>
+function! ToggleMouse()
+  if &mouse == 'a'
+    set mouse=
+    set nonumber
+    echo "Mouse usage disabled"
+  else
+    set mouse=a
+    set number
+    echo "Mouse usage enabled"
+  endif
+endfunction
+
 " Sidebar explorer configs
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
@@ -101,3 +116,6 @@ let g:netrw_list_hide = "\.pyc,\.swp,\.bak,\.git"
 let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
 let python_highlight_all=1
+
+" file types
+au BufRead,BufNewFile *.md set filetype=markdown
