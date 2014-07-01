@@ -68,7 +68,7 @@ if &t_Co >= 256 || has("gui_running")
     let g:badwolf_darkgutter = 1
     let g:badwolf_html_link_underline = 0
     let g:badwolf_css_props_highlight = 3
-    colorscheme badwolf 
+    colorscheme distinguished 
 endif
 
 
@@ -100,3 +100,4 @@ let g:netrw_liststyle=3
 let g:netrw_list_hide = "\.pyc,\.swp,\.bak,\.git"
 let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
+let python_highlight_all=1
