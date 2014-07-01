@@ -88,6 +88,7 @@ call s:ColorDictParser({
 	\ , 'Special'                     : [    150,     '',               '',      'afd787',        '',               '']
 	\ , 'Identifier'                  : [     69,     '',               '',      '5f8787',        '',           'bold']
 	\ , 'Statement'                   : [    186,     '',           'bold',      'd7d787',        '',           'bold']
+	\ , 'Conditional'                 : [    186,     '',               '',      'd7d787',        '',           'bold']
 	\ , 'PreProc'                     : [    247,     '',               '',      '9e9e9e',        '',               '']
 	\ , 'Type'                        : [     67,     '',           'bold',      '5f87af',        '',           'bold']
 	\ , 'String'                      : [     48,     '',               '',      '75af5f',        '',               '']
