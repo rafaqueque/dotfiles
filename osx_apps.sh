@@ -17,6 +17,10 @@ sudo easy_install pip
 echo Install brew-cask
 brew tap phinze/cask
 brew install brew-cask
+
+echo Install custom fonts
+brew tap caskroom/fonts
+brew cask install font-dejavu-sans # coding font
  
 echo Install main apps 
 brew cask install alfred
