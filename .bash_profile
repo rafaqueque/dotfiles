@@ -1,3 +1,12 @@
+# env vars
+export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
+export CLICOLOR=1
+#export LSCOLORS=Exfxcxdxbxegedabagacad
+export LSCOLORS=Gxfxcxdxbxegedabagacad
+export LS_COLORS=LSCOLORS # linux
+export GREP_OPTIONS='--color=auto'
+export TERM='xterm-256color' 
+
 # daily logger
 # usage: doing "stuff ..."
 function insert_daily_log_entry() {
@@ -24,40 +33,59 @@ function git_branch_status {
 }
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "${c_yellow}[${ref#refs/heads/}\$(git_branch_status)]${c_reset_t}";
+    echo "[${ref#refs/heads/}\$(git_branch_status)]";
 }
 
-# colors
-c_reset="\[\e[0m\]"
-c_green="\[\033[0;32m\]"
-c_green_l="\[\033[1;32m\]"
-c_yellow="\[\033[0;33m\]"
-c_yellow_l="\[\033[1;33m\]"
-c_red="\[\033[0;31m\]"
-c_red_l="\[\033[1;31m\]"
-c_gray="\[\033[1;30m\]"
-c_gray_l="\[\033[0;37m\]"
-c_blue="\[\033[0;34m\]"
-c_blue_l="\[\033[1;34m\]"
-c_cyan="\[\033[0;36m\]"
-c_cyan_l="\[\033[1;36m\]"
-c_purple="\[\033[0;35m\]"
-c_purple_l="\[\033[1;35m\]"
-c_bold="\[\$(tput bold)\]";
-c_reset_t="\[\$(tput sgr0)\]";
-c_highlight="\[\$(tput smso)\]";
-c_highlight_off="\[\$(tput rmso)\]";
+# colors based on Solarized theme
+# source: https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt#L62-90
+if tput setaf 1 &> /dev/null; then
+    tput sgr0; # reset colors
+    bold=$(tput bold);
+    reset=$(tput sgr0);
+    black=$(tput setaf 0);
+    blue=$(tput setaf 33);
+    cyan=$(tput setaf 37);
+    green=$(tput setaf 64);
+    orange=$(tput setaf 166);
+    purple=$(tput setaf 125);
+    red=$(tput setaf 124);
+    violet=$(tput setaf 61);
+    white=$(tput setaf 15);
+    yellow=$(tput setaf 136);
+else
+    bold='';
+    reset="\e[0m";
+    black="\e[1;30m";
+    blue="\e[1;34m";
+    cyan="\e[1;36m";
+    green="\e[1;32m";
+    orange="\e[1;33m";
+    purple="\e[1;35m";
+    red="\e[1;31m";
+    violet="\e[1;35m";
+    white="\e[1;37m";
+    yellow="\e[1;33m";
+fi;
+
+function truncate_pwd
+{
+    newPWD="${PWD/#$HOME/~}"
+    local pwdmaxlen=30
+    [ ${#newPWD} -gt $pwdmaxlen ] && newPWD="<${newPWD:3-$pwdmaxlen}"
+}
 
 # prompt init command
 function load_prompt() {
+    # init
+    truncate_pwd;
+    
     # prompt
-    PS1="${c_bold}\u${c_reset_t}:${c_green_l}\j${c_reset_t}:${c_yellow_l}\w${c_reset_t}$(git_branch)\\$ "
+    PS1="";
+    PS1+="\[${yellow}\]\u\[${reset}\]";
+    PS1+="\[${orange}\]:\j ";
+    PS1+="\[${blue}\]\$newPWD";
+    PS1+="\[${violet}\]$(git_branch)";
+    PS1+="\[${purple}\]\\$";
+    PS1+="\[${reset}\] ";
 }
 PROMPT_COMMAND=load_prompt
-
-# env vars
-export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
-export CLICOLOR=1
-export LSCOLORS=Exfxcxdxbxegedabagacad
-export LS_COLORS=LSCOLORS # linux
-export GREP_OPTIONS='--color=auto'

@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 echo Install Homebrew, brew-cask and some other tools
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew update
