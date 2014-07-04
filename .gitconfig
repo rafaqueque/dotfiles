@@ -1,0 +1,22 @@
+[user]
+	email = c.rafael.s.albuquerque@gmail.com
+	name = Rafael Albuquerque
+[push]
+    default = simple
+[pull]
+    default = simple
+[color]
+	ui = auto
+[alias]
+	today = log --since=\"6am\" --pretty=\"oneline\" --author=\"Rafael Albuquerque\"
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[core]
+	editor = /usr/bin/vim
+[color "branch"]
+    current = green bold
+    local = white
+    remote = red bold
+[color "status"]
+    added = green bold
+    changed = red bold
+    untracked = yellow
