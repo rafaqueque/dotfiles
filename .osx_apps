@@ -38,10 +38,6 @@ brew cask install vagrant
 brew cask install virtualbox
 brew cask install vlc
 
-echo Install custom 2D dock utilities
-brew cask install cdock
-brew cask install easysimbl
-
 echo Linking apps to Alfred
 brew cask alfred link
  
