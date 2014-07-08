@@ -13,6 +13,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
+Bundle 'chriskempson/base16-vim'
 
 "" vim-airline settings
 let g:airline_theme='luna'
@@ -64,7 +65,7 @@ set nopaste
 
 if &t_Co >= 256 || has("gui_running")
     set background=dark
-    colorscheme distinguished 
+    colorscheme base16-default 
 endif
 
 
@@ -120,4 +121,4 @@ let g:netrw_liststyle = 1
 let python_highlight_all=1
 
 " file types
-au BufRead,BufNewFile *.md set filetype=markdown
+au BufRead,BufNewFile *.md,*.rst set filetype=markdown
