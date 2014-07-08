@@ -2,7 +2,10 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
+" HOWTO:
+" $ git clone https://github.com/gmarik/Vundle.vim.git
+" destination: ~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 "" Plugins and bundles
@@ -13,6 +16,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
+Bundle 'kien/ctrlp.vim'
 Bundle 'chriskempson/base16-vim'
 
 "" vim-airline settings
