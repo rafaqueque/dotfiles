@@ -32,7 +32,7 @@ function git_branch_status {
 }
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "[${ref#refs/heads/}\$(git_branch_status)]";
+    echo "${green_l}[${bold}${ref#refs/heads/}\$(git_branch_status)${reset}${green_l}]${reset}";
 }
 
 # colors based on Solarized theme
@@ -52,6 +52,8 @@ if tput setaf 1 &> /dev/null; then
     violet=$(tput setaf 61);
     white=$(tput setaf 15);
     yellow=$(tput setaf 136);
+    gray=$(tput setaf 242);
+    gray_l=$(tput setaf 247);
 else
     bold='';
     reset="\e[0m";
@@ -80,12 +82,12 @@ function load_prompt() {
     truncate_pwd;
     
     # prompt
-    PS1="";
-    PS1+="\[${green}\]\u:"
-    PS1+="\[${green_l}\]\j:\[${reset}\]"
-    PS1+="\[${blue}\]\$newPWD\[${reset}\]";
-    PS1+="\[${orange}\]$(git_branch)";
-    PS1+="\[${yellow}\]\\$ ";
-    PS1+="\[${reset}\]";
+    main_color=$gray
+    PS1="\[${main_color}\]";
+    PS1+="[\[${bold}\]\u\[${reset}${main_color}\]"
+    PS1+=":\j:"
+    PS1+="\[${gray_l}\]\$newPWD\[${reset}${main_color}\]]\[${reset}\]"
+    PS1+="$(git_branch)";
+    PS1+="\\$ ";
 }
 PROMPT_COMMAND=load_prompt
