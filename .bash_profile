@@ -1,8 +1,7 @@
 # env vars
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
 export CLICOLOR=1
-#export LSCOLORS=Exfxcxdxbxegedabagacad
-export LSCOLORS=Gxfxcxdxbxegedabagacad
+export LSCOLORS=Exfxcxdxbxegedabagacad
 export LS_COLORS=LSCOLORS # linux
 export GREP_OPTIONS='--color=auto'
 export TERM='xterm-256color' 
@@ -81,11 +80,9 @@ function load_prompt() {
     
     # prompt
     PS1="";
-    PS1+="\[${yellow}\]\u\[${reset}\]";
-    PS1+="\[${orange}\]:\j ";
-    PS1+="\[${blue}\]\$newPWD";
-    PS1+="\[${violet}\]$(git_branch)";
-    PS1+="\[${purple}\]\\$";
+    PS1+="[\u:\j:\[${bold}\]\$newPWD\[${reset}\]]";
+    PS1+="\[${blue}\]$(git_branch)";
+    PS1+="\[${yellow}\]\\$";
     PS1+="\[${reset}\] ";
 }
 PROMPT_COMMAND=load_prompt
