@@ -45,6 +45,7 @@ if tput setaf 1 &> /dev/null; then
     blue=$(tput setaf 33);
     cyan=$(tput setaf 37);
     green=$(tput setaf 64);
+    green_l=$(tput setaf 2);
     orange=$(tput setaf 166);
     purple=$(tput setaf 125);
     red=$(tput setaf 124);
@@ -80,9 +81,11 @@ function load_prompt() {
     
     # prompt
     PS1="";
-    PS1+="[\u:\j:\[${bold}\]\$newPWD\[${reset}\]]";
-    PS1+="\[${blue}\]$(git_branch)";
-    PS1+="\[${yellow}\]\\$";
-    PS1+="\[${reset}\] ";
+    PS1+="\[${green}\]\u:"
+    PS1+="\[${green_l}\]\j:\[${reset}\]"
+    PS1+="\[${blue}\]\$newPWD\[${reset}\]";
+    PS1+="\[${orange}\]$(git_branch)";
+    PS1+="\[${yellow}\]\\$ ";
+    PS1+="\[${reset}\]";
 }
 PROMPT_COMMAND=load_prompt
