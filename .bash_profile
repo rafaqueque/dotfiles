@@ -32,7 +32,7 @@ function git_branch_status {
 }
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "${green_l}[${bold}${ref#refs/heads/}\$(git_branch_status)${reset}${green_l}]${reset}";
+    echo "\[${green_l}\][\[${bold}\]${ref#refs/heads/}\$(git_branch_status)\[${reset}${green_l}\]]\[${reset}\]";
 }
 
 # colors based on Solarized theme
