@@ -84,9 +84,9 @@ function load_prompt() {
     # prompt
     main_color=$gray
     PS1="\[${main_color}\]";
-    PS1+="[\[${bold}\]\u\[${reset}${main_color}\]"
-    PS1+=":\j:"
-    PS1+="\[${gray_l}\]\$newPWD\[${reset}${main_color}\]]\[${reset}\]"
+    PS1+="\[${bold}\]\u@\h\[${reset}${main_color}\]"
+    PS1+=":\[${green_l}\]\j\[${reset}${main_color}\]:"
+    PS1+="\[${gray_l}\]\$newPWD\[${reset}\]"
     PS1+="$(git_branch)";
     PS1+="\\$ ";
 }
