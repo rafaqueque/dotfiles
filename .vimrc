@@ -18,6 +18,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
 Bundle 'kien/ctrlp.vim'
 Bundle 'chriskempson/base16-vim'
+Bundle 'altercation/vim-colors-solarized'
 
 "" vim-airline settings
 let g:airline_theme='luna'
@@ -69,7 +70,8 @@ set nopaste
 
 if &t_Co >= 256 || has("gui_running")
     set background=dark
-    colorscheme base16-default 
+    let g:solarized_termcolors=256
+    colorscheme solarized 
 endif
 
 

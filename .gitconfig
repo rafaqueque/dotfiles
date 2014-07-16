@@ -13,10 +13,10 @@
 [core]
 	editor = /usr/bin/vim
 [color "branch"]
-    current = green bold
+    current = green
     local = white
-    remote = red bold
+    remote = red
 [color "status"]
-    added = green bold
-    changed = red bold
+    added = green
+    changed = red
     untracked = yellow
