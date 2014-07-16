@@ -80,9 +80,16 @@ function truncate_pwd
 function load_prompt() {
     # init
     truncate_pwd;
-    
+
+    # connected via ssh
+    if [[ "$SSH_TTY" ]]; then
+        sshIP=$(echo $SSH_CONNECTION | awk '{ print $3}')
+        sshConnection="\[${red}\](ssh: $sshIP)\[${reset}\] "
+    fi
+
     # prompt
-    PS1="\[${reset}${orange}\]\u";
+    PS1="${sshConnection}"
+    PS1+="\[${reset}${orange}\]\u";
     PS1+="\[${reset}${orange}\]@\h";
     PS1+="\[${reset}${yellow}\]:\j:"
     PS1+="\[${reset}${green}\]\$newPWD"
