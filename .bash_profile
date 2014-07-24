@@ -84,15 +84,14 @@ function load_prompt() {
     # connected via ssh
     if [[ "$SSH_TTY" ]]; then
         sshIP=$(echo $SSH_CONNECTION | awk '{ print $3}')
-        sshConnection="\[${red}\](ssh: $sshIP)\[${reset}\] "
+        sshConnection="\[${red}\](ssh:$sshIP@\h)\[${reset}\] "
     fi
 
     # prompt
     PS1="${sshConnection}"
-    PS1+="\[${reset}${orange}\]\u";
-    PS1+="\[${reset}${orange}\]@\h";
-    PS1+="\[${reset}${yellow}\]:\j:"
-    PS1+="\[${reset}${green}\]\$newPWD"
+    PS1+="\[${reset}${bold}${blue}\]\u";
+    PS1+="\[${reset}${blue}\]:\j:"
+    PS1+="\[${reset}${blue}\]\$newPWD"
     PS1+="$(git_branch)";
     PS1+="\[${reset}${green_l}\]\\$ \[${reset}\]";
 }
