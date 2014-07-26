@@ -813,6 +813,8 @@
 	<true/>
 	<key>NSFontPanelAttributes</key>
 	<string>1, 4</string>
+	<key>NSFontPanelPreviewHeight</key>
+	<real>0.0</real>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/Development/github/dotfiles/iterm2-themes</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -821,12 +823,14 @@
 	<string></string>
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
+	<key>NSWindow Frame NSFontPanel</key>
+	<string>530 -58 445 270 0 0 1280 778 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>356 281 924 485 0 0 1280 778 </string>
+	<string>356 550 924 485 0 0 1920 1058 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>768 697 384 129 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>25 111 850 608 0 0 1280 778 </string>
+	<string>2 296 871 762 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>152 4 865 586 0 0 1280 778 </string>
 	<key>New Bookmarks</key>
@@ -1385,11 +1389,11 @@
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
-			<string>DejaVuSansMono 12</string>
+			<string>SourceCodePro-Light 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>SourceCodePro-ExtraLight 12</string>
+			<string>SourceCodePro-Light 12</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
