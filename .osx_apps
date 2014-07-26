@@ -23,6 +23,7 @@ brew install brew-cask
 echo Install custom fonts
 brew tap caskroom/fonts
 brew cask install font-dejavu-sans # coding font
+brew cask install font-source-code-pro # coding font
  
 echo Install main apps 
 brew cask install alfred

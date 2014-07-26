@@ -12,10 +12,11 @@
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [core]
 	editor = /usr/bin/vim
+	excludesfile = /Users/rafaqueque/.gitignore
 [color "branch"]
-    current = green
+    current = green bold
     local = white
-    remote = red
+    remote = red bold
 [color "status"]
     added = green
     changed = red

@@ -822,11 +822,11 @@
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
 	<key>NSWindow Frame Preferences</key>
-	<string>180 257 924 485 0 0 1280 778 </string>
+	<string>356 281 924 485 0 0 1280 778 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>768 697 384 129 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 16 1277 762 0 0 1280 778 </string>
+	<string>25 111 850 608 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>152 4 865 586 0 0 1280 778 </string>
 	<key>New Bookmarks</key>
@@ -1389,7 +1389,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>DejaVuSansMono 12</string>
+			<string>SourceCodePro-ExtraLight 12</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1555,7 +1555,7 @@
 			<key>Use Italic Font</key>
 			<false/>
 			<key>Vertical Spacing</key>
-			<real>1</real>
+			<real>1.000105619430542</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
@@ -2376,7 +2376,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-07-24T12:16:35Z</date>
+	<date>2014-07-25T23:02:16Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
