@@ -14,11 +14,20 @@ Bundle 'bling/vim-airline'
 Bundle 'godlygeek/csapprox'
 Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
+Bundle 'hdima/python-syntax'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
 Bundle 'kien/ctrlp.vim'
+
+" themes
 Bundle 'chriskempson/base16-vim'
 Bundle 'altercation/vim-colors-solarized'
+
+" python settings
+let g:python_highlight_all=1
+
+" ctrl p settings
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 "" vim-airline settings
 let g:airline_theme='luna'
