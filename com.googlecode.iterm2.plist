@@ -830,7 +830,7 @@
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>768 697 384 129 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>2 296 871 762 0 0 1920 1058 </string>
+	<string>-1280 -161 850 728 -1280 -222 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>152 4 865 586 0 0 1280 778 </string>
 	<key>New Bookmarks</key>
@@ -2133,11 +2133,11 @@
 			<key>Name</key>
 			<string>Vagrant</string>
 			<key>Non Ascii Font</key>
-			<string>DejaVuSansMono 12</string>
+			<string>SourceCodePro-Light 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>DejaVuSansMono 12</string>
+			<string>SourceCodePro-Light 12</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -2380,7 +2380,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-07-25T23:02:16Z</date>
+	<date>2014-07-28T08:32:36Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
