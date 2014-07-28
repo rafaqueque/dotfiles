@@ -3,6 +3,8 @@
 echo Install Homebrew, brew-cask and some other tools
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew update
+
+brew tap homebrew/dupes # required to have some Linux stuff in here
 brew install wget
 brew install git 
 brew install unrar
@@ -12,6 +14,8 @@ brew install irssi
 brew install httpie
 brew install archey
 brew install tree
+brew install grep --default-names
+brew install screen
 
 echo Install pip and other pip-based packages
 sudo easy_install pip
