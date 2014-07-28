@@ -9,7 +9,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 "" Plugins and bundles
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 Bundle 'bling/vim-airline'
 Bundle 'godlygeek/csapprox'
 Bundle 'pangloss/vim-javascript'
@@ -80,7 +80,7 @@ set nopaste
 if &t_Co >= 256 || has("gui_running")
     set background=dark
     let g:solarized_termcolors=256
-    colorscheme solarized 
+    colorscheme base16-default 
 endif
 
 
