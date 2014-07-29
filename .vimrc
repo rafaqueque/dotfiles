@@ -11,38 +11,25 @@ call vundle#rc()
 "" Plugins and bundles
 Plugin 'gmarik/Vundle.vim'
 Bundle 'bling/vim-airline'
-Bundle 'godlygeek/csapprox'
 Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'hdima/python-syntax'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-scripts/DeleteTrailingWhitespace'
-Bundle 'kien/ctrlp.vim'
 
 " themes
-Bundle 'chriskempson/base16-vim'
 Bundle 'altercation/vim-colors-solarized'
 
-" python settings
-let g:python_highlight_all=1
-
-" ctrl p settings
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-
 "" vim-airline settings
-let g:airline_theme='luna'
+let g:airline_theme='light'
 let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#tabline#show_buffers=0
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-  let g:airline_symbols.branch='⎇'
-endif
 
 "" custom settings
 filetype plugin indent on
 syntax on
+
+" python settings
+let python_version_2=1
+let python_highlight_all=1
 
 set hidden
 set nowrap        " don't wrap lines
@@ -80,7 +67,7 @@ set nopaste
 if &t_Co >= 256 || has("gui_running")
     set background=dark
     let g:solarized_termcolors=256
-    colorscheme base16-default 
+    colorscheme solarized 
 endif
 
 
@@ -133,7 +120,3 @@ let g:netrw_liststyle=3
 let g:netrw_list_hide = "\.pyc,\.swp,\.bak,\.git"
 let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
-let python_highlight_all=1
-
-" file types
-au BufRead,BufNewFile *.md,*.rst set filetype=markdown
