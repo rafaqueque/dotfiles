@@ -1,8 +1,7 @@
 # env vars
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
 export CLICOLOR=1
-export LSCOLORS=Exfxcxdxbxegedabagacad
-export LS_COLORS=LSCOLORS # linux
+export LSCOLORS="gxfxcxdxbxegedabagacad"
 export GREP_OPTIONS='--color=auto'
 export TERM='xterm-256color' 
 
@@ -32,7 +31,7 @@ function git_branch_status {
 }
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "\[${cyan}\][${ref#refs/heads/}\$(git_branch_status)]\[${reset}\]";
+    echo "\[${purple}\][${ref#refs/heads/}\$(git_branch_status)]\[${reset}\]";
 }
 
 # colors based on Solarized theme
@@ -89,10 +88,9 @@ function load_prompt() {
 
     # prompt
     PS1="${sshConnection}"
-    PS1+="\[${reset}${bold}${blue}\]\u";
-    PS1+="\[${reset}${blue}\]:\j:"
-    PS1+="\[${reset}${blue}\]\$newPWD"
+    PS1+="\[${reset}${blue}${bold}\]\u";
+    PS1+="\[${reset}${violet}\]:\$newPWD"
     PS1+="$(git_branch)";
-    PS1+="\[${reset}${green_l}\]\\$ \[${reset}\]";
+    PS1+="\[${reset}${blue}\]\\$ \[${reset}\]";
 }
 PROMPT_COMMAND=load_prompt
