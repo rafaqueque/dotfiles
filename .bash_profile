@@ -1,7 +1,8 @@
 # env vars
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
 export CLICOLOR=1
-export LSCOLORS="gxfxcxdxbxegedabagacad"
+export LSCOLORS="gxfxcxdxbxegedabagacad"    # osx
+export LS_COLORS="di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"  # linux
 export GREP_OPTIONS='--color=auto'
 export TERM='xterm-256color' 
 
