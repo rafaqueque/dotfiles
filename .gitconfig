@@ -7,16 +7,17 @@
     default = simple
 [color]
 	ui = auto
+[status]
+    short = true
 [alias]
 	today = log --since=\"6am\" --pretty=\"oneline\" --author=\"Rafael Albuquerque\"
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [core]
 	editor = /usr/bin/vim
-	excludesfile = /Users/rafaqueque/.gitignore
 [color "branch"]
-    current = green bold
+    current = green
     local = white
-    remote = red bold
+    remote = red
 [color "status"]
     added = green
     changed = red
