@@ -14,12 +14,14 @@ Bundle 'bling/vim-airline'
 Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'hdima/python-syntax'
+Bundle 'godlygeek/csapprox'
 
 " themes
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/base16-vim'
 
 "" vim-airline settings
-let g:airline_theme='light'
+let g:airline_theme='base16'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#show_buffers=0
 
@@ -66,8 +68,7 @@ set nopaste
 
 if &t_Co >= 256 || has("gui_running")
     set background=dark
-    let g:solarized_termcolors=256
-    colorscheme solarized 
+    colorscheme base16-default 
 endif
 
 
