@@ -93,5 +93,13 @@ function load_prompt() {
     PS1+="\[${reset}${violet}\]:\$newPWD"
     PS1+="$(git_branch)";
     PS1+="\[${reset}${blue}\]\\$ \[${reset}\]";
+
+    case "$TERM" in
+    xterm*|rxvt*|screen)
+        PS1="\[\e]0;\h:\w\a\] $PS1"
+        ;;
+    *)
+        ;;
+    esac
 }
 PROMPT_COMMAND=load_prompt
