@@ -96,7 +96,7 @@ function load_prompt() {
 
     case "$TERM" in
     xterm*|rxvt*|screen)
-        PS1="\[\e]0;\h:\w\a\] $PS1"
+        PS1="\[\e]0;\h:\w\a\]$PS1"
         ;;
     *)
         ;;
