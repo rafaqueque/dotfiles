@@ -17,10 +17,7 @@ servers = (
   }
 );
 
-chatnets = {
-  Freenode = { type = "IRC"; };
-  PTnet = { type = "IRC"; };
-};
+chatnets = { Freenode = { type = "IRC"; }; PTnet = { type = "IRC"; }; };
 
 channels = (
   { name = "#django"; chatnet = "Freenode"; autojoin = "no"; },
@@ -120,31 +117,6 @@ statusbar = {
   default = {
     # the "default statusbar" to be displayed at the bottom of the window.
     # contains all the normal items.
-    window = {
-      disabled = "no";
-
-      # window, root
-      type = "window";
-      # top, bottom
-      placement = "bottom";
-      # number
-      position = "1";
-      # active, inactive, always
-      visible = "active";
-
-      # list of items in statusbar in the display order
-      items = {
-        barstart = { priority = "100"; };
-        time = { };
-        user = { };
-        window = { };
-        window_empty = { };
-        lag = { priority = "-1"; };
-        act = { priority = "10"; };
-        more = { priority = "-1"; alignment = "right"; };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-    };
 
     # statusbar to use in inactive split windows
     window_inact = {
@@ -190,6 +162,25 @@ statusbar = {
         topicbarend = { priority = "100"; alignment = "right"; };
       };
     };
+    remove = { disabled = "yes"; };
+    awl_0 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+    window = {
+      items = {
+        barstart = { priority = "100"; };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
   };
 };
 settings = {
@@ -203,5 +194,79 @@ settings = {
     hilight_nick_matches = "yes";
     bell_beeps = "yes";
     beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
+    theme = "weed";
+  };
+  "perl/core/scripts" = {
+    awl_shared_sbar = "OFF";
+    awl_maxlines = "5";
+    awl_sbar_maxlength = "yes";
+    awl_block = "25";
+    awl_display_key = "$H[$Q:$C]$S";
+    awl_display_nokey = "[$N]$H$C$S";
+    awl_display_key_active = "$H%B[$Q:$C]$S";
   };
 };
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#startups";
+        tag = "Freenode";
+      }
+    );
+  };
+  3 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#python";
+        tag = "Freenode";
+      }
+    );
+  };
+  4 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#django";
+        tag = "Freenode";
+      }
+    );
+  };
+  5 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "##linux";
+        tag = "Freenode";
+      }
+    );
+  };
+  6 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#nba";
+        tag = "PTnet";
+      }
+    );
+  };
+  7 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#linuxhelp";
+        tag = "PTnet";
+      }
+    );
+  };
+};
+mainwindows = { 2 = { first_line = "1"; lines = "38"; }; };
