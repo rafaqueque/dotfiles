@@ -76,22 +76,30 @@ function truncate_pwd
     [ ${#newPWD} -gt $pwdmaxlen ] && newPWD="<${newPWD:3-$pwdmaxlen}"
 }
 
-# prompt
-if [[ "$SSH_TTY" ]]; then
-    sshIP=$(echo $SSH_CONNECTION | awk '{ print $3}')
-    sshConnection="\[${red}\](ssh:$sshIP@\h)\[${reset}\] "
-fi
+# prompt init command
+function load_prompt() {
+    # init
+    truncate_pwd;
 
-PS1="${sshConnection}"
-PS1+="\[${reset}${blue}${bold}\]\u";
-PS1+="\[${reset}${violet}\]:\w"
-PS1+="$(git_branch)";
-PS1+="\[${reset}${blue}\]\\$ \[${reset}\]";
+    # connected via ssh
+    if [[ "$SSH_TTY" ]]; then
+        sshIP=$(echo $SSH_CONNECTION | awk '{ print $3}')
+        sshConnection="\[${red}\](ssh:$sshIP@\h)\[${reset}\] "
+    fi
 
-case "$TERM" in
-xterm*|rxvt*|screen)
-    PS1="\[\e]0;\h:\w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+    # prompt
+    PS1="${sshConnection}"
+    PS1+="\[${reset}${blue}${bold}\]\u";
+    PS1+="\[${reset}${violet}\]:\$newPWD"
+    PS1+="$(git_branch)";
+    PS1+="\[${reset}${blue}\]\\$ \[${reset}\]";
+
+    case "$TERM" in
+    xterm*|rxvt*|screen)
+        PS1="\[\e]0;\h:\w\a\]$PS1"
+        ;;
+    *)
+        ;;
+    esac
+}
+PROMPT_COMMAND=load_prompt
