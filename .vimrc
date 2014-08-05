@@ -15,6 +15,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'hdima/python-syntax'
 Bundle 'godlygeek/csapprox'
+Bundle 'vim-scripts/DeleteTrailingWhitespace'
 
 " themes
 Bundle 'altercation/vim-colors-solarized'
