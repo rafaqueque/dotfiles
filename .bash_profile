@@ -102,4 +102,6 @@ function load_prompt() {
         ;;
     esac
 }
-PROMPT_COMMAND=load_prompt
+export load_prompt
+load_prompt;
+unset load_prompt
