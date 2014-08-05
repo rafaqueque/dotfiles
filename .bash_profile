@@ -27,12 +27,33 @@ function insert_daily_log_entry() {
 alias doing=insert_daily_log_entry
 
 # git branch in prompt
-function git_branch_status {
-    [[ -n "$(git status -s 2> /dev/null)" ]] && echo "*"
-}
 function git_branch {
+    # check if the current directory is in .git before running git checks
+    if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == "false" ]; then
+        # ensure index is up to date
+        git update-index --really-refresh  -q &>/dev/null
+        # check for uncommitted changes in the index
+        if ! $(git diff --quiet --ignore-submodules --cached); then
+            s="$s+";
+        fi
+        # check for unstaged changes
+        if ! $(git diff-files --quiet --ignore-submodules --); then
+            s="$s!";
+        fi
+        # check for untracked files
+        if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+            s="$s?";
+        fi
+        # check for stashed files
+        if $(git rev-parse --verify refs/stash &>/dev/null); then
+            s="$s$";
+        fi
+    fi
+
+    [ -n "$s" ] && s=":$s"
+
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "\[${purple}\][${ref#refs/heads/}\$(git_branch_status)]\[${reset}\]";
+    echo "(${ref#refs/heads/}$s)";
 }
 
 # colors based on Solarized theme
@@ -69,39 +90,23 @@ else
     yellow="\e[1;33m";
 fi;
 
-function truncate_pwd
-{
-    newPWD="${PWD/#$HOME/~}"
-    local pwdmaxlen=30
-    [ ${#newPWD} -gt $pwdmaxlen ] && newPWD="<${newPWD:3-$pwdmaxlen}"
-}
+# connected via ssh?
+if [[ "$SSH_TTY" ]]; then
+    sshIP=$(echo $SSH_CONNECTION | awk '{ print $3}')
+    sshConnection="\[${red}\](ssh:$sshIP@\h)\[${reset}\] "
+fi
 
-# prompt init command
-function load_prompt() {
-    # init
-    truncate_pwd;
+# prompt
+export PS1="${sshConnection}"
+export PS1+="\[${reset}${blue}${bold}\]\u";
+export PS1+="\[${reset}${violet}\]:\w"
+export PS1+="\[${reset}${purple}\]\$(git_branch)";
+export PS1+="\[${reset}${blue}\]\\$ \[${reset}\]";
 
-    # connected via ssh
-    if [[ "$SSH_TTY" ]]; then
-        sshIP=$(echo $SSH_CONNECTION | awk '{ print $3}')
-        sshConnection="\[${red}\](ssh:$sshIP@\h)\[${reset}\] "
-    fi
-
-    # prompt
-    PS1="${sshConnection}"
-    PS1+="\[${reset}${blue}${bold}\]\u";
-    PS1+="\[${reset}${violet}\]:\$newPWD"
-    PS1+="$(git_branch)";
-    PS1+="\[${reset}${blue}\]\\$ \[${reset}\]";
-
-    case "$TERM" in
-    xterm*|rxvt*|screen)
-        PS1="\[\e]0;\h:\w\a\]$PS1"
-        ;;
-    *)
-        ;;
-    esac
-}
-export load_prompt
-load_prompt;
-unset load_prompt
+case "$TERM" in
+xterm*|rxvt*|screen)
+    export PS1="\[\e]0;\h:\w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac

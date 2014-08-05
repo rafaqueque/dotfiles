@@ -9,6 +9,7 @@
 	ui = auto
 [status]
     short = true
+    branch = true
 [alias]
 	today = log --since=\"6am\" --pretty=\"oneline\" --author=\"Rafael Albuquerque\"
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
