@@ -99,8 +99,8 @@ fi
 # prompt
 export PS1="${sshConnection}"
 export PS1+="\[${reset}${blue}${bold}\]\u";
-export PS1+="\[${reset}${violet}\]:\w"
-export PS1+="\[${reset}${purple}\]\$(git_branch)";
+export PS1+="\[${reset}${green}\]:\w"
+export PS1+="\[${reset}${green_l}\]\$(git_branch)";
 export PS1+="\[${reset}${blue}\]\\$ \[${reset}\]";
 
 case "$TERM" in
