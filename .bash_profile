@@ -53,7 +53,7 @@ function git_branch {
     [ -n "$s" ] && s=":$s"
 
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "(${ref#refs/heads/}$s)";
+    echo "[${ref#refs/heads/}$s]";
 }
 
 # colors based on Solarized theme
@@ -98,9 +98,9 @@ fi
 
 # prompt
 export PS1="${sshConnection}"
-export PS1+="\[${reset}${blue}${bold}\]\u";
-export PS1+="\[${reset}${green}\]:\w"
-export PS1+="\[${reset}${green_l}\]\$(git_branch)";
+export PS1+="\[${reset}${violet}${bold}\]\u";
+export PS1+="\[${reset}${violet}\]:\w"
+export PS1+="\[${reset}${purple}\]\$(git_branch)";
 export PS1+="\[${reset}${blue}\]\\$ \[${reset}\]";
 
 case "$TERM" in

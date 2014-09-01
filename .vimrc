@@ -15,11 +15,13 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'hdima/python-syntax'
 Bundle 'godlygeek/csapprox'
+Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
+Bundle 'plasticboy/vim-markdown'
 
 " themes
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/base16-vim'
+Bundle 'altercation/vim-colors-solarized'
 
 "" vim-airline settings
 let g:airline_theme='base16'
@@ -66,10 +68,12 @@ set cinkeys=0{,0},:,0#,!,!^F
 set mouse=a
 set encoding=utf-8
 set nopaste
+set nofoldenable    " disable folding
 
 if &t_Co >= 256 || has("gui_running")
     set background=dark
-    colorscheme base16-default 
+    let g:solarized_termcolors=256
+    colorscheme solarized
 endif
 
 
