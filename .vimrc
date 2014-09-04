@@ -18,6 +18,8 @@ Bundle 'godlygeek/csapprox'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
 Bundle 'plasticboy/vim-markdown'
+Bundle 'ap/vim-css-color'
+Bundle 'oblitum/rainbow'
 
 " themes
 Bundle 'chriskempson/base16-vim'
@@ -126,3 +128,7 @@ let g:netrw_liststyle=3
 let g:netrw_list_hide = "\.pyc,\.swp,\.bak,\.git"
 let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
+
+let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+let g:rainbow_ctermfgs = ['cyan', 'yellow', 'red', 'magenta']
+au FileType c,cpp,objc,objcpp,go,rust,python,ruby,javascript,java,vim call rainbow#load()
