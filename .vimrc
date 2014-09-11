@@ -23,10 +23,9 @@ Bundle 'oblitum/rainbow'
 
 " themes
 Bundle 'chriskempson/base16-vim'
-Bundle 'altercation/vim-colors-solarized'
 
 "" vim-airline settings
-let g:airline_theme='base16'
+let g:airline_theme='luna'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#show_buffers=0
 
@@ -73,9 +72,7 @@ set nopaste
 set nofoldenable    " disable folding
 
 if &t_Co >= 256 || has("gui_running")
-    set background=dark
-    let g:solarized_termcolors=256
-    colorscheme solarized
+    colorscheme base16-default
 endif
 
 
@@ -131,4 +128,4 @@ let g:netrw_liststyle = 1
 
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['cyan', 'yellow', 'red', 'magenta']
-au FileType c,cpp,objc,objcpp,go,rust,python,ruby,javascript,java,vim call rainbow#load()
+"au FileType c,cpp,objc,objcpp,go,rust,python,ruby,javascript,java,vim call rainbow#load()
