@@ -1,98 +1,34 @@
 servers = (
-  { address = "eu.irc6.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "open.ircnet.net"; chatnet = "IRCnet"; port = "6667"; },
-  { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
-  { 
-    address = "irc.undernet.org";
-    chatnet = "Undernet";
-    port = "6667";
-  },
-  { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
-  { 
-    address = "irc.quakenet.org";
-    chatnet = "QuakeNet";
-    port = "6667";
-  },
-  { address = "irc.oftc.net"; chatnet = "OFTC"; port = "6667"; },
   {
-    address = "irc.gamesurge.net";
-    chatnet = "GameSurge";
+    address = "uc.ptnet.org";
+    chatnet = "ptnet";
     port = "6667";
+    use_ssl = "yes";
+    ssl_verify = "no";
+    autoconnect = "no";
   },
-  { address = "irc.webchat.org"; chatnet = "WebChat"; port = "6667"; },
-  { address = "irc.rizon.net"; chatnet = "Rizon"; port = "6667"; },
-  { address = "irc.link-net.org"; chatnet = "LinkNet"; port = "6667"; },
-  { address = "silc.silcnet.org"; chatnet = "SILC"; port = "706"; }
+  {
+    address = "irc.freenode.net";
+    chatnet = "freenode";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_verify = "yes";
+    autoconnect = "no";
+  }
 );
 
 chatnets = {
-  IRCnet = {
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "5";
-    max_whois = "4";
-    max_query_chans = "5";
-  };
-  EFNet = { 
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "3";
-    max_whois = "1";
-  };
-  Undernet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  DALnet = {
-    type = "IRC";
-    max_kicks = "4";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  QuakeNet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  OFTC = { 
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  GameSurge = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  WebChat = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  Rizon = { 
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  LinkNet = {
-    type = "IRC";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  SILC = { type = "SILC"; };
+  freenode = { type = "IRC"; nick = "rafaqueque"; };
+  ptnet = { type = "IRC"; nick = "rafaqueque"; };
 };
 
 channels = (
-  { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
-  { name = "silc"; chatnet = "silc"; autojoin = "No"; }
+  { name = "#django"; chatnet = "Freenode"; autojoin = "no"; },
+  { name = "#startups"; chatnet = "Freenode"; autojoin = "no"; },
+  { name = "#python"; chatnet = "Freenode"; autojoin = "no"; },
+  { name = "#linux"; chatnet = "Freenode"; autojoin = "no"; },
+  { name = "#nba"; chatnet = "PTnet"; autojoin = "no"; },
+  { name = "#linuxhelp"; chatnet = "PTnet"; autojoin = "no"; }
 );
 
 aliases = {
@@ -271,14 +207,12 @@ settings = {
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "perl/core/scripts" = { awl_shared_sbar = "OFF"; awl_viewer = "no"; };
-  "fe-common/core" = {
-    bell_beeps = "yes";
-    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
-  };
 };
+hilights = ( { text = "rafaqueque"; nick = "no"; word = "yes"; } );
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
-  2 = {
+  2 = { name = "hilight"; sticky = "yes"; parent = "5"; };
+  3 = {
     items = (
       {
         type = "CHANNEL";
@@ -287,8 +221,10 @@ windows = {
         tag = "ptnet";
       }
     );
+    sticky = "yes";
+    parent = "5";
   };
-  3 = {
+  4 = {
     items = (
       {
         type = "CHANNEL";
@@ -297,16 +233,8 @@ windows = {
         tag = "ptnet";
       }
     );
-  };
-  4 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#django";
-        tag = "freenode";
-      }
-    );
+    sticky = "yes";
+    parent = "5";
   };
   5 = {
     items = (
@@ -317,6 +245,19 @@ windows = {
         tag = "freenode";
       }
     );
+    sticky = "yes";
+  };
+  6 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#django";
+        tag = "freenode";
+      }
+    );
+    sticky = "yes";
+    parent = "5";
   };
 };
-mainwindows = { 1 = { first_line = "1"; lines = "39"; }; };
+mainwindows = { 5 = { first_line = "1"; lines = "37"; }; };
