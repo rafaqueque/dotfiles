@@ -17,12 +17,15 @@ Bundle 'hdima/python-syntax'
 Bundle 'godlygeek/csapprox'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
-Bundle 'plasticboy/vim-markdown'
+Bundle 'tpope/vim-markdown'
 Bundle 'ap/vim-css-color'
 Bundle 'oblitum/rainbow'
+Bundle 'junegunn/goyo.vim'
 
 " themes
 Bundle 'chriskempson/base16-vim'
+Bundle 'zefei/cake16'
+Bundle 'altercation/vim-colors-solarized'
 
 "" vim-airline settings
 let g:airline_theme='luna'
@@ -72,6 +75,16 @@ set nopaste
 set nofoldenable    " disable folding
 
 if &t_Co >= 256 || has("gui_running")
+    if has("gui_running")
+        set guifont=Source\ Code\ Pro\ Light:h12
+        set columns=999
+        set linespace=1
+        set go-=r
+        set go-=L
+        set go-=T
+    endif
+    "let g:solarized_termcolors=256
+    set background=dark
     colorscheme base16-default
 endif
 
@@ -129,3 +142,11 @@ let g:netrw_liststyle = 1
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['cyan', 'yellow', 'red', 'magenta']
 "au FileType c,cpp,objc,objcpp,go,rust,python,ruby,javascript,java,vim call rainbow#load()
+
+" vim-pencil settings
+autocmd BufEnter * if &filetype == "" | setlocal ft=txt | endif
+autocmd FileType txt,text,markdown,mkd,md call SetTextSettings() 
+function! SetTextSettings()
+    set nofoldenable wrap linebreak nolist tw=79 colorcolumn=80
+endfunction
+call togglebg#map("<F6>")
