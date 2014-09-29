@@ -1,7 +1,7 @@
 servers = (
   {
     address = "uc.ptnet.org";
-    chatnet = "PTnet";
+    chatnet = "ptnet";
     port = "6667";
     use_ssl = "yes";
     ssl_verify = "no";
@@ -9,7 +9,7 @@ servers = (
   },
   {
     address = "irc.freenode.net";
-    chatnet = "Freenode";
+    chatnet = "freenode";
     port = "6697";
     use_ssl = "yes";
     ssl_verify = "yes";
@@ -17,7 +17,10 @@ servers = (
   }
 );
 
-chatnets = { Freenode = { type = "IRC"; }; PTnet = { type = "IRC"; }; };
+chatnets = {
+  freenode = { type = "IRC"; nick = "rafaqueque"; };
+  ptnet = { type = "IRC"; nick = "rafaqueque"; };
+};
 
 channels = (
   { name = "#django"; chatnet = "Freenode"; autojoin = "no"; },
@@ -117,6 +120,31 @@ statusbar = {
   default = {
     # the "default statusbar" to be displayed at the bottom of the window.
     # contains all the normal items.
+    window = {
+      disabled = "no";
+
+      # window, root
+      type = "window";
+      # top, bottom
+      placement = "bottom";
+      # number
+      position = "1";
+      # active, inactive, always
+      visible = "active";
+
+      # list of items in statusbar in the display order
+      items = {
+        barstart = { priority = "100"; };
+        time = { };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        act = { priority = "10"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
 
     # statusbar to use in inactive split windows
     window_inact = {
@@ -162,22 +190,10 @@ statusbar = {
         topicbarend = { priority = "100"; alignment = "right"; };
       };
     };
-    remove = { disabled = "yes"; };
     awl_0 = {
       items = {
         barstart = { priority = "100"; };
         awl_0 = { };
-        barend = { priority = "100"; alignment = "right"; };
-      };
-    };
-    window = {
-      items = {
-        barstart = { priority = "100"; };
-        user = { };
-        window = { };
-        window_empty = { };
-        lag = { priority = "-1"; };
-        more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
     };
@@ -190,83 +206,58 @@ settings = {
     nick = "rafaqueque";
   };
   "fe-text" = { actlist_sort = "refnum"; };
-  "fe-common/core" = {
-    hilight_nick_matches = "yes";
-    bell_beeps = "yes";
-    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
-    theme = "weed";
-  };
-  "perl/core/scripts" = {
-    awl_shared_sbar = "OFF";
-    awl_maxlines = "5";
-    awl_sbar_maxlength = "yes";
-    awl_block = "25";
-    awl_display_key = "$H[$Q:$C]$S";
-    awl_display_nokey = "[$N]$H$C$S";
-    awl_display_key_active = "$H%B[$Q:$C]$S";
-  };
+  "perl/core/scripts" = { awl_shared_sbar = "OFF"; awl_viewer = "no"; };
 };
+hilights = ( { text = "rafaqueque"; nick = "no"; word = "yes"; } );
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
-  2 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#startups";
-        tag = "Freenode";
-      }
-    );
-  };
+  2 = { name = "hilight"; sticky = "yes"; parent = "5"; };
   3 = {
     items = (
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#python";
-        tag = "Freenode";
+        name = "#nba";
+        tag = "ptnet";
       }
     );
+    sticky = "yes";
+    parent = "5";
   };
   4 = {
     items = (
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#django";
-        tag = "Freenode";
+        name = "#linuxhelp";
+        tag = "ptnet";
       }
     );
+    sticky = "yes";
+    parent = "5";
   };
   5 = {
     items = (
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "##linux";
-        tag = "Freenode";
+        name = "#startups";
+        tag = "freenode";
       }
     );
+    sticky = "yes";
   };
   6 = {
     items = (
       {
         type = "CHANNEL";
         chat_type = "IRC";
-        name = "#nba";
-        tag = "PTnet";
+        name = "#django";
+        tag = "freenode";
       }
     );
-  };
-  7 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#linuxhelp";
-        tag = "PTnet";
-      }
-    );
+    sticky = "yes";
+    parent = "5";
   };
 };
-mainwindows = { 2 = { first_line = "1"; lines = "38"; }; };
+mainwindows = { 5 = { first_line = "1"; lines = "37"; }; };
