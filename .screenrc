@@ -1,0 +1,18 @@
+msgwait 2
+
+altscreen on
+autodetach on
+defscrollback 4000
+startup_message off
+
+# Message/bell/activity info
+vbell off
+vbell_msg " *beep* "
+sorendition "+b kG"
+bell "%c:bell -> %n%f %t^G"
+activity "%c activity -> %n%f %t"
+
+# Don't block screen session waiting for unresponsive window
+nonblock on
+
+hardstatus alwayslastline '%{= gk}%-Lw%{= rW}%50> %n%f* %t %{-}%+Lw%< %= %{= kG} %H %{= Bw} %l %{= kG} %Y-%m-%d %c %{g}'
