@@ -98,10 +98,12 @@ fi
 
 # prompt
 export PS1="${sshConnection}"
-export PS1+="\[${reset}${violet}${bold}\]\u";
-export PS1+="\[${reset}${violet}\]:\w"
+export PS1+="\[${reset}${green}${bold}\]\u";
+export PS1+="\[${reset}${green}\]:"
+export PS1+="\[${reset}${yellow}\]\j:"
+export PS1+="\[${reset}${orange}\]\w"
 export PS1+="\[${reset}${purple}\]\$(git_branch)";
-export PS1+="\[${reset}${blue}\]\\$ \[${reset}\]";
+export PS1+="\[${reset}\]\\$ \[${reset}\]";
 
 case "$TERM" in
 xterm*|rxvt*|screen)
@@ -110,3 +112,4 @@ xterm*|rxvt*|screen)
 *)
     ;;
 esac
+export PATH=/usr/local/sbin:$PATH
