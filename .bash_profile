@@ -113,3 +113,8 @@ xterm*|rxvt*|screen)
     ;;
 esac
 export PATH=/usr/local/sbin:$PATH
+
+# custom aliases
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi

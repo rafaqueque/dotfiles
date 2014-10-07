@@ -20,9 +20,13 @@ Bundle 'tpope/vim-markdown'
 Bundle 'ap/vim-css-color'
 Bundle 'oblitum/rainbow'
 Bundle 'junegunn/goyo.vim'
+Bundle 'mattn/gist-vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'godlygeek/csapprox'
 
 " themes
 Bundle 'nanotech/jellybeans.vim'
+Bundle 'cuviper/vim-colors-solarized'
 
 "" vim-airline settings
 let g:airline_theme='sol'
@@ -80,9 +84,9 @@ if &t_Co >= 256 || has("gui_running")
         set go-=L
         set go-=T
     endif
-    "let g:solarized_termcolors=256
-    set background=dark
-    colorscheme jellybeans
+    "let g:solarized_base16=1
+    let g:solarized_termcolors=256
+    colorscheme solarized
 endif
 
 
@@ -136,9 +140,13 @@ let g:netrw_list_hide = "\.pyc,\.swp,\.bak,\.git"
 let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
 
+" Rainbow configs
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['cyan', 'yellow', 'red', 'magenta']
-"autocmd FileType python,javascript call rainbow#load()
+function! ToggleRainbow()
+    call rainbow#toggle()
+endfunction
+nnoremap <F7> :call ToggleRainbow()<CR>
 
 " vim-pencil settings
 autocmd BufEnter * if &filetype == "" | setlocal ft=txt | endif
