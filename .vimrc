@@ -13,7 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 Bundle 'bling/vim-airline'
 Bundle 'pangloss/vim-javascript'
 Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'hdima/python-syntax'
+"Bundle 'hdima/python-syntax'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
 Bundle 'tpope/vim-markdown'
@@ -23,10 +23,12 @@ Bundle 'junegunn/goyo.vim'
 Bundle 'mattn/gist-vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'godlygeek/csapprox'
+Plugin 'klen/python-mode'
 
 " themes
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'cuviper/vim-colors-solarized'
+Bundle 'chriskempson/base16-vim'
 
 "" vim-airline settings
 let g:airline_theme='sol'
@@ -40,6 +42,13 @@ syntax on
 " python settings
 let python_version_2=1
 let python_highlight_all=1
+let g:pymode_options_max_line_length = 99
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options_colorcolumn = 1
+let g:pymode_indent = 1
+let g:pymode_rope = 0
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
 
 set hidden
 set nowrap        " don't wrap lines
@@ -85,8 +94,9 @@ if &t_Co >= 256 || has("gui_running")
         set go-=T
     endif
     "let g:solarized_base16=1
-    let g:solarized_termcolors=256
-    colorscheme solarized
+    "let g:solarized_termcolors=256
+    "colorscheme solarized
+    colorscheme jellybeans
 endif
 
 
