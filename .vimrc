@@ -29,9 +29,10 @@ Plugin 'klen/python-mode'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'cuviper/vim-colors-solarized'
 Bundle 'chriskempson/base16-vim'
+Bundle 'mattsacks/vim-eddie'
 
 "" vim-airline settings
-let g:airline_theme='sol'
+let g:airline_theme='base16'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#show_buffers=0
 
@@ -95,8 +96,7 @@ if &t_Co >= 256 || has("gui_running")
     endif
     "let g:solarized_base16=1
     "let g:solarized_termcolors=256
-    "colorscheme solarized
-    colorscheme jellybeans
+    colorscheme base16-default
 endif
 
 
