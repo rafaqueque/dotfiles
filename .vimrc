@@ -32,7 +32,7 @@ Bundle 'chriskempson/base16-vim'
 Bundle 'mattsacks/vim-eddie'
 
 "" vim-airline settings
-let g:airline_theme='base16'
+let g:airline_theme='luna'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#show_buffers=0
 
