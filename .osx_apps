@@ -4,7 +4,8 @@ echo Install Homebrew, brew-cask and some other tools
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew update
 
-brew tap homebrew/dupes # required to have some Linux stuff in here
+brew tap homebrew/dupes     # required to have some Linux stuff in here
+brew tap caskroom/versions  # required to have chrome beta and so on
 brew install wget
 brew install git 
 brew install unrar
