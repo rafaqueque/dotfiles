@@ -23,12 +23,15 @@ Bundle 'godlygeek/csapprox'
 Plugin 'klen/python-mode'
 Plugin 'itspriddle/vim-jekyll'
 Plugin 'tpope/vim-liquid'
+Plugin 'kien/ctrlp.vim'
 
 " themes
-Bundle 'nanotech/jellybeans.vim'
 Bundle 'cuviper/vim-colors-solarized'
 Bundle 'chriskempson/base16-vim'
-Bundle 'mattsacks/vim-eddie'
+
+"" ctrl-p settings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPMixed'
 
 "" vim-airline settings
 let g:airline_theme='luna'
