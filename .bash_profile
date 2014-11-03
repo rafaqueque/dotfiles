@@ -93,7 +93,7 @@ fi;
 # connected via ssh?
 if [[ "$SSH_TTY" ]]; then
     sshIP=$(echo $SSH_CONNECTION | awk '{ print $3}')
-    sshConnection="\[${red}\](ssh:\[${bold}\]$sshIP\[${reset}${red}]@\h)\[${reset}\] "
+    sshConnection="\[${red}\](ssh:\[${bold}\]$sshIP\[${reset}${red}@\h)\[${reset}\] "
 fi
 
 # prompt
