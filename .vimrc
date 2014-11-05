@@ -24,6 +24,7 @@ Plugin 'klen/python-mode'
 Plugin 'itspriddle/vim-jekyll'
 Plugin 'tpope/vim-liquid'
 Plugin 'kien/ctrlp.vim'
+Bundle 'nvie/vim-rst-tables'
 
 " themes
 Bundle 'cuviper/vim-colors-solarized'
@@ -97,8 +98,9 @@ if &t_Co >= 256 || has("gui_running")
         set go-=T
     endif
     "let g:solarized_base16=1
-    "let g:solarized_termcolors=256
-    colorscheme base16-default
+    let g:solarized_termcolors=256
+    set background=light
+    colorscheme solarized
 endif
 
 
