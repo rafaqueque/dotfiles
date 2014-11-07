@@ -99,7 +99,7 @@ if &t_Co >= 256 || has("gui_running")
     endif
     "let g:solarized_base16=1
     let g:solarized_termcolors=256
-    set background=light
+    set background=dark
     colorscheme solarized
 endif
 
