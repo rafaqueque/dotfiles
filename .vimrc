@@ -29,6 +29,7 @@ Bundle 'nvie/vim-rst-tables'
 " themes
 Bundle 'cuviper/vim-colors-solarized'
 Bundle 'chriskempson/base16-vim'
+Bundle 'blerins/flattown'
 
 "" ctrl-p settings
 let g:ctrlp_map = '<c-p>'
@@ -98,9 +99,9 @@ if &t_Co >= 256 || has("gui_running")
         set go-=T
     endif
     "let g:solarized_base16=1
-    let g:solarized_termcolors=256
+    "let g:solarized_termcolors=256
     set background=dark
-    colorscheme solarized
+    colorscheme flattown
 endif
 
 
