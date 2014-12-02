@@ -53,7 +53,7 @@ function git_branch {
     [ -n "$s" ] && s=":$s"
 
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "(${ref#refs/heads/}$s)";
+    echo "[${ref#refs/heads/}$s]";
 }
 
 # colors based on Solarized theme
@@ -90,22 +90,25 @@ else
     yellow="\e[1;33m";
 fi;
 
+# prompt
+export PS1="\n\[${reset}${bold}\]\u";
+export PS1+="\[${reset}\]:\w "
+export PS1+="\[${reset}${green_l}\][j:\j] "
+export PS1+="\[${reset}${green}\]\$(git_branch) ";
+
 # connected via ssh?
-if [[ "$SSH_TTY" ]]; then
+if [[ "$SSH_TTY" ]] || [[ "$SSH_CONNECTION" ]]; then
     sshIP=$(echo $SSH_CONNECTION | awk '{ print $3}')
-    sshConnection="\[${red}\](ssh:\[${bold}\]$sshIP\[${reset}${red}@\h)\[${reset}\] "
+    sshConnection="\[${red}\][\[${bold}\]$sshIP\[${reset}${red}@\h]\[${reset}\]"
 fi
 
-# prompt
-export PS1="${sshConnection}"
-export PS1+="\[${reset}${bold}\]\u";
-export PS1+="\[${reset}\]:\w"
-export PS1+="\[${reset}${green}\]\$(git_branch)";
-export PS1+="\[${reset}${green_l}\] j:\j "
-export PS1+="\[${reset}${blue}\]\\$ \[${reset}\]";
+# running inside screen or tmux?
+if [ -n "$TMUX" ]; then export PS1+="\[${orange}\][tmux]\[${reset}\] "; fi
+if [ -n "$STY" ]; then export PS1+="\[${orange}\][screen]\[${reset}\] "; fi
+if [[ "$sshConnection" ]]; then export PS1+="${sshConnection} "; fi
 
-if [ -n "$STY" ]; then export PS1="\[${orange}\](screen)\[${reset}\] $PS1"; fi
-if [ -n "$TMUX" ]; then export PS1="\[${orange}\](tmux)\[${reset}\] $PS1"; fi
+export PS1+="\n\[${reset}${blue}\]\\$ \[${reset}\]";
+# /end prompt
 
 case "$TERM" in
 xterm*|rxvt*|screen)
