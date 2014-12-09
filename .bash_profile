@@ -92,12 +92,12 @@ fi;
 
 # connected via ssh?
 if [[ "$SSH_TTY" ]] || [[ "$SSH_CONNECTION" ]]; then
-    sshConnection="\[${red}\][\[${bold}\]ssh\[${reset}${red}\]:\u@\h]\[${reset}\]"
+    sshConnection="\[${gray}\][\[${bold}\]ssh\[${reset}${gray}\]:\u@\h]\[${reset}\]"
 fi
 
 # running inside screen or tmux?
-if [ -n "$TMUX" ]; then insideTmux="\[${orange}\][t]\[${reset}\]"; fi
-if [ -n "$STY" ]; then insideScreen="\[${orange}\][s]\[${reset}\]"; fi
+if [ -n "$TMUX" ]; then insideTmux="\[${gray_l}\][t]\[${reset}\]"; fi
+if [ -n "$STY" ]; then insideScreen="\[${gray_l}\][s]\[${reset}\]"; fi
 
 # prompt
 export PS1="\[${reset}\]${sshConnection}";
