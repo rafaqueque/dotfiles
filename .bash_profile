@@ -108,6 +108,18 @@ export PS1+="\[${reset}${blue}\] \w ";
 export PS1+="\[${reset}${violet}\]\\$ \[${reset}\]";
 # /end prompt
 
+
+# git autocomplete
+if [ ! -f ~/.git-completion.bash ]; then
+    echo "No git autocomplete file found. Downloading..."
+    curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+fi
+
+if [ -f ~/.git-completion.bash ]; then
+    . ~/.git-completion.bash
+fi
+
+
 case "$TERM" in
 xterm*|rxvt*|screen)
     export PS1="\[\e]0;\h:\w\a\]$PS1"
