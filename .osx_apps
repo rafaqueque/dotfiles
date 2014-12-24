@@ -6,6 +6,7 @@ brew update
 
 brew tap homebrew/dupes     # required to have some Linux stuff in here
 brew tap caskroom/versions  # required to have chrome beta and so on
+brew install coreutils
 brew install wget
 brew install git 
 brew install unrar
