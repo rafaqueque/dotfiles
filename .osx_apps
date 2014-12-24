@@ -15,7 +15,7 @@ brew install irssi
 brew install httpie
 brew install archey
 brew install tree
-brew install grep --default-names
+brew install grep --with-default-names
 brew install screen
 
 echo Install pip and other pip-based packages
