@@ -10,6 +10,10 @@ else
   exit 1;
 fi;
 
+# create default stuff first
+mkdir -p /var/www/
+mkdir -p /etc/nginx/sites-available/
+
 # Copy the default configuration and create symlink
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$website
 sudo ln -s /etc/nginx/sites-available/$website /etc/nginx/sites-enabled/$website
