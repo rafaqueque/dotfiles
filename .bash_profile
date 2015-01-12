@@ -103,9 +103,10 @@ if [ -n "$STY" ]; then insideScreen="\[${gray_l}\][s]\[${reset}\]"; fi
 export PS1="\[${reset}\]${sshConnection}";
 export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
-export PS1+="\[${reset}${purple}\]\$(git_branch)";
-export PS1+="\[${reset}${blue}\] \w ";
-export PS1+="\[${reset}${violet}\]\\$ \[${reset}\]";
+export PS1+="\[${reset}${gray}\][j:\[${green_l}\]\j\[${reset}${gray}\]]";
+export PS1+="\[${reset}${violet}\]\$(git_branch)";
+export PS1+="\[${reset}${blue}\] \w";
+export PS1+="\[${reset}${purple}\] \\$ \[${reset}\]";
 # /end prompt
 
 

@@ -12,28 +12,19 @@ call vundle#rc()
 Plugin 'gmarik/Vundle.vim'
 Bundle 'bling/vim-airline'
 Bundle 'pangloss/vim-javascript'
-Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/DeleteTrailingWhitespace'
 Bundle 'tpope/vim-markdown'
-Bundle 'ap/vim-css-color'
-Bundle 'oblitum/rainbow'
 Bundle 'junegunn/goyo.vim'
 Bundle 'godlygeek/csapprox'
 Plugin 'klen/python-mode'
 Plugin 'itspriddle/vim-jekyll'
-Plugin 'tpope/vim-liquid'
-Plugin 'kien/ctrlp.vim'
-Bundle 'nvie/vim-rst-tables'
+Plugin 'iynaix/django.vim'
 
 " themes
 Bundle 'cuviper/vim-colors-solarized'
 Bundle 'chriskempson/base16-vim'
 Bundle 'blerins/flattown'
-
-"" ctrl-p settings
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPMixed'
 
 "" vim-airline settings
 let g:airline_theme='luna'
@@ -101,7 +92,7 @@ if &t_Co >= 256 || has("gui_running")
     "let g:solarized_base16=1
     "let g:solarized_termcolors=256
     set background=dark
-    colorscheme flattown
+    colorscheme base16-eighties
 endif
 
 
