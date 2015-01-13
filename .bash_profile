@@ -53,7 +53,7 @@ function git_branch {
     [ -n "$s" ] && s=":$s"
 
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "[${ref#refs/heads/}$s]";
+    echo "[${ref#refs/heads/}$s] ";
 }
 
 # colors based on Solarized theme
@@ -92,23 +92,22 @@ fi;
 
 # connected via ssh?
 if [[ "$SSH_TTY" ]] || [[ "$SSH_CONNECTION" ]]; then
-    sshConnection="\[${gray}\][\[${bold}\]ssh\[${reset}${gray}\]:\u@\h]\[${reset}\]"
+    sshConnection="\[${red}\][\[${bold}\]ssh\[${reset}${red}\]:\u@\h]\[${reset}\]"
 fi
 
 # running inside screen or tmux?
-if [ -n "$TMUX" ]; then insideTmux="\[${gray_l}\][t]\[${reset}\]"; fi
-if [ -n "$STY" ]; then insideScreen="\[${gray_l}\][s]\[${reset}\]"; fi
+if [ -n "$TMUX" ]; then insideTmux="\[${violet}\][tmux]\[${reset}\]"; fi
+if [ -n "$STY" ]; then insideScreen="\[${violet}\][screen]\[${reset}\]"; fi
 
 # prompt
 export PS1="\[${reset}\]${sshConnection}";
 export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
-export PS1+="\[${reset}${gray}\][j:\[${green_l}\]\j\[${reset}${gray}\]]";
-export PS1+="\[${reset}${violet}\]\$(git_branch)";
-export PS1+="\[${reset}${blue}\] \w";
-export PS1+="\[${reset}${purple}\] \\$ \[${reset}\]";
+export PS1+="\[${reset}${gray_l}\][j:\j]";
+export PS1+="\[${reset}${gray}\] \w ";
+export PS1+="\[${reset}${orange}\]\$(git_branch)";
+export PS1+="\[${reset}${purple}\]\\$\[${reset}${rmhl}\] ";
 # /end prompt
-
 
 # git autocomplete
 if [ ! -f ~/.git-completion.bash ]; then

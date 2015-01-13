@@ -92,7 +92,7 @@ if &t_Co >= 256 || has("gui_running")
     "let g:solarized_base16=1
     "let g:solarized_termcolors=256
     set background=dark
-    colorscheme base16-eighties
+    colorscheme flattown
 endif
 
 
