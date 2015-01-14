@@ -93,7 +93,7 @@ fi;
 
 # connected via ssh?
 if [[ "$SSH_TTY" ]] || [[ "$SSH_CONNECTION" ]]; then
-    sshConnection="\[${red}${hl}\][\[${bold}\]\[${reset}${hl}${red}\]:\u@\h]\[${reset}\]"
+    sshConnection="\[${red}${hl}\][\[${bold}\]ssh\[${reset}${hl}${red}\]:\u@\h]\[${reset}\]"
 fi
 
 # running inside screen or tmux?
