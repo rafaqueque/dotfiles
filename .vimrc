@@ -10,37 +10,42 @@ call vundle#rc()
 
 "" Plugins and bundles
 Plugin 'gmarik/Vundle.vim'
-Bundle 'bling/vim-airline'
-Bundle 'pangloss/vim-javascript'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-scripts/DeleteTrailingWhitespace'
-Bundle 'tpope/vim-markdown'
-Bundle 'junegunn/goyo.vim'
-Bundle 'godlygeek/csapprox'
+Plugin 'tpope/vim-fugitive'
+Plugin 'godlygeek/csapprox'
 Plugin 'klen/python-mode'
 Plugin 'itspriddle/vim-jekyll'
-Plugin 'iynaix/django.vim'
+Plugin 'itchyny/lightline.vim'
 
 " themes
-Bundle 'cuviper/vim-colors-solarized'
-Bundle 'chriskempson/base16-vim'
 Bundle 'blerins/flattown'
-
-"" vim-airline settings
-let g:airline_theme='luna'
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#show_buffers=0
 
 "" custom settings
 filetype plugin indent on
 syntax on
+
+" lightline settings
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ ['mode', 'paste'], ['fugitive', 'relativepath'] ],
+      \ },
+      \ 'component': {
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \ },
+      \ 'component_visible_condition': {
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \ }
+      \ }
+
 
 " python settings
 let python_version_2=1
 let python_highlight_all=1
 let g:pymode_options_max_line_length = 99
 let g:pymode_trim_whitespaces = 1
-let g:pymode_options_colorcolumn = 1
+let g:pymode_options_colorcolumn = 0
 let g:pymode_indent = 1
 let g:pymode_rope = 0
 let g:pymode_syntax = 1
@@ -131,13 +136,6 @@ function! ToggleMouse()
   endif
 endfunction
 
-" Show the stack of syntax hilighting classes affecting whatever is under the
-" cursor.
-function! SynStack()
-    echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
-endfunc
-nnoremap <F8> :call SynStack()<CR>
-
 " Sidebar explorer configs
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
@@ -145,14 +143,6 @@ let g:netrw_liststyle=3
 let g:netrw_list_hide = "\.pyc,\.swp,\.bak,\.git"
 let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
-
-" Rainbow configs
-let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
-let g:rainbow_ctermfgs = ['cyan', 'yellow', 'red', 'magenta']
-function! ToggleRainbow()
-    call rainbow#toggle()
-endfunction
-nnoremap <F7> :call ToggleRainbow()<CR>
 
 " vim-pencil settings
 autocmd BufEnter * if &filetype == "" | setlocal ft=txt | endif
