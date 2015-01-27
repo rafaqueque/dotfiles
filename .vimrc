@@ -10,14 +10,20 @@ call vundle#rc()
 
 "" Plugins and bundles
 Plugin 'gmarik/Vundle.vim'
+"Plugin 'godlygeek/csapprox'
+"Plugin 'klen/python-mode'
 Plugin 'tpope/vim-fugitive'
-Plugin 'godlygeek/csapprox'
-Plugin 'klen/python-mode'
+Plugin 'pangloss/vim-javascript'
 Plugin 'itspriddle/vim-jekyll'
 Plugin 'itchyny/lightline.vim'
+Plugin 'hdima/python-syntax'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'andviro/flake8-vim'
 
-" themes
-Bundle 'blerins/flattown'
+"" theme
+Plugin 'blerins/flattown'
+Plugin 'cuviper/vim-colors-solarized'
+Plugin 'freeo/vim-kalisi'
 
 "" custom settings
 filetype plugin indent on
@@ -25,7 +31,6 @@ syntax on
 
 " lightline settings
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ ['mode', 'paste'], ['fugitive', 'relativepath'] ],
       \ },
@@ -39,18 +44,17 @@ let g:lightline = {
       \ }
       \ }
 
-
 " python settings
-let python_version_2=1
-let python_highlight_all=1
-let g:pymode_options_max_line_length = 99
-let g:pymode_trim_whitespaces = 1
-let g:pymode_options_colorcolumn = 0
-let g:pymode_indent = 1
-let g:pymode_rope = 0
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
+"let g:pymode_options_max_line_length = 99
+"let g:pymode_trim_whitespaces = 1
+"let g:pymode_options_colorcolumn = 0
+"let g:pymode_indent = 1
+"let g:pymode_rope = 0
+"let g:pymode_syntax = 0
+"let g:pymode_syntax_all = 0
+let g:PyFlakeMaxLineLength = 100
 
+"set re=1
 set hidden
 set nowrap        " don't wrap lines
 set backspace=indent,eol,start
@@ -73,7 +77,8 @@ set noswapfile
 set laststatus=2
 set t_Co=256
 set cursorline
-set colorcolumn=100
+"set colorcolumn=100
+match ErrorMsg '\%>99v.\+'
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -94,10 +99,8 @@ if &t_Co >= 256 || has("gui_running")
         set go-=L
         set go-=T
     endif
-    "let g:solarized_base16=1
-    "let g:solarized_termcolors=256
     set background=dark
-    colorscheme flattown
+    colorscheme kalisi
 endif
 
 
@@ -148,5 +151,5 @@ let g:netrw_liststyle = 1
 autocmd BufEnter * if &filetype == "" | setlocal ft=txt | endif
 autocmd FileType txt,text,markdown,mkd,md call SetTextSettings() 
 function! SetTextSettings()
-    set nofoldenable wrap linebreak nolist tw=79 colorcolumn=80
+    set nofoldenable wrap linebreak nolist tw=79
 endfunction
