@@ -12,11 +12,11 @@ call vundle#rc()
 Plugin 'gmarik/Vundle.vim'
 "Plugin 'godlygeek/csapprox'
 "Plugin 'klen/python-mode'
+"Plugin 'hdima/python-syntax'
 Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'
 Plugin 'itspriddle/vim-jekyll'
 Plugin 'itchyny/lightline.vim'
-Plugin 'hdima/python-syntax'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'andviro/flake8-vim'
 
@@ -24,6 +24,8 @@ Plugin 'andviro/flake8-vim'
 Plugin 'blerins/flattown'
 Plugin 'cuviper/vim-colors-solarized'
 Plugin 'freeo/vim-kalisi'
+Plugin 'romainl/flattened'
+Plugin 'vim-scripts/mayansmoke'
 
 "" custom settings
 filetype plugin indent on
@@ -31,6 +33,7 @@ syntax on
 
 " lightline settings
 let g:lightline = {
+      \ 'colorscheme': 'default',
       \ 'active': {
       \   'left': [ ['mode', 'paste'], ['fugitive', 'relativepath'] ],
       \ },
@@ -45,13 +48,6 @@ let g:lightline = {
       \ }
 
 " python settings
-"let g:pymode_options_max_line_length = 99
-"let g:pymode_trim_whitespaces = 1
-"let g:pymode_options_colorcolumn = 0
-"let g:pymode_indent = 1
-"let g:pymode_rope = 0
-"let g:pymode_syntax = 0
-"let g:pymode_syntax_all = 0
 let g:PyFlakeMaxLineLength = 100
 
 "set re=1
@@ -100,6 +96,7 @@ if &t_Co >= 256 || has("gui_running")
         set go-=T
     endif
     set background=dark
+    let g:solarized_termcolors=256
     colorscheme kalisi
 endif
 
