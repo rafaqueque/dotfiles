@@ -10,22 +10,12 @@ call vundle#rc()
 
 "" Plugins and bundles
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'godlygeek/csapprox'
-"Plugin 'klen/python-mode'
-"Plugin 'hdima/python-syntax'
 Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'
 Plugin 'itspriddle/vim-jekyll'
 Plugin 'itchyny/lightline.vim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'andviro/flake8-vim'
-
-"" theme
-Plugin 'blerins/flattown'
-Plugin 'cuviper/vim-colors-solarized'
-Plugin 'freeo/vim-kalisi'
-Plugin 'romainl/flattened'
-Plugin 'vim-scripts/mayansmoke'
 
 "" custom settings
 filetype plugin indent on
@@ -97,7 +87,7 @@ if &t_Co >= 256 || has("gui_running")
     endif
     set background=dark
     let g:solarized_termcolors=256
-    colorscheme kalisi
+    colorscheme flattown
 endif
 
 
