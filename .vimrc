@@ -1,25 +1,35 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-" HOWTO:
-" $ git clone https://github.com/gmarik/Vundle.vim.git
-" destination: ~/.vim/bundle/Vundle.vim
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
+"" Install vim-plug
+"" $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 "" Plugins and bundles
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'pangloss/vim-javascript'
-Plugin 'itspriddle/vim-jekyll'
-Plugin 'itchyny/lightline.vim'
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'andviro/flake8-vim'
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
+Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html'] }
+Plug 'rstacruz/sparkup', { 'for': 'html' }
+Plug 'itspriddle/vim-jekyll', { 'for': ['md', 'markdown'] }
+Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown'] }
+Plug 'klen/python-mode', { 'for': 'python' }
+call plug#end()
 
 "" custom settings
 filetype plugin indent on
 syntax on
+
+"" python settings
+let python_version_2=1
+let python_highlight_all=1
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options_colorcolumn = 0
+let g:pymode_indent = 1
+let g:pymode_rope = 0
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_lint_ignore = 'E501'
 
 " lightline settings
 let g:lightline = {
@@ -36,9 +46,6 @@ let g:lightline = {
       \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
       \ }
       \ }
-
-" python settings
-let g:PyFlakeMaxLineLength = 100
 
 "set re=1
 set hidden
@@ -91,26 +98,7 @@ if &t_Co >= 256 || has("gui_running")
 endif
 
 
-" Toggle Vexplore with Ctrl-E
-function! ToggleVExplorer()
-  if exists("t:expl_buf_num")
-      let expl_win_num = bufwinnr(t:expl_buf_num)
-      if expl_win_num != -1
-          let cur_win_nr = winnr()
-          exec expl_win_num . 'wincmd w'
-          close
-          exec cur_win_nr . 'wincmd w'
-          unlet t:expl_buf_num
-      else
-          unlet t:expl_buf_num
-      endif
-  else
-      exec '1wincmd w'
-      Vexplore
-      let t:expl_buf_num = bufnr("%")
-  endif
-endfunction
-map <silent> <C-E> :call ToggleVExplorer()<CR>
+nmap <silent> <C-E> :NERDTreeToggle<CR>
 
 " Toggle mouse and numbers
 nnoremap <F5> :call ToggleMouse()<CR>
