@@ -11,8 +11,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html'] }
 Plug 'rstacruz/sparkup', { 'for': 'html' }
-Plug 'itspriddle/vim-jekyll', { 'for': ['md', 'markdown'] }
-Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown'] }
+Plug 'itspriddle/vim-jekyll', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
+Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
 Plug 'klen/python-mode', { 'for': 'python' }
 call plug#end()
 
