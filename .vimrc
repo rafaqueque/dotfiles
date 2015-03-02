@@ -10,10 +10,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html'] }
-Plug 'rstacruz/sparkup', { 'for': 'html' }
 Plug 'itspriddle/vim-jekyll', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
 Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
 Plug 'klen/python-mode', { 'for': 'python' }
+Plug 'sjl/gundo.vim'
 call plug#end()
 
 "" custom settings
@@ -71,7 +71,6 @@ set laststatus=2
 set t_Co=256
 set cursorline
 "set colorcolumn=100
-match ErrorMsg '\%>99v.\+'
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -125,6 +124,10 @@ let g:netrw_liststyle = 1
 " vim-pencil settings
 autocmd BufEnter * if &filetype == "" | setlocal ft=txt | endif
 autocmd FileType txt,text,markdown,mkd,md call SetTextSettings() 
+autocmd FileType python call SetPythonSettings()
+function! SetPythonSettings()
+    match ErrorMsg '\%>99v.\+'
+endfunction
 function! SetTextSettings()
     set nofoldenable wrap linebreak nolist tw=79
 endfunction
