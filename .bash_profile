@@ -93,7 +93,7 @@ fi;
 
 # connected via ssh?
 if [[ "$SSH_TTY" ]] || [[ "$SSH_CONNECTION" ]]; then
-    sshConnection="\[${red}${hl}\][\[${bold}\]ssh\[${reset}${hl}${red}\]:\u@\h]\[${reset}\]"
+    sshConnection="\[${green_l}${hl}\][\[${bold}\]ssh\[${reset}${hl}${green}\]:\u@\h]\[${reset}\]"
 fi
 
 # running inside screen or tmux?
@@ -104,10 +104,10 @@ if [ -n "$STY" ]; then insideScreen="\[${orange}${hl}\][s]\[${reset}\]"; fi
 export PS1="\[${reset}\]${sshConnection}";
 export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
-export PS1+="\[${reset}${gray}${hl}\]\$(git_branch)";
-export PS1+="\[${reset}${gray}\] \w";
-export PS1+="\[${reset}${violet}\] j:\j ";
-export PS1+="\[${reset}${purple}\]\\$ \[${reset}\]";
+export PS1+="\[${reset}${green}${hl}\]\$(git_branch)";
+export PS1+="\[${reset}${green}\] \w";
+export PS1+="\[${reset}${gray_l}\] j:\j ";
+export PS1+="\[${reset}${gray}\]\\$ \[${reset}\]";
 # /end prompt
 
 case "$TERM" in
