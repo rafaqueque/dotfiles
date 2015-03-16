@@ -106,7 +106,7 @@ export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
 export PS1+="\[${reset}${cyan}\]\$(git_branch)";
 export PS1+="\[${reset}${blue}\] \w ";
-export PS1+="\[${reset}${gray}\]\\j:\$ \[${reset}\]";
+export PS1+="\[${reset}${gray}\]\\j:\\$ \[${reset}\]";
 # /end prompt
 
 case "$TERM" in
