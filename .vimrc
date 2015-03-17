@@ -8,28 +8,20 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html'] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html', 'htmldjango'] }
+Plug 'jelera/vim-javascript-syntax', { 'for': ['javascript', 'html', 'htmldjango'] }
 Plug 'itspriddle/vim-jekyll', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
 Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
-Plug 'klen/python-mode', { 'for': 'python' }
-Plug 'sjl/gundo.vim'
+Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
+Plug 'andviro/flake8-vim', { 'for': ['python'] }
 call plug#end()
 
 "" custom settings
 filetype plugin indent on
 syntax on
 
-"" python settings
-let python_version_2=1
-let python_highlight_all=1
-let g:pymode_trim_whitespaces = 1
-let g:pymode_options_colorcolumn = 0
-let g:pymode_indent = 1
-let g:pymode_rope = 0
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_lint_ignore = 'E501'
+let g:PyFlakeDisabledMessages = 'E501'
+let g:PyFlakeMaxLineLength = '100'
 
 " lightline settings
 let g:lightline = {
