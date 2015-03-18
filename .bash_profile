@@ -53,7 +53,13 @@ function git_branch {
     [ -n "$s" ] && s=":$s"
 
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "[${ref#refs/heads/}$s]";
+    echo "(${ref#refs/heads/}$s)";
+}
+
+function jobs_running {
+    if [ `jobs | wc -l` -ne 0 ]; then
+        echo -n "$(jobs -l | wc -l | awk '{print $1}'):";
+    fi
 }
 
 # colors based on Solarized theme
@@ -104,9 +110,10 @@ if [ -n "$STY" ]; then insideScreen="\[${gray}${hl}\][s]\[${reset}\]"; fi
 export PS1="\[${reset}\]${sshConnection}";
 export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
+export PS1+="\[${reset}${blue}\] \w";
 export PS1+="\[${reset}${cyan}\]\$(git_branch)";
-export PS1+="\[${reset}${blue}\] \w ";
-export PS1+="\[${reset}${gray}\]\\j:\\$ \[${reset}\]";
+export PS1+="\[${reset}${gray_l}\] \$(jobs_running)";
+export PS1+="\[${reset}${gray}\]\\$ \[${reset}\]";
 # /end prompt
 
 case "$TERM" in
