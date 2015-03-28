@@ -25,7 +25,7 @@ let g:PyFlakeMaxLineLength = '100'
 
 " lightline settings
 let g:lightline = {
-      \ 'colorscheme': 'default',
+      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ ['mode', 'paste'], ['fugitive', 'relativepath'] ],
       \ },
@@ -39,7 +39,6 @@ let g:lightline = {
       \ }
       \ }
 
-"set re=1
 set hidden
 set nowrap        " don't wrap lines
 set backspace=indent,eol,start
