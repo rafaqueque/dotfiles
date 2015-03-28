@@ -21,10 +21,15 @@ brew install screen
 
 echo Install pip and other pip-based packages
 sudo easy_install pip
+sudo pip install python
  
 echo Install brew-cask
 brew tap phinze/cask
 brew install brew-cask
+
+echo Installing latest neovim
+brew tap neovim/homebrew-neovim
+brew install neovim --HEAD
 
 echo Install custom fonts
 brew tap caskroom/fonts
