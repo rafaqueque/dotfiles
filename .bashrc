@@ -1,5 +1,4 @@
 # env vars
-export EDITOR=/usr/local/bin//nvim
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
 export CLICOLOR=1
 export LSCOLORS="gxfxcxdxbxegedabagacad"    # osx
