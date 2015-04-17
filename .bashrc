@@ -1,4 +1,5 @@
 # env vars
+export EDITOR=/usr/local/bin//nvim
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
 export CLICOLOR=1
 export LSCOLORS="gxfxcxdxbxegedabagacad"    # osx
@@ -74,6 +75,7 @@ if tput setaf 1 &> /dev/null; then
     cyan=$(tput setaf 37);
     green=$(tput setaf 64);
     green_l=$(tput setaf 2);
+    pink=$(tput setaf 5);
     orange=$(tput setaf 166);
     purple=$(tput setaf 125);
     red=$(tput setaf 124);
@@ -95,6 +97,7 @@ else
     violet="\e[1;35m";
     white="\e[1;37m";
     yellow="\e[1;33m";
+    pink="\e[01;31m";
 fi;
 
 # connected via ssh?
@@ -111,7 +114,7 @@ export PS1="\[${reset}\]${sshConnection}";
 export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
 export PS1+="\[${reset}${blue}\] \w";
-export PS1+="\[${reset}${cyan}\]\$(git_branch)";
+export PS1+="\[${reset}${pink}\]\$(git_branch)";
 export PS1+="\[${reset}${gray_l}\] \$(jobs_running)";
 export PS1+="\[${reset}${gray}\]\\$ \[${reset}\]";
 # /end prompt
