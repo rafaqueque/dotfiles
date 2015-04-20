@@ -1022,7 +1022,7 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSColorPanelMode</key>
-	<string>6</string>
+	<string>0</string>
 	<key>NSFontPanelAttributes</key>
 	<string>1, 4</string>
 	<key>NSFontPanelPreviewHeight</key>
@@ -1070,8 +1070,10 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame NSColorPanel</key>
+	<string>390 256 231 329 0 0 1280 777 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>634 297 445 165 0 0 1280 777 </string>
+	<string>271 218 445 165 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>327 243 924 485 0 0 1280 777 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
@@ -1240,11 +1242,11 @@
 			<key>Background Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.15918955206871033</real>
+				<real>0.23741735517978668</real>
 				<key>Green Component</key>
-				<real>0.15918955206871033</real>
+				<real>0.23741735517978668</real>
 				<key>Red Component</key>
-				<real>0.15918955206871033</real>
+				<real>0.23741735517978668</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -1640,7 +1642,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>SourceCodePro-Light 11</string>
+			<string>SourceCodePro-Regular 11</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1889,7 +1891,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-04-17T09:32:16Z</date>
+	<date>2015-04-20T08:59:10Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>

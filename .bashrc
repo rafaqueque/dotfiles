@@ -1,5 +1,4 @@
 # env vars
-export EDITOR=/usr/local/bin//nvim
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
 export CLICOLOR=1
 export LSCOLORS="gxfxcxdxbxegedabagacad"    # osx
@@ -57,12 +56,6 @@ function git_branch {
     echo "(${ref#refs/heads/}$s)";
 }
 
-function jobs_running {
-    if [ `jobs | wc -l` -ne 0 ]; then
-        echo -n "$(jobs -l | wc -l | awk '{print $1}'):";
-    fi
-}
-
 # colors based on Solarized theme
 # source: https://github.com/mathiasbynens/dotfiles/blob/master/.bash_prompt#L62-90
 if tput setaf 1 &> /dev/null; then
@@ -114,9 +107,9 @@ export PS1="\[${reset}\]${sshConnection}";
 export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
 export PS1+="\[${reset}${blue}\] \w";
-export PS1+="\[${reset}${pink}\]\$(git_branch)";
-export PS1+="\[${reset}${gray_l}\] \$(jobs_running)";
-export PS1+="\[${reset}${gray}\]\\$ \[${reset}\]";
+export PS1+="\[${reset}${purple}\]\$(git_branch)";
+export PS1+="\[${reset}${gray}\] \j:";
+export PS1+="\[${reset}${gray_l}\]\\$ \[${reset}\]";
 # /end prompt
 
 case "$TERM" in
