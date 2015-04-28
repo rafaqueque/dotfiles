@@ -6,12 +6,18 @@ filetype off                  " required
 
 "" Plugins and bundles
 call plug#begin('~/.vim/plugged')
+" Misc
 Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
+" JS
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html', 'htmldjango'] }
 Plug 'jelera/vim-javascript-syntax', { 'for': ['javascript', 'html', 'htmldjango'] }
+" Markdown
 Plug 'itspriddle/vim-jekyll', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
 Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
+" Python
+Plug 'hdima/python-syntax', { 'for': ['python'] }
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'andviro/flake8-vim', { 'for': ['python'] }
 call plug#end()
@@ -89,6 +95,7 @@ endif
 
 
 nmap <silent> <C-E> :NERDTreeToggle<CR>
+nmap <silent> <C-G> :GitGutterToggle<CR>
 
 " Toggle mouse and numbers
 nnoremap <F5> :call ToggleMouse()<CR>
