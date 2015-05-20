@@ -18,6 +18,7 @@ brew install archey
 brew install tree
 brew install grep --with-default-names
 brew install screen
+brew install ctags
 
 echo Install pip and other pip-based packages
 sudo easy_install pip
