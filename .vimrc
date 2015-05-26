@@ -11,6 +11,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
 Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle'] }
+Plug 'ConradIrwin/vim-bracketed-paste'
 " JS
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html', 'htmldjango'] }
 Plug 'jelera/vim-javascript-syntax', { 'for': ['javascript', 'html', 'htmldjango'] }
@@ -98,6 +99,7 @@ endif
 
 nmap <silent> <C-E> :NERDTreeToggle<CR>
 nmap <silent> <C-G> :GitGutterToggle<CR>
+nmap <silent> <F8> :TagbarToggle<CR>
 
 " Toggle mouse and numbers
 nnoremap <F5> :call ToggleMouse()<CR>
