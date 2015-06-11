@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo Install San Francisco as the default font system-wide
+ruby -e "$(curl -fsSL https://raw.github.com/supermarin/YosemiteSanFranciscoFont/master/install)"
+
 echo Install Homebrew, brew-cask and some other tools
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew update
