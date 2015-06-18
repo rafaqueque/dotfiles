@@ -7,11 +7,9 @@ filetype off                  " required
 "" Plugins and bundles
 call plug#begin('~/.vim/plugged')
 " Misc
+Plug 'bsl/obviousmode'
 Plug 'tpope/vim-fugitive'
-Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
 Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle'] }
-Plug 'ConradIrwin/vim-bracketed-paste'
 " JS
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html', 'htmldjango'] }
 Plug 'jelera/vim-javascript-syntax', { 'for': ['javascript', 'html', 'htmldjango'] }
@@ -21,7 +19,6 @@ Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
 Plug 'junegunn/goyo.vim'
 " Python
 Plug 'hdima/python-syntax', { 'for': ['python'] }
-Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'andviro/flake8-vim', { 'for': ['python'] }
 call plug#end()
 
@@ -29,24 +26,15 @@ call plug#end()
 filetype plugin indent on
 syntax on
 
+"" custom statusline
+set statusline=%F%m%r%h%w\ 
+set statusline+=\ %=                        " align left
+set statusline+=%{fugitive#statusline()}\
+set statusline+=[%{strlen(&fenc)?&fenc:&enc}]
+set statusline+=\ [\%c:\%l\/%L]
+
 let g:PyFlakeDisabledMessages = 'E501'
 let g:PyFlakeMaxLineLength = '100'
-
-" lightline settings
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ ['mode', 'paste'], ['fugitive', 'relativepath'] ],
-      \ },
-      \ 'component': {
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \ },
-      \ 'component_visible_condition': {
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \ }
-      \ }
 
 set hidden
 set nowrap        " don't wrap lines
@@ -69,7 +57,7 @@ set nobackup
 set noswapfile
 set laststatus=2
 set t_Co=256
-set cursorline
+"set cursorline
 "set colorcolumn=100
 set tabstop=4
 set softtabstop=4
@@ -81,6 +69,8 @@ set mouse=a
 set encoding=utf-8
 set nopaste
 set nofoldenable    " disable folding
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 if &t_Co >= 256 || has("gui_running")
     if has("gui_running")
@@ -97,8 +87,6 @@ if &t_Co >= 256 || has("gui_running")
 endif
 
 
-nmap <silent> <C-E> :NERDTreeToggle<CR>
-nmap <silent> <C-G> :GitGutterToggle<CR>
 nmap <silent> <F8> :TagbarToggle<CR>
 
 " Toggle mouse and numbers
@@ -124,12 +112,12 @@ let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
 
 " vim-pencil settings
-autocmd BufEnter * if &filetype == "" | setlocal ft=txt | endif
 autocmd FileType txt,text,markdown,mkd,md call SetTextSettings() 
+function! SetTextSettings()
+    set nofoldenable wrap linebreak nolist tw=100
+endfunction
 autocmd FileType python call SetPythonSettings()
 function! SetPythonSettings()
-    match ErrorMsg '\%>99v.\+'
-endfunction
-function! SetTextSettings()
-    set nofoldenable wrap linebreak nolist tw=79
+    match ErrorMsg '\%>100v.\+'
+    set colorcolumn=101
 endfunction

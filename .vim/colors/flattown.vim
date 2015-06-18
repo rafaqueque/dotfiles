@@ -14,7 +14,7 @@ hi Ignore guifg=#60666b guibg=NONE guisp=NONE gui=NONE ctermfg=242 ctermbg=NONE 
 hi VertSplit guifg=#444444 guibg=#444444 guisp=#444444 gui=NONE ctermfg=238 ctermbg=238 cterm=NONE
 hi NonText guifg=#949494 guibg=NONE guisp=NONE gui=NONE ctermfg=246 ctermbg=NONE cterm=NONE
 
-hi Normal guifg=#e0e0e0 guibg=#26292c guisp=#26292c gui=NONE ctermfg=254 ctermbg=234 cterm=NONE
+hi Normal guifg=#e0e0e0 guibg=#26292c guisp=#26292c gui=NONE ctermfg=254 ctermbg=236 cterm=NONE
 hi LineNr guifg=#515253 guibg=#2c2f31 guisp=#2c2f31 gui=NONE ctermfg=239 ctermbg=235 cterm=NONE
 
 hi Comment guifg=#60666b guibg=NONE guisp=NONE gui=NONE ctermfg=243 ctermbg=NONE cterm=NONE
@@ -78,7 +78,7 @@ hi Debug guifg=#f8f8f8 guibg=NONE guisp=NONE gui=NONE ctermfg=15 ctermbg=NONE ct
 hi PMenuSbar guifg=#cdcecf guibg=#35393e guisp=#35393e gui=NONE ctermfg=252 ctermbg=237 cterm=NONE
 hi SpecialChar guifg=#f8f8f8 guibg=NONE guisp=NONE gui=NONE ctermfg=15 ctermbg=NONE cterm=NONE
 hi StorageClass guifg=#f6f080 guibg=NONE guisp=NONE gui=NONE ctermfg=228 ctermbg=NONE cterm=NONE
-hi StatusLine guifg=#f8f8f8 guibg=#292c2f guisp=#292c2f gui=bold ctermfg=15 ctermbg=236 cterm=bold
+hi StatusLine guifg=#f8f8f8 guibg=#292c2f guisp=#292c2f gui=NONE ctermfg=green ctermbg=235 cterm=NONE
 hi Label guifg=#f6f6f6 guibg=NONE guisp=NONE gui=NONE ctermfg=255 ctermbg=NONE cterm=NONE
 "hi CTagsImport -- no settings --
 hi PMenuSel guifg=#ffffff guibg=#3498DB guisp=#3498DB gui=bold ctermfg=15 ctermbg=74 cterm=bold
