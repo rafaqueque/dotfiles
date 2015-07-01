@@ -19,6 +19,7 @@ Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
 Plug 'junegunn/goyo.vim'
 " Python
 Plug 'hdima/python-syntax', { 'for': ['python'] }
+Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'andviro/flake8-vim', { 'for': ['python'] }
 call plug#end()
 
@@ -27,9 +28,9 @@ filetype plugin indent on
 syntax on
 
 "" custom statusline
-set statusline=%F%m%r%h%w\ 
+set statusline=%f%m%r%h%w\ 
 set statusline+=\ %=                        " align left
-set statusline+=%{fugitive#statusline()}\
+set statusline+=%{fugitive#statusline()}
 set statusline+=[%{strlen(&fenc)?&fenc:&enc}]
 set statusline+=\ [\%c:\%l\/%L]
 
@@ -69,8 +70,6 @@ set mouse=a
 set encoding=utf-8
 set nopaste
 set nofoldenable    " disable folding
-set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
 if &t_Co >= 256 || has("gui_running")
     if has("gui_running")
@@ -82,7 +81,6 @@ if &t_Co >= 256 || has("gui_running")
         set go-=T
     endif
     set background=dark
-    let g:solarized_termcolors=256
     colorscheme flattown
 endif
 
