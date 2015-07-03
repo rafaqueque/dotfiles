@@ -1457,6 +1457,8 @@
 	<string></string>
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
+	<key>NSScrollViewShouldScrollUnderTitlebar</key>
+	<false/>
 	<key>NSTableView Columns KeyBingingTable</key>
 	<array>
 		<data>
@@ -1495,7 +1497,7 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>258 37 445 257 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>221 119 924 485 0 0 1280 777 </string>
+	<string>221 177 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>448 487 384 129 0 0 1280 777 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
@@ -2241,6 +2243,8 @@
 			<string>/Users/rafaqueque</string>
 		</dict>
 	</array>
+	<key>NoSyncLastTipTime</key>
+	<real>457692606.42257601</real>
 	<key>NoSyncNeverRemindPrefsChangesLost</key>
 	<true/>
 	<key>NoSyncSuppressAnnyoingBellOffer</key>
@@ -2248,7 +2252,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>454840667.15418702</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>456912495.09503502</real>
+	<real>457605781.19641399</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -2313,11 +2317,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>http://iterm2.com/appcasts/final.xml</string>
+	<string>https://iterm2.com/appcasts/final.xml</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-06-25T08:07:11Z</date>
+	<date>2015-07-03T08:18:28Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2336,6 +2340,8 @@
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
 	<integer>6</integer>
+	<key>TabStyle</key>
+	<integer>0</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>ThreeFingerEmulates</key>
@@ -3194,6 +3200,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.1.1</string>
+	<string>2.9.20150626</string>
 </dict>
 </plist>
