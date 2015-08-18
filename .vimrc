@@ -20,12 +20,16 @@ Plug 'junegunn/goyo.vim'
 " Python
 Plug 'hdima/python-syntax', { 'for': ['python'] }
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
-Plug 'andviro/flake8-vim', { 'for': ['python'] }
+Plug 'benekastah/neomake'
+""Plug 'andviro/flake8-vim', { 'for': ['python'] }
 call plug#end()
 
 "" custom settings
 filetype plugin indent on
 syntax on
+
+let g:neomake_python_enabled_makers = ['flake8']
+autocmd! BufWritePost * Neomake
 
 "" custom statusline
 set statusline=%f%m%r%h%w\ 
