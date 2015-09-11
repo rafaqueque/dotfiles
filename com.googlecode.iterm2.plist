@@ -1503,7 +1503,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>129 12 972 689 0 0 1280 777 </string>
+	<string>0 0 1280 778 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>152 4 865 586 0 0 1280 778 </string>
 	<key>New Bookmarks</key>
@@ -2234,7 +2234,7 @@
 			<key>Use Italic Font</key>
 			<false/>
 			<key>Vertical Spacing</key>
-			<real>1.2000000476837158</real>
+			<real>1.1000000238418579</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
@@ -2986,7 +2986,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>454840667.15418702</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>461497042.51808399</real>
+	<real>462803898.67507398</real>
 	<key>NoSyncTipsDisabled</key>
 	<true/>
 	<key>OnlyWhenMoreTabs</key>
@@ -3057,7 +3057,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-08-17T08:47:54Z</date>
+	<date>2015-09-01T12:38:13Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>

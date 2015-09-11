@@ -21,14 +21,18 @@ Plug 'junegunn/goyo.vim'
 Plug 'hdima/python-syntax', { 'for': ['python'] }
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'benekastah/neomake'
-""Plug 'andviro/flake8-vim', { 'for': ['python'] }
+Plug 'igungor/schellar'
 call plug#end()
 
 "" custom settings
 filetype plugin indent on
 syntax on
 
-let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python_enabled_makers = ['pep8', 'flake8']
+let g:neomake_python_pep8_maker = {
+    \ 'args': ['--max-line-length 99'],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
 autocmd! BufWritePost * Neomake
 
 "" custom statusline
@@ -84,7 +88,7 @@ if &t_Co >= 256 || has("gui_running")
         set go-=L
         set go-=T
     endif
-    set background=dark
+    set background=light
     colorscheme flattown
 endif
 
@@ -116,7 +120,7 @@ let g:netrw_liststyle = 1
 " vim-pencil settings
 autocmd FileType txt,text,markdown,mkd,md call SetTextSettings() 
 function! SetTextSettings()
-    set nofoldenable wrap linebreak nolist tw=100
+    set nofoldenable wrap linebreak nolist tw=74
 endfunction
 autocmd FileType python call SetPythonSettings()
 function! SetPythonSettings()
