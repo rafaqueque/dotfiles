@@ -1495,9 +1495,9 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>390 256 231 329 0 0 1280 777 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>184 130 445 260 0 0 1440 877 </string>
+	<string>99 307 445 111 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>221 279 924 485 0 0 1280 777 </string>
+	<string>221 308 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>448 487 384 129 0 0 1280 777 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
@@ -2066,7 +2066,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>InputMono-Light 13</string>
+			<string>InputMono-ExtraLight 13</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -2233,8 +2233,10 @@
 			<false/>
 			<key>Use Italic Font</key>
 			<false/>
+			<key>Use Non-ASCII Font</key>
+			<false/>
 			<key>Vertical Spacing</key>
-			<real>1.1000000238418579</real>
+			<real>1.0946156978607178</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
@@ -2986,7 +2988,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>454840667.15418702</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>462803898.67507398</real>
+	<real>464693621.78234798</real>
 	<key>NoSyncTipsDisabled</key>
 	<true/>
 	<key>OnlyWhenMoreTabs</key>
@@ -2995,6 +2997,8 @@
 	<false/>
 	<key>OpenBookmark</key>
 	<false/>
+	<key>OpenNoWindowsAtStartup</key>
+	<true/>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>0</integer>
 	<key>PassOnControlClick</key>
@@ -3057,7 +3061,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-09-01T12:38:13Z</date>
+	<date>2015-09-24T11:05:53Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -3936,7 +3940,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.1.1</string>
+	<string>2.9.20150830</string>
 	<key>kCommandHistoryHasEverBeenUsed</key>
 	<true/>
 </dict>

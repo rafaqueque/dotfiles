@@ -49,7 +49,7 @@ set hidden
 set nowrap        " don't wrap lines
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
-set number        " always show line numbers
+set nonumber        " always show line numbers
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set ignorecase    " ignore case when searching
@@ -66,8 +66,6 @@ set nobackup
 set noswapfile
 set laststatus=2
 set t_Co=256
-"set cursorline
-"set colorcolumn=100
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -77,6 +75,7 @@ set cinkeys=0{,0},:,0#,!,!^F
 set mouse=a
 set encoding=utf-8
 set nopaste
+set pastetoggle=<F7>
 set nofoldenable    " disable folding
 
 if &t_Co >= 256 || has("gui_running")
@@ -100,11 +99,9 @@ nnoremap <F5> :call ToggleMouse()<CR>
 function! ToggleMouse()
   if &mouse == 'a'
     set mouse=
-    set nonumber
     echo "Mouse usage disabled"
   else
     set mouse=a
-    set number
     echo "Mouse usage enabled"
   endif
 endfunction
@@ -125,5 +122,4 @@ endfunction
 autocmd FileType python call SetPythonSettings()
 function! SetPythonSettings()
     match ErrorMsg '\%>100v.\+'
-    set colorcolumn=101
 endfunction
