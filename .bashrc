@@ -3,9 +3,11 @@ export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
 export CLICOLOR=1
 export LSCOLORS="gxfxcxdxbxegedabagacad"    # osx
 export LS_COLORS="di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"  # linux
-export GREP_OPTIONS='--color=auto'
+# export GREP_OPTIONS='--color=auto'
 export TERM='xterm-256color' 
 export PROMPT_DIRTRIM=2
+
+alias grep="grep --color"
 
 # daily logger
 # usage: doing "stuff ..."
@@ -107,9 +109,9 @@ if [ -n "$STY" ]; then insideScreen="\[${gray}${hl}\][s]\[${reset}\]"; fi
 export PS1="\[${reset}\]${sshConnection}";
 export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
-export PS1+="\[${reset}${green_l}\]\w";
-export PS1+="\[${reset}${gray}\]\$(git_branch)";
-export PS1+="\[${reset}${gray_l}\] \j";
+export PS1+="\[${reset}${blue}\]\W";
+export PS1+="\[${reset}${violet}\]\$(git_branch)";
+export PS1+="\[${reset}${purple}\] \j";
 export PS1+="\[${reset}${gray_l}\]:\\$ \[${reset}\]";
 # /end prompt
 
