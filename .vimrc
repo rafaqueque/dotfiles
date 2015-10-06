@@ -123,3 +123,7 @@ autocmd FileType python call SetPythonSettings()
 function! SetPythonSettings()
     match ErrorMsg '\%>100v.\+'
 endfunction
+
+noremap <C-t> :below 10sp term://$SHELL<cr>if
+nnoremap <F9> "=strftime("%c")<CR>P
+inoremap <F9> <C-R>=strftime("%c")<CR>

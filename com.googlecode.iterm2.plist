@@ -1670,13 +1670,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.26356908679008484</real>
+				<real>0.15056121349334717</real>
 				<key>Color Space</key>
 				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.26356908679008484</real>
+				<real>0.15055865049362183</real>
 				<key>Red Component</key>
-				<real>0.26356908679008484</real>
+				<real>0.15056315064430237</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -1776,13 +1776,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.75</real>
+				<real>0.7555810809135437</real>
 				<key>Color Space</key>
 				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.75</real>
+				<real>0.75556832551956177</real>
 				<key>Red Component</key>
-				<real>0.75</real>
+				<real>0.75559085607528687</real>
 			</dict>
 			<key>Guid</key>
 			<string>7943E250-0EE6-4CC0-9234-0EE9855B7706</string>
@@ -2107,7 +2107,7 @@
 			<key>Log Directory</key>
 			<string></string>
 			<key>Minimum Contrast</key>
-			<real>0.26847771187371844</real>
+			<real>0.26022019605093366</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -3116,7 +3116,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-10-02T11:07:02Z</date>
+	<date>2015-10-06T09:57:30Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -3130,7 +3130,7 @@
 	<key>SmartPlacement</key>
 	<true/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.40000000596046448</real>
+	<real>0.2060271493899517</real>
 	<key>SwitchTabModifier</key>
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
