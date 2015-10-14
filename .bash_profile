@@ -54,7 +54,7 @@ function git_branch {
     [ -n "$s" ] && s=":$s"
 
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "[${ref#refs/heads/}$s]";
+    echo " [${ref#refs/heads/}$s]";
 }
 
 # colors based on Solarized theme
@@ -109,8 +109,8 @@ export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
 export PS1+="\[${reset}${blue}\]\w";
 export PS1+="\[${reset}${gray}\]\$(git_branch)";
-export PS1+="\[${reset}${gray_l}\] \j";
-export PS1+="\[${reset}${gray_l}\]:\\$ \[${reset}\]";
+export PS1+="\[${reset}${purple}\] j:\j";
+export PS1+="\[${reset}${gray_l}\]\n\\$ \[${reset}\]";
 # /end prompt
 
 case "$TERM" in

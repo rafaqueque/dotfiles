@@ -21,7 +21,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'hdima/python-syntax', { 'for': ['python'] }
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'benekastah/neomake'
-Plug 'igungor/schellar'
 call plug#end()
 
 "" custom settings
