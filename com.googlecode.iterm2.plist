@@ -1499,7 +1499,7 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>99 166 445 260 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>221 308 606 456 0 0 1280 777 </string>
+	<string>221 279 924 485 0 0 1280 777 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>440 487 400 129 0 0 1280 777 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
@@ -1667,12 +1667,8 @@
 			<true/>
 			<key>Background Color</key>
 			<dict>
-				<key>Alpha Component</key>
-				<real>1</real>
 				<key>Blue Component</key>
 				<real>0.15056121349334717</real>
-				<key>Color Space</key>
-				<string>Calibrated</string>
 				<key>Green Component</key>
 				<real>0.15055865049362183</real>
 				<key>Red Component</key>
@@ -1682,19 +1678,6 @@
 			<false/>
 			<key>Background Image Location</key>
 			<string></string>
-			<key>Badge Color</key>
-			<dict>
-				<key>Alpha Component</key>
-				<real>0.5</real>
-				<key>Blue Component</key>
-				<real>0.0</real>
-				<key>Color Space</key>
-				<string>Calibrated</string>
-				<key>Green Component</key>
-				<real>0.0</real>
-				<key>Red Component</key>
-				<real>1</real>
-			</dict>
 			<key>Blend</key>
 			<real>0.30000001192092896</real>
 			<key>Blink Allowed</key>
@@ -1722,8 +1705,6 @@
 			<integer>120</integer>
 			<key>Command</key>
 			<string></string>
-			<key>Cursor Boost</key>
-			<real>0.0</real>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1732,19 +1713,6 @@
 				<real>0.73333334922790527</real>
 				<key>Red Component</key>
 				<real>0.73333334922790527</real>
-			</dict>
-			<key>Cursor Guide Color</key>
-			<dict>
-				<key>Alpha Component</key>
-				<real>0.25</real>
-				<key>Blue Component</key>
-				<real>1</real>
-				<key>Color Space</key>
-				<string>Calibrated</string>
-				<key>Green Component</key>
-				<real>0.91000000000000003</real>
-				<key>Red Component</key>
-				<real>0.65000000000000002</real>
 			</dict>
 			<key>Cursor Text Color</key>
 			<dict>
@@ -1773,12 +1741,8 @@
 			<false/>
 			<key>Foreground Color</key>
 			<dict>
-				<key>Alpha Component</key>
-				<real>1</real>
 				<key>Blue Component</key>
 				<real>0.7555810809135437</real>
-				<key>Color Space</key>
-				<string>Calibrated</string>
 				<key>Green Component</key>
 				<real>0.75556832551956177</real>
 				<key>Red Component</key>
@@ -2091,33 +2055,20 @@
 					<string>[1;5F</string>
 				</dict>
 			</dict>
-			<key>Link Color</key>
-			<dict>
-				<key>Alpha Component</key>
-				<real>1</real>
-				<key>Blue Component</key>
-				<real>0.67800000000000005</real>
-				<key>Color Space</key>
-				<string>Calibrated</string>
-				<key>Green Component</key>
-				<real>0.27000000000000002</real>
-				<key>Red Component</key>
-				<real>0.023</real>
-			</dict>
 			<key>Log Directory</key>
 			<string></string>
 			<key>Minimum Contrast</key>
-			<real>0.26022019605093366</real>
+			<real>0.26022019982337952</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
-			<string>InputMono-Light 13</string>
+			<string>SourceCodePro-Regular 14</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>SourceCodePro-Regular 13</string>
+			<string>SourceCodePro-Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -2282,11 +2233,7 @@
 			<false/>
 			<key>Use Canonical Parser</key>
 			<false/>
-			<key>Use HFS Plus Mapping</key>
-			<false/>
 			<key>Use Italic Font</key>
-			<false/>
-			<key>Use Non-ASCII Font</key>
 			<false/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
@@ -3043,7 +2990,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>454840667.15418702</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>464693621.78234798</real>
+	<real>466433696.05980998</real>
 	<key>NoSyncTipsDisabled</key>
 	<true/>
 	<key>OnlyWhenMoreTabs</key>
@@ -3116,7 +3063,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-10-06T09:57:30Z</date>
+	<date>2015-10-14T16:33:24Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -3130,7 +3077,7 @@
 	<key>SmartPlacement</key>
 	<true/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.2060271493899517</real>
+	<real>0.20602715015411377</real>
 	<key>SwitchTabModifier</key>
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
@@ -3995,7 +3942,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20150923-nightly</string>
+	<string>2.1.4</string>
 	<key>kCommandHistoryHasEverBeenUsed</key>
 	<true/>
 </dict>
