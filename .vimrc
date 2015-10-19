@@ -7,7 +7,7 @@ filetype off                  " required
 "" Plugins and bundles
 call plug#begin('~/.vim/plugged')
 " Misc
-Plug 'bsl/obviousmode'
+" Plug 'bsl/obviousmode'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle'] }
 " JS
@@ -35,7 +35,7 @@ let g:neomake_python_pep8_maker = {
 autocmd! BufWritePost * Neomake
 
 "" custom statusline
-set statusline=%f%m%r%h%w\ 
+set statusline=%#ErrorMsg#[%{mode()}]%*\ %f%m%r%h%w\ 
 set statusline+=\ %=                        " align left
 set statusline+=%{fugitive#statusline()}
 set statusline+=[%{strlen(&fenc)?&fenc:&enc}]
