@@ -44,6 +44,8 @@ set statusline+=\ [\%c:\%l\/%L]
 let g:PyFlakeDisabledMessages = 'E501'
 let g:PyFlakeMaxLineLength = '100'
 
+let g:goyo_width = 101
+
 set hidden
 set nowrap        " don't wrap lines
 set backspace=indent,eol,start
