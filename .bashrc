@@ -7,8 +7,6 @@ export LS_COLORS="di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43
 export TERM='xterm-256color' 
 export PROMPT_DIRTRIM=2
 
-alias grep="grep --color"
-
 # daily logger
 # usage: doing "stuff ..."
 function insert_daily_log_entry() {
@@ -56,7 +54,7 @@ function git_branch {
     [ -n "$s" ] && s=":$s"
 
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "[${ref#refs/heads/}$s]";
+    echo " [${ref#refs/heads/}$s]";
 }
 
 # colors based on Solarized theme
@@ -98,7 +96,7 @@ fi;
 
 # connected via ssh?
 if [[ "$SSH_TTY" ]] || [[ "$SSH_CONNECTION" ]]; then
-    sshConnection="\[${gray_l}${hl}\][\[${bold}\]ssh\[${reset}${hl}${gray_l}\]:\u@\h]\[${reset}\]"
+    sshConnection="\[${gray_l}${hl}\][\[${bold}\]ssh\[${reset}${hl}${gray_l}\]:\u@\h]\[${reset}\]\n"
 fi
 
 # running inside screen or tmux?
@@ -109,10 +107,9 @@ if [ -n "$STY" ]; then insideScreen="\[${gray}${hl}\][s]\[${reset}\]"; fi
 export PS1="\[${reset}\]${sshConnection}";
 export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
-export PS1+="\[${reset}${blue}\]\W";
-export PS1+="\[${reset}${violet}\]\$(git_branch)";
-export PS1+="\[${reset}${purple}\] \j";
-export PS1+="\[${reset}${gray_l}\]:\\$ \[${reset}\]";
+export PS1+="\[${reset}${orange}\]\w";
+export PS1+="\[${reset}${gray}\]\$(git_branch)";
+export PS1+="\[${reset}${gray_l}\] \\$ \[${reset}\]";
 # /end prompt
 
 case "$TERM" in
