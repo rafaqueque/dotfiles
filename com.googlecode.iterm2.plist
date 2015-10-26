@@ -1704,7 +1704,7 @@
 			<key>Columns</key>
 			<integer>120</integer>
 			<key>Command</key>
-			<string></string>
+			<string>/bin/bash</string>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -2990,7 +2990,7 @@
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>454840667.15418702</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>466433696.05980998</real>
+	<real>467548119.18112701</real>
 	<key>NoSyncTipsDisabled</key>
 	<true/>
 	<key>OnlyWhenMoreTabs</key>
@@ -3063,7 +3063,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-10-14T16:33:24Z</date>
+	<date>2015-10-26T10:18:50Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
