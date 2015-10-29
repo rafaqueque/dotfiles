@@ -39,6 +39,10 @@ brew install brew-cask
 echo Installing latest neovim
 brew tap neovim/homebrew-neovim
 brew install neovim --HEAD
+echo Migrating vimrc config to nvim...
+mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
+ln -s ~/.vim $XDG_CONFIG_HOME/nvim
+ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
 echo Install custom fonts
 brew tap caskroom/fonts

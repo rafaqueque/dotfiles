@@ -21,6 +21,10 @@ Plug 'junegunn/goyo.vim'
 Plug 'hdima/python-syntax', { 'for': ['python'] }
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'benekastah/neomake'
+" Ruby
+Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
+Plug 'tpope/vim-endwise', { 'for': ['ruby', 'eruby'] }
+Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
 call plug#end()
 
 "" custom settings
@@ -35,10 +39,10 @@ let g:neomake_python_pep8_maker = {
 autocmd! BufWritePost * Neomake
 
 "" custom statusline
-set statusline=%#ErrorMsg#[%{mode()}]%*\ %f%m%r%h%w\ 
+set statusline=%#vimAutoEvent#[%{mode()}]%*\ %f%m%r%h%w\ 
 set statusline+=\ %=                        " align left
 set statusline+=%{fugitive#statusline()}
-set statusline+=[%{strlen(&fenc)?&fenc:&enc}]
+set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
 set statusline+=\ [\%c:\%l\/%L]
 
 let g:PyFlakeDisabledMessages = 'E501'
@@ -64,6 +68,8 @@ set title
 set visualbell
 set noerrorbells
 set nobackup
+set backupdir-=.
+set backupdir^=~/tmp,/tmp
 set noswapfile
 set laststatus=2
 set t_Co=256
@@ -128,3 +134,6 @@ endfunction
 noremap <C-t> :below 10sp term://$SHELL<cr>if
 nnoremap <F9> "=strftime("%c")<CR>P
 inoremap <F9> <C-R>=strftime("%c")<CR>
+
+" current highlight group
+" echo synIDattr(synID(line("."),col("."),1),"name")
