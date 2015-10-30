@@ -54,7 +54,7 @@ function git_branch {
     [ -n "$s" ] && s=":$s"
 
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo " [${ref#refs/heads/}$s]";
+    echo -e "\\n[${ref#refs/heads/}$s]";
 }
 
 # colors based on Solarized theme
@@ -104,12 +104,12 @@ if [ -n "$TMUX" ]; then insideTmux="\[${gray}${hl}\][t]\[${reset}\]"; fi
 if [ -n "$STY" ]; then insideScreen="\[${gray}${hl}\][s]\[${reset}\]"; fi
 
 # prompt
-export PS1="\[${reset}\]${sshConnection}";
+export PS1="\[${reset}${gray}\]\$(git_branch)\n";
+export PS1+="\[${reset}\]${sshConnection}";
 export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
 export PS1+="\[${reset}${blue}\]\w";
-export PS1+="\[${reset}${purple}\]\$(git_branch)";
-export PS1+="\[${reset}${violet}\] \\$ \[${reset}\]";
+export PS1+="\[${reset}${violet}\] \j:\\$ \[${reset}\]";
 # /end prompt
 
 case "$TERM" in
@@ -125,5 +125,3 @@ export PATH=/usr/local/sbin:$PATH
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
-source /Users/rafaqueque/.iterm2_shell_integration.bash
