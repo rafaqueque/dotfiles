@@ -7,9 +7,9 @@ filetype off                  " required
 "" Plugins and bundles
 call plug#begin('~/.vim/plugged')
 " Misc
-" Plug 'bsl/obviousmode'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle'] }
+Plug 'itchyny/lightline.vim'
 " JS
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html', 'htmldjango'] }
 Plug 'jelera/vim-javascript-syntax', { 'for': ['javascript', 'html', 'htmldjango'] }
@@ -25,6 +25,8 @@ Plug 'benekastah/neomake'
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-endwise', { 'for': ['ruby', 'eruby'] }
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
+" Themes
+Plug 'chriskempson/base16-vim'
 call plug#end()
 
 "" custom settings
@@ -39,11 +41,28 @@ let g:neomake_python_pep8_maker = {
 autocmd! BufWritePost * Neomake
 
 "" custom statusline
-set statusline=%#vimAutoEvent#[%{mode()}]%*\ %f%m%r%h%w\ 
-set statusline+=\ %=                        " align left
-set statusline+=%{fugitive#statusline()}
-set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
-set statusline+=\ [\%c:\%l\/%L]
+" set statusline=[%{mode()}]%*\ %f%m%r%h%w\ 
+" set statusline+=\ %=                        " align left
+" set statusline+=%{fugitive#statusline()}
+" set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
+" set statusline+=\ [\%c:\%l\/%L]
+
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'absolutepath', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ }
 
 let g:PyFlakeDisabledMessages = 'E501'
 let g:PyFlakeMaxLineLength = '100'
@@ -94,8 +113,17 @@ if &t_Co >= 256 || has("gui_running")
         set go-=L
         set go-=T
     endif
-    set background=light
-    colorscheme flattown
+
+    set background=dark
+    if has('nvim')
+        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+        let base16colorspace=256
+        "colorscheme base16-railscasts
+        colorscheme flattown
+    else
+        colorscheme flattown
+    endif
+
 endif
 
 
