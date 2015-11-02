@@ -1443,16 +1443,10 @@
 	<false/>
 	<key>NSColorPanelMode</key>
 	<string>0</string>
-	<key>NSColorPickerSlidersDefaults</key>
-	<string>0</string>
 	<key>NSFontPanelAttributes</key>
 	<string>1, 4</string>
-	<key>NSFontPanelPreviewHeight</key>
-	<real>3.5</real>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/Development/github/dotfiles</string>
-	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -1478,36 +1472,17 @@
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
-	<key>NSToolbar Configuration Terminal Toolbar</key>
-	<dict>
-		<key>TB Display Mode</key>
-		<integer>3</integer>
-		<key>TB Icon Size Mode</key>
-		<integer>2</integer>
-		<key>TB Is Shown</key>
-		<integer>0</integer>
-		<key>TB Size Mode</key>
-		<integer>1</integer>
-	</dict>
 	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
 	<dict>
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
-	<key>NSWindow Frame NSColorPanel</key>
-	<string>390 256 231 329 0 0 1280 777 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>99 166 445 260 0 0 1280 777 </string>
+	<string>419 177 445 77 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>221 308 606 456 0 0 1280 777 </string>
-	<key>NSWindow Frame SUStatusFrame</key>
-	<string>448 487 384 129 0 0 1280 777 </string>
-	<key>NSWindow Frame UKCrashReporter</key>
-	<string>80 193 592 584 0 0 1280 777 </string>
+	<string>193 302 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1280 778 0 0 1280 777 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
-	<string>152 4 865 586 0 0 1280 778 </string>
+	<string>0 199 852 569 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2068,7 +2043,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Inconsolata-dz 13</string>
+			<string>InputMonoCondensed-Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -2982,17 +2957,21 @@
 		</dict>
 	</array>
 	<key>NoSyncLastTipTime</key>
-	<real>457866267.70063198</real>
+	<real>459560161.42629498</real>
 	<key>NoSyncNeverRemindPrefsChangesLost</key>
 	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>1</integer>
 	<key>NoSyncSuppressAnnyoingBellOffer</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>465468810.50513798</real>
+	<real>468116650.18888098</real>
 	<key>NoSyncTimeOfLastPromo</key>
-	<real>454840667.15418702</real>
+	<real>454890697.46702498</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>467634520.17377102</real>
+	<real>468115722.94354498</real>
 	<key>NoSyncTipsDisabled</key>
 	<true/>
 	<key>OnlyWhenMoreTabs</key>
@@ -3065,7 +3044,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-10-30T10:58:03Z</date>
+	<date>2015-11-01T23:20:49Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -3094,8 +3073,6 @@
 	<integer>10</integer>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>
-	<key>UKCrashReporterLastCrashReportDate</key>
-	<real>1430729216</real>
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UseBorder</key>
@@ -3944,7 +3921,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20150830</string>
+	<string>2.9.20151001</string>
 	<key>kCommandHistoryHasEverBeenUsed</key>
 	<true/>
 </dict>
