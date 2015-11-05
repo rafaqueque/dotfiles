@@ -9,11 +9,10 @@ call plug#begin('~/.vim/plugged')
 " Misc
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle'] }
-Plug 'itchyny/lightline.vim'
 " JS
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html', 'htmldjango'] }
 Plug 'jelera/vim-javascript-syntax', { 'for': ['javascript', 'html', 'htmldjango'] }
-" Markdown
+" Writing
 Plug 'itspriddle/vim-jekyll', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
 Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
 Plug 'junegunn/goyo.vim'
@@ -25,8 +24,6 @@ Plug 'benekastah/neomake'
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-endwise', { 'for': ['ruby', 'eruby'] }
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
-" Themes
-Plug 'chriskempson/base16-vim'
 call plug#end()
 
 "" custom settings
@@ -41,11 +38,11 @@ let g:neomake_python_pep8_maker = {
 autocmd! BufWritePost * Neomake
 
 "" custom statusline
-" set statusline=[%{mode()}]%*\ %f%m%r%h%w\ 
-" set statusline+=\ %=                        " align left
-" set statusline+=%{fugitive#statusline()}
-" set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
-" set statusline+=\ [\%c:\%l\/%L]
+set statusline=[%{mode()}]%*\ %f%m%r%h%w\ 
+set statusline+=\ %=                        " align left
+set statusline+=%{fugitive#statusline()}
+set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
+set statusline+=\ [\%c:\%l\/%L]
 
 let g:lightline = {
       \ 'active': {
@@ -116,8 +113,8 @@ if &t_Co >= 256 || has("gui_running")
 
     set background=dark
     if has('nvim')
-        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-        let base16colorspace=256
+        "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+        "let base16colorspace=256
         "colorscheme base16-railscasts
         colorscheme flattown
     else
@@ -150,10 +147,11 @@ let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
 
 " vim-pencil settings
-autocmd FileType txt,text,markdown,mkd,md call SetTextSettings() 
+autocmd FileType rst,rest,txt,text,markdown,mkd,md call SetTextSettings() 
 function! SetTextSettings()
     set nofoldenable wrap linebreak nolist tw=74
 endfunction
+
 autocmd FileType python call SetPythonSettings()
 function! SetPythonSettings()
     match ErrorMsg '\%>100v.\+'
