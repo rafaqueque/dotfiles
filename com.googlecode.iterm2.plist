@@ -1497,7 +1497,7 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>390 256 231 329 0 0 1280 777 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>512 187 445 143 0 0 1280 777 </string>
+	<string>512 85 445 111 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>221 308 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
@@ -2068,7 +2068,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Inconsolata-dz 12</string>
+			<string>Inconsolata-dz 13</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -3065,7 +3065,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-11-11T10:54:44Z</date>
+	<date>2015-11-12T10:54:42Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
