@@ -10,19 +10,26 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle'] }
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
-Plug 'itchyny/lightline.vim'
+Plug 'benekastah/neomake'
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Themes
 Plug 'chriskempson/base16-vim'
+Plug 'mkarmona/colorsbox'
+
+" Writing
+Plug 'itspriddle/vim-jekyll', { 'for': ['rst' , 'rest', 'md', 'markdown', 'txt', 'liquid'] }
+Plug 'plasticboy/vim-markdown', { 'for': ['rst', 'rest', 'md', 'markdown', 'txt', 'liquid'] }
+Plug 'junegunn/goyo.vim'
+
 " JS
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html', 'htmldjango'] }
 Plug 'jelera/vim-javascript-syntax', { 'for': ['javascript', 'html', 'htmldjango'] }
-" Writing
-Plug 'itspriddle/vim-jekyll', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
-Plug 'tpope/vim-markdown', { 'for': ['md', 'markdown', 'txt', 'liquid'] }
-Plug 'junegunn/goyo.vim'
+
 " Python
 Plug 'hdima/python-syntax', { 'for': ['python'] }
 Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
-Plug 'benekastah/neomake'
+
 " Ruby
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-endwise', { 'for': ['ruby', 'eruby'] }
@@ -35,6 +42,13 @@ syntax on
 
 let g:goyo_width = 101
 
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
 " Linters config
 let g:neomake_python_enabled_makers = ['pep8', 'flake8']
 let g:neomake_python_pep8_maker = {
@@ -43,35 +57,11 @@ let g:neomake_python_pep8_maker = {
     \ }
 autocmd! BufWritePost * Neomake
 
-"" custom statusline
-let g:lightline = {
-      \ 'colorscheme': 'solarized_dark',
-      \ 'component_function': {
-      \   'filename': 'LightLineFilename'
-      \ },
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"[RO]":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ }
-function! LightLineFilename()
-  return expand('%')
-endfunction
-"set statusline=[%{mode()}]%*\ %f%m%r%h%w\ 
-"set statusline+=\ %=                        " align left
-"set statusline+=%{fugitive#statusline()}
-"set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
-"set statusline+=\ [\%c:\%l\/%L]
+set statusline=[%{mode()}]%*\ %{expand('%')}%m%r%h%w\ 
+set statusline+=\ %=                        " align left
+set statusline+=%{fugitive#statusline()}
+set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
+set statusline+=\ [\%c:\%l\/%L]
 
 set hidden
 set nowrap        " don't wrap lines
@@ -112,25 +102,13 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 
 if &t_Co >= 256 || has("gui_running")
-    if has("gui_running")
-        set guifont=Source\ Code\ Pro\ Light:h12
-        set columns=999
-        set linespace=1
-        set go-=r
-        set go-=L
-        set go-=T
-    endif
-
     set background=dark
     if has('nvim')
         let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-        "let base16colorspace=256
-        "colorscheme base16-railscasts
-        colorscheme flattown
+        colorscheme colorsbox-material
     else
-        colorscheme flattown
+        colorscheme colorsbox-material
     endif
-
 endif
 
 

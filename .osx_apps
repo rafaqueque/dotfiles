@@ -27,6 +27,7 @@ brew install tree
 brew install grep --with-default-names
 brew install screen
 brew install ctags
+brew install the_silver_searcher
 
 echo Install pip and other pip-based packages
 sudo easy_install pip

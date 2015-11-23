@@ -1478,7 +1478,7 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>512 90 445 77 0 0 1280 777 </string>
+	<string>512 37 445 77 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>193 302 606 456 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
@@ -2082,7 +2082,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Inconsolata-dz 13</string>
+			<string>Inconsolata-dz 11</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
