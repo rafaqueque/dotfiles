@@ -18,8 +18,8 @@ Plug 'chriskempson/base16-vim'
 Plug 'mkarmona/colorsbox'
 
 " Writing
-Plug 'itspriddle/vim-jekyll', { 'for': ['rst' , 'rest', 'md', 'markdown', 'txt', 'liquid'] }
-Plug 'tpope/vim-markdown', { 'for': ['rst', 'rest', 'md', 'markdown', 'txt', 'liquid'] }
+Plug 'plasticboy/vim-markdown', { 'for': ['rst', 'rest', 'md', 'markdown', 'txt', 'liquid'] }
+Plug 'parkr/vim-jekyll'
 Plug 'junegunn/goyo.vim'
 
 " JS
@@ -103,13 +103,12 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 if &t_Co >= 256 || has("gui_running")
     set background=dark
-    "if has('nvim')
-        "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-        "colorscheme base16-solarized
-    "else
-        "colorscheme base16-solarized
-    "endif
-    colorscheme flattown
+    if has('nvim')
+        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+        colorscheme colorsbox-stbright
+    else
+        colorscheme flattown
+    endif
 endif
 
 
@@ -140,6 +139,7 @@ let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
 
 " vim-pencil settings
+au BufRead,BufNewFile *.mkd,*.md,*.markdown set filetype=liquid
 autocmd FileType rst,rest,txt,text,markdown,mkd,md call SetTextSettings() 
 function! SetTextSettings()
     set nofoldenable wrap linebreak nolist tw=74
