@@ -35,13 +35,13 @@ Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-endwise', { 'for': ['ruby', 'eruby'] }
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
 call plug#end()
-
-"" custom settings
 filetype plugin indent on
 syntax on
 
+" Goyo settings
 let g:goyo_width = 101
 
+" Ctrl-p settings
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 if executable('ag')
@@ -57,12 +57,14 @@ let g:neomake_python_pep8_maker = {
     \ }
 autocmd! BufWritePost * Neomake
 
+" Custom statusline
 set statusline=[%{mode()}]%*\ %{expand('%')}%m%r%h%w\ 
 set statusline+=\ %=                        " align left
 set statusline+=%{fugitive#statusline()}
 set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
 set statusline+=\ [\%c:\%l\/%L]
 
+" Default settings for everything
 set hidden
 set nowrap        " don't wrap lines
 set backspace=indent,eol,start
@@ -100,18 +102,18 @@ set wildignore=*.swp,*.bak,*.pyc,*.class
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
-
+" Color schemes
 if &t_Co >= 256 || has("gui_running")
     set background=dark
     if has('nvim')
         let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-        colorscheme colorsbox-stbright
+        colorscheme colorsbox-material
     else
         colorscheme flattown
     endif
 endif
 
-
+" Custom mappings
 nmap <silent> <F8> :TagbarToggle<CR>
 nmap <silent> <C-e> :NERDTreeToggle<CR>
 nnoremap <F5> :call ToggleMouse()<CR>
@@ -138,16 +140,29 @@ let g:netrw_list_hide = "\.pyc,\.swp,\.bak,\.git"
 let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
 
-" vim-pencil settings
+" Writings settings
 au BufRead,BufNewFile *.mkd,*.md,*.markdown set filetype=liquid
 autocmd FileType rst,rest,txt,text,markdown,mkd,md call SetTextSettings() 
 function! SetTextSettings()
     set nofoldenable wrap linebreak nolist tw=74
 endfunction
 
+" Python settings
 autocmd FileType python call SetPythonSettings()
 function! SetPythonSettings()
     match ErrorMsg '\%>100v.\+'
+    set expandtab
+    set tabstop=4 shiftwidth=4 softtabstop=4
+    set autoindent
+    set smarttab
+endfunction
+
+" Ruby settings
+autocmd FileType ruby,eruby call SetRubySettings()
+function! SetRubySettings()
+    set expandtab
+    set tabstop=2 shiftwidth=2 softtabstop=2
+    set autoindent
 endfunction
 
 " current highlight group
