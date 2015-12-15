@@ -108,8 +108,8 @@ export PS1="\[${reset}\]${sshConnection}";
 export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
 export PS1+="\[${reset}${blue}\]\w";
-export PS1+="\[${reset}${gray}\]\$(git_branch)";
-export PS1+="\[${reset}${violet}\] \j:\\$ \[${reset}\]";
+export PS1+="\[${reset}${violet}\]\$(git_branch)";
+export PS1+="\[${reset}${purple}\] \j:\\$ \[${reset}\]";
 # /end prompt
 
 case "$TERM" in
@@ -125,3 +125,7 @@ export PATH=/usr/local/sbin:$PATH
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

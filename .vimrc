@@ -107,7 +107,7 @@ if &t_Co >= 256 || has("gui_running")
     set background=dark
     if has('nvim')
         let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-        colorscheme base16-ocean
+        colorscheme base16-default
     else
         colorscheme flattown
     endif
