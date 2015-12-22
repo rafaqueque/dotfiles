@@ -12,10 +12,14 @@ Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle'] }
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
 Plug 'benekastah/neomake'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'bronson/vim-trailing-whitespace', { 'on': ['FixWhitespace'] }
 
 " Themes
 Plug 'chriskempson/base16-vim'
 Plug 'mkarmona/colorsbox'
+Plug 'adampasz/vim-stonewashed'
+Plug 'whatyouhide/vim-gotham'
+Plug 'kristijanhusak/vim-hybrid-material'
 
 " Writing
 Plug 'plasticboy/vim-markdown', { 'for': ['rst', 'rest', 'md', 'markdown', 'txt', 'liquid'] }
@@ -107,7 +111,7 @@ if &t_Co >= 256 || has("gui_running")
     set background=dark
     if has('nvim')
         let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-        colorscheme base16-default
+        colorscheme hybrid_material
     else
         colorscheme flattown
     endif
