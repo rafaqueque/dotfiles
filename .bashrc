@@ -2,6 +2,7 @@
 export PATH=/usr/local/bin/:/opt/local/bin:/opt/local/sbin:$PATH
 export CLICOLOR=1
 export LSCOLORS="gxfxcxdxbxegedabagacad"    # osx
+export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export LS_COLORS="di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"  # linux
 # export GREP_OPTIONS='--color=auto'
 export TERM='xterm-256color' 
@@ -12,7 +13,7 @@ export PROMPT_DIRTRIM=2
 function insert_daily_log_entry() {
     # some vars
     doing_message="$@"
-    doing_dir=~/daily_logger/
+    doing_dir=~/Google\ Drive/daily_logger/
     doing_file="log_$(date '+%d-%m-%y').txt"
     doing_output=$doing_dir$doing_file
 
@@ -108,8 +109,8 @@ export PS1="\[${reset}\]${sshConnection}";
 export PS1+="\[${reset}\]${insideTmux}";
 export PS1+="\[${reset}\]${insideScreen}";
 export PS1+="\[${reset}${blue}\]\w";
-export PS1+="\[${reset}${violet}\]\$(git_branch)";
-export PS1+="\[${reset}${purple}\] \j:\\$ \[${reset}\]";
+export PS1+="\[${reset}${purple}\]\$(git_branch)";
+export PS1+="\[${reset}${violet}\] \j:\\$ \[${reset}\]";
 # /end prompt
 
 case "$TERM" in
@@ -126,6 +127,14 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+shopt -s histappend
+PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# bash completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi

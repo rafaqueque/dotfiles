@@ -17,9 +17,10 @@ Plug 'bronson/vim-trailing-whitespace', { 'on': ['FixWhitespace'] }
 " Themes
 Plug 'chriskempson/base16-vim'
 Plug 'mkarmona/colorsbox'
-Plug 'adampasz/vim-stonewashed'
-Plug 'whatyouhide/vim-gotham'
-Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'morhetz/gruvbox'
+Plug 'ajh17/Spacegray.vim'
+Plug 'reedes/vim-colors-pencil'
+Plug 'adampasz/stonewashed-themes'
 
 " Writing
 Plug 'plasticboy/vim-markdown', { 'for': ['rst', 'rest', 'md', 'markdown', 'txt', 'liquid'] }
@@ -37,7 +38,9 @@ Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
 " Ruby
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
 Plug 'tpope/vim-endwise', { 'for': ['ruby', 'eruby'] }
-Plug 'vim-ruby/vim-ruby', { 'for': ['ruby', 'eruby'] }
+
+" Elixir
+Plug 'elixir-lang/vim-elixir', { 'for': ['elixir'] }
 call plug#end()
 filetype plugin indent on
 syntax on
@@ -108,13 +111,21 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 " Color schemes
 if &t_Co >= 256 || has("gui_running")
-    set background=dark
     if has('nvim')
         let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-        colorscheme hybrid_material
-    else
-        colorscheme flattown
     endif
+
+    " Change automatically between solarized dark and light variant
+    " depending on hours.
+    " let hour = strftime("%H")
+    " if 6 <= hour && hour < 18
+    "     set background=light
+    " else
+    "     set background=dark
+    " endif
+    set background=dark
+    colorscheme base16-default
+
 endif
 
 " Custom mappings
@@ -145,7 +156,7 @@ let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
 
 " Writings settings
-au BufRead,BufNewFile *.mkd,*.md,*.markdown set filetype=liquid
+au BufRead,BufNewFile *.mkd,*.md,*.markdown set filetype=markdown
 autocmd FileType rst,rest,txt,text,markdown,mkd,md call SetTextSettings() 
 function! SetTextSettings()
     set nofoldenable wrap linebreak nolist tw=74

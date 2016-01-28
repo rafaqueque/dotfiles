@@ -28,6 +28,7 @@ brew install grep --with-default-names
 brew install screen
 brew install ctags
 brew install the_silver_searcher
+brew install elixir
 
 echo Install pip and other pip-based packages
 sudo easy_install pip
@@ -51,14 +52,14 @@ brew cask install font-input            # coding font
 brew cask install font-droid-sans-mono  # coding font
 brew cask install font-dejavu-sans      # coding font
 brew cask install font-source-code-pro  # coding font
+brew cask install font-inconsolata-dz
  
 echo Install main apps 
 brew cask install alfred
 brew cask install caffeine
 brew cask install chromecast
 brew cask install coconutbattery
-brew cask install firefox
-brew cask install google-chrome 
+brew cask install google-chrome-dev
 brew cask install iterm2
 brew cask install onyx
 brew cask install spotify
@@ -66,7 +67,7 @@ brew cask install trim-enabler
 brew cask install vagrant
 brew cask install virtualbox
 brew cask install vlc
-brew cask install shuttle
+brew cask install flux
 
 echo Linking apps to Alfred
 brew cask alfred link
