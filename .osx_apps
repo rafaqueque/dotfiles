@@ -29,6 +29,7 @@ brew install screen
 brew install ctags
 brew install the_silver_searcher
 brew install elixir
+brew install mongodb
 
 echo Install pip and other pip-based packages
 sudo easy_install pip
@@ -60,7 +61,7 @@ brew cask install caffeine
 brew cask install chromecast
 brew cask install coconutbattery
 brew cask install google-chrome-dev
-brew cask install iterm2
+brew cask install iterm2-beta
 brew cask install onyx
 brew cask install spotify
 brew cask install trim-enabler
