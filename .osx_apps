@@ -7,12 +7,17 @@ echo Install San Francisco as the default font system-wide
 ruby -e "$(curl -fsSL https://raw.github.com/supermarin/YosemiteSanFranciscoFont/master/install)"
 
 echo Install Homebrew, brew-cask and some other tools
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 
 brew tap homebrew/dupes     # required to have some Linux stuff in here
 brew tap caskroom/versions  # required to have chrome beta and so on
+
+echo Installing latest bash and changing shells
 brew install bash
+sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
+chsh -s /usr/local/bin/bash 
+
 brew install readline
 brew install coreutils
 brew install wget
