@@ -21,6 +21,7 @@ Plug 'morhetz/gruvbox'
 Plug 'ajh17/Spacegray.vim'
 Plug 'reedes/vim-colors-pencil'
 Plug 'adampasz/stonewashed-themes'
+Plug 'AlessandroYorba/Sierra'
 
 " Writing
 Plug 'plasticboy/vim-markdown', { 'for': ['rst', 'rest', 'md', 'markdown', 'txt', 'liquid'] }
@@ -123,6 +124,7 @@ if &t_Co >= 256 || has("gui_running")
     " else
     "     set background=dark
     " endif
+    " let g:sierra_Pitch = 1
     set background=dark
     colorscheme base16-default
 

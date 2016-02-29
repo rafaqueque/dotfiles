@@ -1441,12 +1441,12 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
-	<key>NSColorPanelMode</key>
-	<string>0</string>
 	<key>NSFontPanelAttributes</key>
 	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/Development/github/dotfiles</string>
+	<key>NSNavPanelExpandedSizeForOpenMode</key>
+	<string>{712, 459}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -1477,10 +1477,10 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
-	<key>NSWindow Frame NSFontPanel</key>
-	<string>516 289 445 77 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>193 317 606 456 0 0 1280 777 </string>
+	<string>269 313 606 456 0 0 1280 777 </string>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>330 289 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 1280 778 0 0 1280 777 </string>
 	<key>New Bookmarks</key>
@@ -2298,7 +2298,7 @@
 			<key>Use Non-ASCII Font</key>
 			<false/>
 			<key>Vertical Spacing</key>
-			<real>1.0033532567771082</real>
+			<real>1</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
@@ -3128,24 +3128,12 @@
 			<string>/Users/rafaqueque</string>
 		</dict>
 	</array>
-	<key>NoSyncLastTipTime</key>
-	<real>459560161.42629498</real>
-	<key>NoSyncNeverRemindPrefsChangesLost</key>
-	<true/>
-	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
-	<true/>
-	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
-	<integer>1</integer>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncSuppressAnnyoingBellOffer</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>468116650.18888098</real>
-	<key>NoSyncTimeOfLastPromo</key>
-	<real>454890697.46702498</real>
-	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>468115722.94354498</real>
-	<key>NoSyncTipsDisabled</key>
-	<true/>
+	<real>475689334.63879198</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -3205,18 +3193,18 @@
 	<integer>8</integer>
 	<key>RightOption</key>
 	<integer>3</integer>
-	<key>SUAutomaticallyUpdate</key>
-	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>http://iterm2.com/appcasts/final.xml</string>
+	<string>https://iterm2.com/appcasts/final.xml</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-01-26T15:03:23Z</date>
+	<date>2016-02-12T10:29:15Z</date>
+	<key>SUSendProfileInfo</key>
+	<false/>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -4093,7 +4081,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20151001</string>
+	<string>2.9.20160113</string>
 	<key>kCommandHistoryHasEverBeenUsed</key>
 	<true/>
 </dict>
