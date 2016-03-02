@@ -112,9 +112,9 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 " Color schemes
 if &t_Co >= 256 || has("gui_running")
-    if has('nvim')
-        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    endif
+    " if has('nvim')
+    "     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    " endif
 
     " Change automatically between solarized dark and light variant
     " depending on hours.
@@ -124,9 +124,9 @@ if &t_Co >= 256 || has("gui_running")
     " else
     "     set background=dark
     " endif
-    " let g:sierra_Pitch = 1
     set background=dark
-    colorscheme base16-default
+    colorscheme flattown
+    " colorscheme stonewashed-256
 
 endif
 
@@ -147,6 +147,8 @@ function! ToggleMouse()
     echo "Mouse usage enabled"
   endif
 endfunction
+
+let g:python_highlight_all = 1
 
 " Sidebar explorer configs
 let NERDTreeIgnore = ['\.pyc$', '\.swp$', '\.bak$', '\.git$']

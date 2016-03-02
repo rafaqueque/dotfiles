@@ -54,6 +54,8 @@ ln -s ~/.vimrc $XDG_CONFIG_HOME/nvim/init.vim
 
 echo Install custom fonts
 brew tap caskroom/fonts
+brew tap colindean/fonts-nonfree
+brew cask install font-microsoft-office
 brew cask install font-input            # coding font
 brew cask install font-droid-sans-mono  # coding font
 brew cask install font-dejavu-sans      # coding font
