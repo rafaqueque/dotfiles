@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+set termguicolors
 filetype off                  " required
 
 "" Install vim-plug
@@ -8,40 +9,43 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 " Misc
 Plug 'tpope/vim-fugitive'
-Plug 'majutsushi/tagbar', { 'on': ['TagbarToggle'] }
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle'] }
 Plug 'benekastah/neomake'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'bronson/vim-trailing-whitespace', { 'on': ['FixWhitespace'] }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'janko-m/vim-test'
+Plug 'blueyed/vim-diminactive'
+Plug 'mptre/vim-printf'
+Plug 'ciaranm/detectindent'
+Plug 'MattesGroeger/vim-bookmarks'
 
 " Themes
 Plug 'chriskempson/base16-vim'
-Plug 'mkarmona/colorsbox'
-Plug 'morhetz/gruvbox'
-Plug 'ajh17/Spacegray.vim'
-Plug 'reedes/vim-colors-pencil'
-Plug 'adampasz/stonewashed-themes'
-Plug 'AlessandroYorba/Sierra'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'w0ng/vim-hybrid'
+Plug 'rakr/vim-one'
+Plug 'iCyMind/NeoSolarized'
 
 " Writing
-Plug 'plasticboy/vim-markdown', { 'for': ['rst', 'rest', 'md', 'markdown', 'txt', 'liquid'] }
+Plug 'plasticboy/vim-markdown'
 Plug 'parkr/vim-jekyll'
 Plug 'junegunn/goyo.vim'
 
-" JS
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'html', 'htmldjango'] }
-Plug 'jelera/vim-javascript-syntax', { 'for': ['javascript', 'html', 'htmldjango'] }
+" Javascript
+Plug 'jelera/vim-javascript-syntax'
 
 " Python
-Plug 'hdima/python-syntax', { 'for': ['python'] }
-Plug 'hynek/vim-python-pep8-indent', { 'for': ['python'] }
+Plug 'hdima/python-syntax'
+Plug 'hynek/vim-python-pep8-indent'
 
-" Ruby
-Plug 'tpope/vim-rails', { 'for': ['ruby', 'eruby'] }
-Plug 'tpope/vim-endwise', { 'for': ['ruby', 'eruby'] }
+" Elixir & Ruby
+Plug 'elixir-lang/vim-elixir'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-endwise'
 
-" Elixir
-Plug 'elixir-lang/vim-elixir', { 'for': ['elixir'] }
+" Kotlin
+Plug 'udalov/kotlin-vim'
+
+
 call plug#end()
 filetype plugin indent on
 syntax on
@@ -50,12 +54,17 @@ syntax on
 let g:goyo_width = 101
 
 " Ctrl-p settings
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
+" if executable('ag')
+"   set grepprg=ag\ --nogroup\ --nocolor
+"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g \""'
+" endif
+" if executable('fzf')
+"   let g:ctrlp_user_command = 'fzf'
+" endif
+map <C-p> :FZF<cr>
+nmap <C-p> :FZF<cr>
 
 " Linters config
 let g:neomake_python_enabled_makers = ['pep8', 'flake8']
@@ -66,15 +75,16 @@ let g:neomake_python_pep8_maker = {
 autocmd! BufWritePost * Neomake
 
 " Custom statusline
-set statusline=[%{mode()}]%*\ %{expand('%')}%m%r%h%w\ 
+set statusline=[%{mode()}]%*\ %1*%{expand('%')}%*%m%r%h%w\ 
 set statusline+=\ %=                        " align left
-set statusline+=%{fugitive#statusline()}
+set statusline+=%2*%{fugitive#statusline()}%*
 set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
 set statusline+=\ [\%c:\%l\/%L]
 
 " Default settings for everything
 set hidden
 set nowrap        " don't wrap lines
+set list
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
 set nonumber        " always show line numbers
@@ -106,6 +116,7 @@ set encoding=utf-8
 set nopaste
 set pastetoggle=<F7>
 set nofoldenable    " disable folding
+set nosol
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
@@ -113,21 +124,10 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 " Color schemes
 if &t_Co >= 256 || has("gui_running")
     " if has('nvim')
-    "     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-    " endif
-
-    " Change automatically between solarized dark and light variant
-    " depending on hours.
-    " let hour = strftime("%H")
-    " if 6 <= hour && hour < 18
-    "     set background=light
-    " else
-    "     set background=dark
+    " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     " endif
     set background=dark
-    colorscheme flattown
-    " colorscheme stonewashed-256
-
+    colorscheme PaperColor
 endif
 
 " Custom mappings
@@ -160,10 +160,11 @@ let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
 
 " Writings settings
-au BufRead,BufNewFile *.mkd,*.md,*.markdown set filetype=markdown
-autocmd FileType rst,rest,txt,text,markdown,mkd,md call SetTextSettings() 
+autocmd FileType rst,rest,txt,text,markdown,mkd,md call SetTextSettings()
 function! SetTextSettings()
     set nofoldenable wrap linebreak nolist tw=74
+    set background=dark
+    colorscheme PaperColor
 endfunction
 
 " Python settings
@@ -177,12 +178,21 @@ function! SetPythonSettings()
 endfunction
 
 " Ruby settings
-autocmd FileType ruby,eruby call SetRubySettings()
+autocmd FileType ruby,eruby,javascript call SetRubySettings()
 function! SetRubySettings()
     set expandtab
     set tabstop=2 shiftwidth=2 softtabstop=2
     set autoindent
 endfunction
+
+hi User1 cterm=bold gui=bold ctermfg=yellow ctermbg=darkgreen guifg=yellow guibg=darkgreen
+hi User2 cterm=bold gui=bold ctermfg=red ctermbg=darkgreen guifg=red guibg=darkgreen
+hi StatusLine cterm=none gui=none ctermfg=white ctermbg=darkgreen guifg=white guibg=darkgreen
+hi TabLineFill ctermfg=white ctermbg=green guifg=white guibg=green
+hi TabLine ctermfg=white ctermbg=green guifg=white guibg=green
+hi TabLineSel cterm=bold gui=bold ctermfg=white ctermbg=darkgreen guifg=white guibg=darkgreen
+
+autocmd BufReadPost * :DetectIndent
 
 " current highlight group
 " echo synIDattr(synID(line("."),col("."),1),"name")
