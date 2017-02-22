@@ -14,37 +14,23 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'janko-m/vim-test'
 Plug 'blueyed/vim-diminactive'
-Plug 'mptre/vim-printf'
 Plug 'ciaranm/detectindent'
-Plug 'MattesGroeger/vim-bookmarks'
+Plug 'hashivim/vim-terraform'
+Plug 'vim-scripts/smarty-syntax'
+
+Plug 'parkr/vim-jekyll'
+Plug 'junegunn/goyo.vim'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'tpope/vim-endwise'
+Plug 'sheerun/vim-polyglot'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'airblade/vim-gitgutter'
 
 " Themes
 Plug 'chriskempson/base16-vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'w0ng/vim-hybrid'
-Plug 'rakr/vim-one'
-Plug 'iCyMind/NeoSolarized'
-
-" Writing
-Plug 'plasticboy/vim-markdown'
-Plug 'parkr/vim-jekyll'
-Plug 'junegunn/goyo.vim'
-
-" Javascript
-Plug 'jelera/vim-javascript-syntax'
-
-" Python
-Plug 'hdima/python-syntax'
-Plug 'hynek/vim-python-pep8-indent'
-
-" Elixir & Ruby
-Plug 'elixir-lang/vim-elixir'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-endwise'
-
-" Kotlin
-Plug 'udalov/kotlin-vim'
-
+Plug 'rhysd/vim-color-spring-night'
+Plug 'bruth/vim-newsprint-theme'
 
 call plug#end()
 filetype plugin indent on
@@ -52,6 +38,10 @@ syntax on
 
 " Goyo settings
 let g:goyo_width = 101
+let g:deoplete#enable_at_startup = 1
+let g:gitgutter_sign_column_always = 1
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
 
 " Ctrl-p settings
 " let g:ctrlp_map = '<c-p>'
@@ -67,6 +57,9 @@ map <C-p> :FZF<cr>
 nmap <C-p> :FZF<cr>
 
 " Linters config
+let g:neomake_kotlin_ktlint_maker = {}
+let g:neomake_kotlin_enabled_makers = ['ktlint']
+
 let g:neomake_python_enabled_makers = ['pep8', 'flake8']
 let g:neomake_python_pep8_maker = {
     \ 'args': ['--max-line-length 99'],
@@ -126,7 +119,9 @@ if &t_Co >= 256 || has("gui_running")
     " if has('nvim')
     " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
     " endif
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
     set background=dark
+    " colorscheme base16-default-dark
     colorscheme PaperColor
 endif
 
@@ -163,8 +158,8 @@ let g:netrw_liststyle = 1
 autocmd FileType rst,rest,txt,text,markdown,mkd,md call SetTextSettings()
 function! SetTextSettings()
     set nofoldenable wrap linebreak nolist tw=74
-    set background=dark
-    colorscheme PaperColor
+    set background=light
+    colorscheme newsprint
 endfunction
 
 " Python settings

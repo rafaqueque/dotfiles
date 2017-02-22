@@ -5,7 +5,7 @@ antigen bundle git
 antigen bundle z
 
 setopt NO_EXTENDED_GLOB
-export PROMPT='%{$FG[138]%}%2~%{$FG[141]%}$(git_prompt_info) %{$fg[red]%}%(1j.j:%j .)%{$reset_color%}%{%(#~$FG[160]~$FG[155])%}%#%{$fg[default]%} '
+export PROMPT='%{%B$FG[157]%}%2~%{$reset_color$FG[154]%}$(git_prompt_info) %{$FG[161]%}%(1j.j:%j .)%{$reset_color%}%{%(#~$fg[red]~$fg[red])%}%#%{$fg[default]%} %{$reset_color%}'
 export ZSH_THEME_GIT_PROMPT_PREFIX="["
 export ZSH_THEME_GIT_PROMPT_SUFFIX="]"
 export ZSH_THEME_GIT_PROMPT_DIRTY=":!"
