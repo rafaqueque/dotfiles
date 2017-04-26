@@ -15,22 +15,31 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'janko-m/vim-test'
 Plug 'blueyed/vim-diminactive'
 Plug 'ciaranm/detectindent'
-Plug 'hashivim/vim-terraform'
-Plug 'vim-scripts/smarty-syntax'
-
-Plug 'parkr/vim-jekyll'
-Plug 'junegunn/goyo.vim'
-Plug 'hynek/vim-python-pep8-indent'
 Plug 'tpope/vim-endwise'
-Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
+Plug 'jiangmiao/auto-pairs'
+
+" Language specific
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'vim-scripts/smarty-syntax'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'elixir-lang/vim-elixir'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'udalov/kotlin-vim'
+Plug 'suan/vim-instant-markdown'
+Plug 'mustache/vim-mustache-handlebars'
 
 " Themes
 Plug 'chriskempson/base16-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'rhysd/vim-color-spring-night'
 Plug 'bruth/vim-newsprint-theme'
+
+" Docs
+Plug 'mhinz/vim-rfc'
+Plug 'vim-scripts/rfc-syntax', { 'for': 'rfc' }
+Plug 'parkr/vim-jekyll'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 filetype plugin indent on
@@ -39,7 +48,6 @@ syntax on
 " Goyo settings
 let g:goyo_width = 101
 let g:deoplete#enable_at_startup = 1
-let g:gitgutter_sign_column_always = 1
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 
@@ -68,9 +76,9 @@ let g:neomake_python_pep8_maker = {
 autocmd! BufWritePost * Neomake
 
 " Custom statusline
-set statusline=[%{mode()}]%*\ %1*%{expand('%')}%*%m%r%h%w\ 
+set statusline=[%{mode()}]%*\ %{expand('%')}%*%m%r%h%w\ 
 set statusline+=\ %=                        " align left
-set statusline+=%2*%{fugitive#statusline()}%*
+set statusline+=%{fugitive#statusline()}%*
 set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
 set statusline+=\ [\%c:\%l\/%L]
 
@@ -121,7 +129,6 @@ if &t_Co >= 256 || has("gui_running")
     " endif
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
     set background=dark
-    " colorscheme base16-default-dark
     colorscheme PaperColor
 endif
 
@@ -155,17 +162,15 @@ let g:netrw_special_syntax = 1
 let g:netrw_liststyle = 1
 
 " Writings settings
-autocmd FileType rst,rest,txt,text,markdown,mkd,md call SetTextSettings()
+autocmd FileType rst,rest,txt,text,markdown,mkd,md,rfc call SetTextSettings()
 function! SetTextSettings()
-    set nofoldenable wrap linebreak nolist tw=74
-    set background=light
-    colorscheme newsprint
+    set wrap nolist tw=74
 endfunction
 
 " Python settings
 autocmd FileType python call SetPythonSettings()
 function! SetPythonSettings()
-    match ErrorMsg '\%>100v.\+'
+    match errormsg '\%>100v.\+'
     set expandtab
     set tabstop=4 shiftwidth=4 softtabstop=4
     set autoindent
@@ -175,6 +180,7 @@ endfunction
 " Ruby settings
 autocmd FileType ruby,eruby,javascript call SetRubySettings()
 function! SetRubySettings()
+    match errormsg '\%>100v.\+'
     set expandtab
     set tabstop=2 shiftwidth=2 softtabstop=2
     set autoindent
