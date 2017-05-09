@@ -24,6 +24,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-scripts/smarty-syntax'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'udalov/kotlin-vim'
 Plug 'suan/vim-instant-markdown'
