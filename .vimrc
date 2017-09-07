@@ -6,41 +6,50 @@ filetype off                  " required
 "" $ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 "" Plugins and bundles
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent execute "!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 " Misc
 Plug 'tpope/vim-fugitive'
 Plug 'benekastah/neomake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'janko-m/vim-test'
 Plug 'blueyed/vim-diminactive'
-Plug 'ciaranm/detectindent'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
+Plug 'janko-m/vim-test'
+Plug 'mhinz/vim-startify'
 
 " Language specific
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'vim-scripts/smarty-syntax'
+Plug 'vim-ruby/vim-ruby'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'udalov/kotlin-vim'
-Plug 'suan/vim-instant-markdown'
-Plug 'mustache/vim-mustache-handlebars'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'stephpy/vim-yaml'
 
 " Themes
 Plug 'chriskempson/base16-vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'rhysd/vim-color-spring-night'
-Plug 'bruth/vim-newsprint-theme'
+Plug 'tpope/vim-vividchalk'
+" Others:
+" 'rhysd/vim-color-spring-night'
+" 'bruth/vim-newsprint-theme'
+" 'bluz71/vim-moonfly-statusline'
+" 'rakr/vim-one'
+" 'tyrannicaltoucan/vim-quantum'
 
 " Docs
-Plug 'mhinz/vim-rfc'
-Plug 'vim-scripts/rfc-syntax', { 'for': 'rfc' }
 Plug 'parkr/vim-jekyll'
 Plug 'junegunn/goyo.vim'
+Plug 'tpope/vim-markdown'
+Plug 'suan/vim-instant-markdown'
 
 call plug#end()
 filetype plugin indent on
@@ -51,6 +60,8 @@ let g:goyo_width = 101
 let g:deoplete#enable_at_startup = 1
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
+
+let g:jsx_ext_required = 0
 
 " Ctrl-p settings
 " let g:ctrlp_map = '<c-p>'
@@ -69,6 +80,8 @@ nmap <C-p> :FZF<cr>
 let g:neomake_kotlin_ktlint_maker = {}
 let g:neomake_kotlin_enabled_makers = ['ktlint']
 
+let g:neomake_javascript_enabled_makers = ['eslint']
+
 let g:neomake_python_enabled_makers = ['pep8', 'flake8']
 let g:neomake_python_pep8_maker = {
     \ 'args': ['--max-line-length 99'],
@@ -76,12 +89,14 @@ let g:neomake_python_pep8_maker = {
     \ }
 autocmd! BufWritePost * Neomake
 
+let test#strategy = "neovim"
+
 " Custom statusline
-set statusline=[%{mode()}]%*\ %{expand('%')}%*%m%r%h%w\ 
-set statusline+=\ %=                        " align left
-set statusline+=%{fugitive#statusline()}%*
-set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
-set statusline+=\ [\%c:\%l\/%L]
+" set statusline=[%{mode()}]%*\ %{expand('%')}%*%m%r%h%w\ 
+" set statusline+=\ %=                        " align left
+" set statusline+=%{fugitive#statusline()}%*
+" set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
+" set statusline+=\ [\%c:\%l\/%L]
 
 " Default settings for everything
 set hidden
@@ -102,6 +117,7 @@ set title
 set visualbell
 set noerrorbells
 set nobackup
+set nocursorline
 set backupdir-=.
 set backupdir^=~/tmp,/tmp
 set noswapfile
@@ -179,9 +195,8 @@ function! SetPythonSettings()
 endfunction
 
 " Ruby settings
-autocmd FileType ruby,eruby,javascript call SetRubySettings()
+autocmd FileType ruby call SetRubySettings()
 function! SetRubySettings()
-    match errormsg '\%>100v.\+'
     set expandtab
     set tabstop=2 shiftwidth=2 softtabstop=2
     set autoindent
@@ -194,7 +209,43 @@ hi TabLineFill ctermfg=white ctermbg=green guifg=white guibg=green
 hi TabLine ctermfg=white ctermbg=green guifg=white guibg=green
 hi TabLineSel cterm=bold gui=bold ctermfg=white ctermbg=darkgreen guifg=white guibg=darkgreen
 
-autocmd BufReadPost * :DetectIndent
-
 " current highlight group
 " echo synIDattr(synID(line("."),col("."),1),"name")
+
+" Copy to clip board
+set clipboard=unnamed
+
+autocmd User Startified setlocal cursorline
+
+let g:mucomplete#enable_auto_at_startup = 1
+
+let g:startify_enable_special         = 0
+let g:startify_files_number           = 5
+let g:startify_relative_path          = 1
+let g:startify_change_to_dir          = 1
+let g:startify_update_oldfiles        = 1
+let g:startify_session_autoload       = 1
+let g:startify_session_persistence    = 1
+
+let g:startify_skiplist = [
+        \ 'COMMIT_EDITMSG',
+        \ 'bundle/.*/doc',
+        \ ]
+
+let g:startify_bookmarks = [
+        \ { 'v': '~/.vimrc' },
+        \ { 'z': '~/.zshrc' },
+        \ ]
+
+let g:startify_commands = [
+        \ {'p': ':PlugUpdate'},
+        \ ]
+
+hi StartifyBracket ctermfg=240
+hi StartifyFile    ctermfg=147
+hi StartifyFooter  ctermfg=240
+hi StartifyHeader  ctermfg=114
+hi StartifyNumber  ctermfg=215
+hi StartifyPath    ctermfg=245
+hi StartifySlash   ctermfg=240
+hi StartifySpecial ctermfg=240
