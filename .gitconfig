@@ -14,7 +14,7 @@
 	today = log --since=\"6am\" --pretty=\"oneline\" --author=\"Rafael Albuquerque\"
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [core]
-	editor = /usr/bin/vim
+	editor = nvim
 [color "branch"]
     current = green
     local = white
@@ -23,3 +23,8 @@
     added = green
     changed = red
     untracked = yellow
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

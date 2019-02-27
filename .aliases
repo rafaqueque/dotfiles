@@ -1,0 +1,12 @@
+alias vi=nvim
+alias vim=nvim
+alias grep='grep -n --color'
+alias ggrep='grep -Iirn3 $@'
+
+alias br_cli='docker run --rm cli src/manage.py $@'
+alias br_up='docker-compose up -d'
+alias br_debug='docker-compose stop web && docker-compose run --rm --service-ports web'
+alias br_status='docker-compose ps'
+alias br_logs='docker-compose logs -f $@'
+alias br_tests='make --makefile Makefile.local test_all'
+alias br_test='make --makefile Makefile.local test path=$@'
