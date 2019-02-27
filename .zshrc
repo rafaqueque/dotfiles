@@ -5,6 +5,7 @@ antigen bundle git
 antigen bundle z
 antigen bundle virtualenv
 antigen bundle tonyseek/oh-my-zsh-virtualenv-prompt
+antigen bundle bobsoppe/zsh-ssh-agent
 antigen apply
 
 export PROMPT='%{%B$FG[157]%}%2~%{$reset_color$FG[154]%}$(git_prompt_info)%{$reset_color$FG[153]%}$(virtualenv_prompt_info) %{$FG[161]%}%(1j.j:%j .)%{$reset_color%}%{%(#~$fg[red]~$fg[red])%}%#%{$fg[default]%} %{$reset_color%}'
@@ -21,7 +22,6 @@ source ~/.aliases
 export TERM='xterm-256color'
 export EDITOR=nvim
 export DEFAULT_USER=$(whoami)
-export HOMEBREW_CASK_OPTS="--caskroom=/opt/homebrew-cask/Caskroom"
 export PATH=/usr/local/sbin:$PATH
 export PATH="$(brew --prefix ruby)/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# echo Install oh-my-zsh
-# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+echo Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 echo Install San Francisco as the default font system-wide
 ruby -e "$(curl -fsSL https://raw.github.com/supermarin/YosemiteSanFranciscoFont/master/install)"
@@ -35,6 +35,7 @@ brew install ctags
 brew install the_silver_searcher
 brew install elixir
 brew install mongodb
+brew install antigen
 
 echo Install pip and other pip-based packages
 sudo easy_install pip
@@ -76,6 +77,8 @@ brew cask install vagrant
 brew cask install virtualbox
 brew cask install vlc
 brew cask install flux
+brew cask install spectacle
+brew cask install karabiner
 
 echo Linking apps to Alfred
 brew cask alfred link
