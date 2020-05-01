@@ -15,16 +15,16 @@ mkdir -p /var/www/
 mkdir -p /etc/nginx/sites-available/
 
 # Copy the default configuration and create symlink
-sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$website
-sudo ln -s /etc/nginx/sites-available/$website /etc/nginx/sites-enabled/$website
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$website.conf
+sudo ln -s /etc/nginx/sites-available/$website.conf /etc/nginx/sites-enabled/$website.conf
 
 # Create www folder
 echo "* Create 'www' folder for $website";
 mkdir /var/www/$website
 
 # Create public_html folder
-echo "* Creating 'public_html' for $website";
-mkdir /var/www/$website/public_html
+echo "* Creating 'public' for $website";
+mkdir /var/www/$website/public
 
 # Create git repo
 echo "* Creating '.git' bare repo for $website";
@@ -36,7 +36,7 @@ git init --bare
 echo "* Creating post-receive git-hook for $website repo";
 touch /var/www/$website/$website.git/hooks/post-receive
 echo "#!/bin/sh
-GIT_WORK_TREE=/var/www/$website/public_html/ git checkout -f" > /var/www/$website/$website.git/hooks/post-receive
+GIT_WORK_TREE=/var/www/$website/public/ git checkout -f" > /var/www/$website/$website.git/hooks/post-receive
 
 # Set permissions to the git-hook file
 echo "* Setting permissions...";
