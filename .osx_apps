@@ -18,6 +18,7 @@ brew install bash
 sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
 chsh -s /usr/local/bin/bash 
 
+brew install docker
 brew install readline
 brew install coreutils
 brew install wget
