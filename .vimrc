@@ -13,54 +13,61 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+
 " Misc
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'benekastah/neomake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'blueyed/vim-diminactive'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'janko-m/vim-test'
 Plug 'mhinz/vim-startify'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
-Plug 'ferranpm/vim-isolate'
+Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'lifepillar/vim-colortemplate'
 
 " Language specific
 Plug 'vim-ruby/vim-ruby'
 Plug 'Vimjas/vim-python-pep8-indent'
-" Plug 'vim-python/python-syntax'
-" Plug 'hdima/python-syntax'
-" Plug 'Hyleus/vim-python-syntax'
-Plug 'kh3phr3n/python-syntax'
-Plug 'elixir-lang/vim-elixir'
-Plug 'slashmili/alchemist.vim'
+Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'stephpy/vim-yaml'
-Plug 'thiagoalessio/rainbow_levels.vim'
+
+" NOTE: don't forget to install `jedi` and `black` with pip3
 
 " Themes
-Plug 'chriskempson/base16-vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'tpope/vim-vividchalk'
-Plug 'rhysd/vim-color-spring-night'
-Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'fxn/vim-monochrome'
-Plug 'arcticicestudio/nord-vim'
-" 'bruth/vim-newsprint-theme'
-" 'bluz71/vim-moonfly-statusline'
-"Plug 'rakr/vim-one'
+Plug 'dracula/vim', {'as': 'dracula'}
+Plug 'itchyny/lightline.vim'
+Plug 'srcery-colors/srcery-vim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'sainnhe/sonokai'
+Plug 'glepnir/zephyr-nvim'
+Plug 'Th3Whit3Wolf/one-nvim'
+Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'tjdevries/colorbuddy.vim'
+Plug 'Th3Whit3Wolf/spacebuddy'
+Plug 'marko-cerovac/material.nvim'
+Plug 'rktjmp/lush.nvim'
+Plug 'rakr/vim-one'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'YorickPeterse/vim-paper'
+Plug 'cormacrelf/vim-colors-github'
+Plug 'folke/tokyonight.nvim'
+Plug 'balanceiskey/vim-framer-syntax'
 
-" Docs
+"" Docs
 Plug 'parkr/vim-jekyll'
 Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-markdown'
 Plug 'suan/vim-instant-markdown'
+Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
 
 call plug#end()
 filetype plugin indent on
@@ -69,30 +76,15 @@ syntax on
 " Goyo settings
 let g:goyo_width = 101
 
-" Deoplete
-let g:python_host_prog = "/usr/bin/python"
-let g:python3_host_prog = "/usr/local/bin/python3"
-let g:deoplete#enable_at_startup = 0
-let g:deoplete#enable_profile = 0
-
 " Gitgutter
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
 
-let g:jsx_ext_required = 0
-
-" Ctrl-p settings
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlP'
-" if executable('ag')
-"   set grepprg=ag\ --nogroup\ --nocolor
-"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g \""'
-" endif
-" if executable('fzf')
-"   let g:ctrlp_user_command = 'fzf'
-" endif
+" fuzzy finder
 map <C-p> :FZF<cr>
 nmap <C-p> :FZF<cr>
+
+" more coloring
 nnoremap <leader>rl :RainbowLevelsToggle<CR>
 let g:rainbow_levels = [
     \{'ctermbg': 'none', 'level': 0},
@@ -109,26 +101,38 @@ let g:rainbow_levels = [
 let g:neomake_kotlin_ktlint_maker = {}
 let g:neomake_kotlin_enabled_makers = ['ktlint']
 let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python_enabled_makers = ['vulture']
 autocmd! BufWritePost * Neomake
+autocmd! BufWritePre *.py execute ':Black'
+command Isort :!isort %
 
+" Semshi config
+let g:semshi#simplify_markup = v:false
+let g:semshi#no_default_builtin_highlight = v:false
 let test#strategy = "neovim"
 
-" Theme configs
-let g:PaperColor_Theme_Options = {
-  \   'language': {
-  \     'python': {
-  \       'highlight_builtins' : 1
-  \     },
-  \   }
-  \ }
-
 " Custom statusline
-" set statusline=[%{mode()}]%*\ %{expand('%')}%*%m%r%h%w\ 
-" set statusline+=\ %=                        " align left
-" set statusline+=%{fugitive#statusline()}%*
-" set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
-" set statusline+=\ [\%c:\%l\/%L]
+set statusline=[%{mode()}]%*\ %{expand('%')}%*%m%r%h%w\ 
+set statusline+=\ %=                        " align left
+set statusline+=%{fugitive#statusline()}%*
+set statusline+=%y[\%{&ff}:%{strlen(&fenc)?&fenc:&enc}]
+set statusline+=\ [\%c:\%l\/%L]
+
+let g:lightline = {
+            \'component_function': {'filename': 'FilenameForLightline'}
+            \}
+let g:lightline.colorscheme = 'gruvbox_material'
+let g:gruvbox_material_background = 'hard'
+" let g:gruvbox_material_palette = 'mix'
+let g:gruvbox_material_diagnostic_text_highlight = 1
+let g:gruvbox_material_diagnostic_line_highlight = 1
+let g:tokyonight_style = "day"
+
+" Show full path of filename
+function! FilenameForLightline()
+    return expand('%')
+    " return expand('%')}%*%m%r%h%w
+endfunction
 
 " Default settings for everything
 set hidden
@@ -170,15 +174,14 @@ set nosol
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+set signcolumn=yes
 
 " Color schemes
 if &t_Co >= 256 || has("gui_running")
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
     set background=dark
-    " colorscheme PaperColor
-    colorscheme flattown
-    " colorscheme base16-material
-    " colorscheme nord
+    " colorscheme onehalflight
+    colorscheme queque
 endif
 
 " Custom mappings
@@ -201,21 +204,13 @@ endfunction
 
 let g:python_highlight_all = 1
 
-" Sidebar explorer configs
-let NERDTreeIgnore = ['\.pyc$', '\.swp$', '\.bak$', '\.git$']
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_liststyle=3
-let g:netrw_list_hide = "\.pyc,\.swp,\.bak,\.git"
-let g:netrw_special_syntax = 1
-let g:netrw_liststyle = 1
-
 " Writings settings
 autocmd FileType rst,rest,txt,text,markdown,mkd,md,rfc call SetTextSettings()
 function! SetTextSettings()
     set wrap nolist
     set textwidth=0
     set wrapmargin=0
+    colorscheme papercolor
 endfunction
 
 " Python settings
@@ -243,10 +238,23 @@ hi TabLineFill ctermfg=white ctermbg=green guifg=white guibg=green
 hi TabLine ctermfg=white ctermbg=green guifg=white guibg=green
 hi TabLineSel cterm=bold gui=bold ctermfg=white ctermbg=darkgreen guifg=white guibg=darkgreen
 
-" current highlight group
-" echo synIDattr(synID(line("."),col("."),1),"name")
+" Python highlights
+" hi! link pythonBuiltinObj SrceryBrightMagenta
+" hi! link pythonRepeat SrceryOrangeBold
+" hi! link pythonConditional SrceryBrightOrange
+" hi! link pythonOperator SrceryBrightOrange
+" hi! link pythonInclude SrceryBlueBold
+" hi! link pythonSelf SrceryRed
+" hi! link pythonStatement SrceryBrightRed
 
-" Copy to clip board
+" current highlight group
+function! g:SyntaxGroup() abort
+    let l:s = synID(line('.'), col('.'), 1)
+    echo synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+endfunction
+nnoremap <F12> :call SyntaxGroup()<CR>
+
+"" Copy to clip board
 set clipboard=unnamed
 
 autocmd User Startified setlocal cursorline
@@ -290,3 +298,10 @@ function! MakeTransform(cmd) abort
 endfunction
 let g:test#custom_transformations = {'make': function('MakeTransform')}
 let g:test#transformation = 'make'
+
+function! RunpyTransform(cmd) abort
+  let tests_path = split(a:cmd)[-1]
+  return 'python3 ./run.py unit_tests '.substitute(tests_path, 'src\.', '', '')
+endfunction
+let g:test#custom_transformations = {'runpy': function('RunpyTransform')}
+let g:test#transformation = 'runpy'

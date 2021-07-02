@@ -16,13 +16,13 @@ brew tap caskroom/versions  # required to have chrome beta and so on
 echo Installing latest bash and changing shells
 brew install bash
 sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
-chsh -s /usr/local/bin/bash 
+chsh -s /usr/local/bin/bash
 
 brew install docker
 brew install readline
 brew install coreutils
 brew install wget
-brew install git 
+brew install git
 brew install unrar
 brew install vim
 brew install cowsay
@@ -49,6 +49,9 @@ brew install brew-cask
 echo Installing latest neovim
 brew tap neovim/homebrew-neovim
 brew install neovim
+pip install jedi
+pip install vulture
+pip install black
 echo Migrating vimrc config to nvim...
 mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
 ln -s ~/.vim $XDG_CONFIG_HOME/nvim
