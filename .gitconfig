@@ -1,10 +1,12 @@
 [user]
 	email = me@rafael.pt
 	name = Rafael Albuquerque
+	signingkey = 3CA0953FEECDA860
 [push]
     default = simple
 [pull]
     default = simple
+	rebase = false
 [color]
 	ui = auto
 [status]
@@ -13,6 +15,7 @@
 [alias]
 	today = log --since=\"6am\" --pretty=\"oneline\" --author=\"Rafael Albuquerque\"
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+    edit = !$EDITOR -p $(git status --short | awk '$1 ~ /^M|A|U/ {print $2}' )
 [core]
 	editor = nvim
 [color "branch"]
@@ -28,3 +31,7 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg

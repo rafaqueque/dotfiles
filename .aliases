@@ -2,6 +2,12 @@ alias vi=nvim
 alias vim=nvim
 alias grep='grep -n --color'
 alias ggrep='grep -Iirn3 $@'
+alias python=python3
+
+alias docker-clean='docker volume prune && docker container prune && docker image prune'
+alias dcompose=docker-compose
+alias drun='docker-compose run --rm $@'
+alias dlogs='docker-compose logs -f $@'
 
 alias br_cli='docker run --rm cli src/manage.py $@'
 alias br_up='docker-compose up -d'
