@@ -14,7 +14,7 @@ antigen bundle httpie
 antigen bundle docker
 antigen bundle docker-compose
 antigen bundle command-not-found
-antigen bundle zsh_reload
+# antigen bundle zsh_reload
 antigen apply
 
 export PROMPT='%{%B$FG[157]%}%2~%{$reset_color$FG[154]%}$(git_prompt_info)%{$reset_color$FG[153]%}$(virtualenv_prompt_info) %{$FG[161]%}%(1j.j:%j .)%{$reset_color%}%{%(#~$fg[red]~$fg[red])%}%#%{$fg[default]%} %{$reset_color%}'
