@@ -17,7 +17,7 @@ call plug#begin('~/.vim/plugged')
 " Misc
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'benekastah/neomake'
+" Plug 'benekastah/neomake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-endwise'
@@ -25,19 +25,24 @@ Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'janko-m/vim-test'
-Plug 'mhinz/vim-startify'
-Plug 'sheerun/vim-polyglot'
+" Plug 'mhinz/vim-startify'
+" Plug 'sheerun/vim-polyglot'
+Plug 'vim-python/python-syntax'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lifepillar/vim-colortemplate'
+" Plug 'kyazdani42/nvim-web-devicons'
+" Plug 'romgrk/barbar.nvim'
+Plug 'github/copilot.vim'
 
 " Language specific
 Plug 'vim-ruby/vim-ruby'
-Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'psf/black', { 'tag': '19.10b0' }
+" Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'pangloss/vim-javascript'
 Plug 'stephpy/vim-yaml'
+Plug 'averms/black-nvim', {'do': ':UpdateRemotePlugins'}
+" Plug 'psf/black'
 
 " NOTE: don't forget to install `jedi` and `black` with pip3
 
@@ -61,6 +66,7 @@ Plug 'YorickPeterse/vim-paper'
 Plug 'cormacrelf/vim-colors-github'
 Plug 'folke/tokyonight.nvim'
 Plug 'balanceiskey/vim-framer-syntax'
+Plug 'luisiacc/gruvbox-baby'
 
 "" Docs
 Plug 'parkr/vim-jekyll'
@@ -68,6 +74,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-markdown'
 Plug 'suan/vim-instant-markdown'
 Plug 'https://gitlab.com/protesilaos/tempus-themes-vim.git'
+Plug 'preservim/vim-pencil'
 
 call plug#end()
 filetype plugin indent on
@@ -102,9 +109,17 @@ let g:neomake_kotlin_ktlint_maker = {}
 let g:neomake_kotlin_enabled_makers = ['ktlint']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_python_enabled_makers = ['vulture']
-autocmd! BufWritePost * Neomake
-autocmd! BufWritePre *.py execute ':Black'
+" autocmd! BufWritePost * Neomake
 command Isort :!isort %
+" command Black :!black %
+command JsonPretty ':!python -m json.tool'
+
+function! PythonFormatter()
+    " execute ':Black'
+    " execute ':Isort'
+    call Black()
+endfunction
+autocmd! BufWritePre *.py call PythonFormatter()
 
 " Semshi config
 let g:semshi#simplify_markup = v:false
@@ -135,6 +150,7 @@ function! FilenameForLightline()
 endfunction
 
 " Default settings for everything
+set shell=/usr/local/bin/bash
 set hidden
 set nowrap        " don't wrap lines
 set list
@@ -180,40 +196,30 @@ set signcolumn=yes
 if &t_Co >= 256 || has("gui_running")
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
     set background=dark
-    " colorscheme onehalflight
     colorscheme queque
+    " colorscheme gruvbox-baby
 endif
 
-" Custom mappings
-nmap <silent> <F8> :TagbarToggle<CR>
-nmap <silent> <C-e> :NERDTreeToggle<CR>
-nnoremap <F5> :call ToggleMouse()<CR>
-nnoremap <F9> "=strftime("%c")<CR>P
-inoremap <F9> <C-R>=strftime("%c")<CR>
-
-" Toggle mouse and numbers
-function! ToggleMouse()
-  if &mouse == 'a'
-    set mouse=
-    echo "Mouse usage disabled"
-  else
-    set mouse=a
-    echo "Mouse usage enabled"
-  endif
-endfunction
 
 let g:python_highlight_all = 1
 
 " Writings settings
+noremap <Up> gk
+noremap <Down> gj
 autocmd FileType rst,rest,txt,text,markdown,mkd,md,rfc call SetTextSettings()
 function! SetTextSettings()
-    set wrap nolist
-    set textwidth=0
-    set wrapmargin=0
+    " set wrap nolist
+    " set linebreak
+    " set wrapmargin=0
+    " set spell spelllang=en_us
+    let g:pencil#wrapModeDefault = 'soft'
+    let g:pencil#textwidth = 74
+    call pencil#init()
     colorscheme papercolor
 endfunction
 
 " Python settings
+let g:python_host_prog  = '/usr/local/bin/python3'
 autocmd FileType python call SetPythonSettings()
 function! SetPythonSettings()
     match errormsg '\%>100v.\+'
@@ -292,13 +298,16 @@ hi StartifyPath    ctermfg=245
 hi StartifySlash   ctermfg=240
 hi StartifySpecial ctermfg=240
 
-function! MakeTransform(cmd) abort
-  let tests_path = split(a:cmd)[-1]
-  return 'make integration_tests test='.substitute(tests_path, 'src\.', '', '')
-endfunction
-let g:test#custom_transformations = {'make': function('MakeTransform')}
-let g:test#transformation = 'make'
+" function! MakeTransform(cmd) abort
+"   let tests_path = split(a:cmd)[-1]
+"   return 'make integration_tests test='.substitute(tests_path, 'src\.', '', '')
+" endfunction
+" let g:test#custom_transformations = {'make': function('MakeTransform')}
+" let g:test#transformation = 'make'
 
+
+" sherpany-specific
+let g:test#python#runner = "djangotest"
 function! RunpyTransform(cmd) abort
   let tests_path = split(a:cmd)[-1]
   return 'python3 ./run.py unit_tests '.substitute(tests_path, 'src\.', '', '')
